@@ -1,0 +1,126 @@
+date,season,competition,stage_raw,stage,home_team,away_team,home_goals,away_goals
+2018-09-18,2018_19,Champions League,Group A,league_phase,AS Monaco (FRA),Atlético Madrid (ESP),1,2
+2018-09-18,2018_19,Champions League,Group A,league_phase,Club Brugge KV (BEL),Borussia Dortmund (GER),0,1
+2018-10-03,2018_19,Champions League,Group A,league_phase,Borussia Dortmund (GER),AS Monaco (FRA),3,0
+2018-10-03,2018_19,Champions League,Group A,league_phase,Atlético Madrid (ESP),Club Brugge KV (BEL),3,1
+2018-10-24,2018_19,Champions League,Group A,league_phase,Club Brugge KV (BEL),AS Monaco (FRA),1,1
+2018-10-24,2018_19,Champions League,Group A,league_phase,Borussia Dortmund (GER),Atlético Madrid (ESP),4,0
+2018-11-06,2018_19,Champions League,Group A,league_phase,AS Monaco (FRA),Club Brugge KV (BEL),0,4
+2018-11-06,2018_19,Champions League,Group A,league_phase,Atlético Madrid (ESP),Borussia Dortmund (GER),2,0
+2018-11-28,2018_19,Champions League,Group A,league_phase,Atlético Madrid (ESP),AS Monaco (FRA),2,0
+2018-11-28,2018_19,Champions League,Group A,league_phase,Borussia Dortmund (GER),Club Brugge KV (BEL),0,0
+2018-12-11,2018_19,Champions League,Group A,league_phase,AS Monaco (FRA),Borussia Dortmund (GER),0,2
+2018-12-11,2018_19,Champions League,Group A,league_phase,Club Brugge KV (BEL),Atlético Madrid (ESP),0,0
+2018-09-18,2018_19,Champions League,Group B,league_phase,FC Barcelona (ESP),PSV Eindhoven (NED),4,0
+2018-09-18,2018_19,Champions League,Group B,league_phase,Inter (ITA),Tottenham Hotspur (ENG),2,1
+2018-10-03,2018_19,Champions League,Group B,league_phase,Tottenham Hotspur (ENG),FC Barcelona (ESP),2,4
+2018-10-03,2018_19,Champions League,Group B,league_phase,PSV Eindhoven (NED),Inter (ITA),1,2
+2018-10-24,2018_19,Champions League,Group B,league_phase,PSV Eindhoven (NED),Tottenham Hotspur (ENG),2,2
+2018-10-24,2018_19,Champions League,Group B,league_phase,FC Barcelona (ESP),Inter (ITA),2,0
+2018-11-06,2018_19,Champions League,Group B,league_phase,Tottenham Hotspur (ENG),PSV Eindhoven (NED),2,1
+2018-11-06,2018_19,Champions League,Group B,league_phase,Inter (ITA),FC Barcelona (ESP),1,1
+2018-11-28,2018_19,Champions League,Group B,league_phase,PSV Eindhoven (NED),FC Barcelona (ESP),1,2
+2018-11-28,2018_19,Champions League,Group B,league_phase,Tottenham Hotspur (ENG),Inter (ITA),1,0
+2018-12-11,2018_19,Champions League,Group B,league_phase,FC Barcelona (ESP),Tottenham Hotspur (ENG),1,1
+2018-12-11,2018_19,Champions League,Group B,league_phase,Inter (ITA),PSV Eindhoven (NED),1,1
+2018-09-18,2018_19,Champions League,Group C,league_phase,Liverpool FC (ENG),Paris Saint-Germain (FRA),3,2
+2018-09-18,2018_19,Champions League,Group C,league_phase,Crvena Zvezda (SRB),SSC Napoli (ITA),0,0
+2018-10-03,2018_19,Champions League,Group C,league_phase,Paris Saint-Germain (FRA),Crvena Zvezda (SRB),6,1
+2018-10-03,2018_19,Champions League,Group C,league_phase,SSC Napoli (ITA),Liverpool FC (ENG),1,0
+2018-10-24,2018_19,Champions League,Group C,league_phase,Paris Saint-Germain (FRA),SSC Napoli (ITA),2,2
+2018-10-24,2018_19,Champions League,Group C,league_phase,Liverpool FC (ENG),Crvena Zvezda (SRB),4,0
+2018-11-06,2018_19,Champions League,Group C,league_phase,Crvena Zvezda (SRB),Liverpool FC (ENG),2,0
+2018-11-06,2018_19,Champions League,Group C,league_phase,SSC Napoli (ITA),Paris Saint-Germain (FRA),1,1
+2018-11-28,2018_19,Champions League,Group C,league_phase,Paris Saint-Germain (FRA),Liverpool FC (ENG),2,1
+2018-11-28,2018_19,Champions League,Group C,league_phase,SSC Napoli (ITA),Crvena Zvezda (SRB),3,1
+2018-12-11,2018_19,Champions League,Group C,league_phase,Liverpool FC (ENG),SSC Napoli (ITA),1,0
+2018-12-11,2018_19,Champions League,Group C,league_phase,Crvena Zvezda (SRB),Paris Saint-Germain (FRA),1,4
+2018-09-18,2018_19,Champions League,Group D,league_phase,FC Schalke 04 (GER),FC Porto (POR),1,1
+2018-09-18,2018_19,Champions League,Group D,league_phase,Galatasaray (TUR),Lokomotiv Moskva (RUS),3,0
+2018-10-03,2018_19,Champions League,Group D,league_phase,Lokomotiv Moskva (RUS),FC Schalke 04 (GER),0,1
+2018-10-03,2018_19,Champions League,Group D,league_phase,FC Porto (POR),Galatasaray (TUR),1,0
+2018-10-24,2018_19,Champions League,Group D,league_phase,Lokomotiv Moskva (RUS),FC Porto (POR),1,3
+2018-10-24,2018_19,Champions League,Group D,league_phase,Galatasaray (TUR),FC Schalke 04 (GER),0,0
+2018-11-06,2018_19,Champions League,Group D,league_phase,FC Porto (POR),Lokomotiv Moskva (RUS),4,1
+2018-11-06,2018_19,Champions League,Group D,league_phase,FC Schalke 04 (GER),Galatasaray (TUR),2,0
+2018-11-28,2018_19,Champions League,Group D,league_phase,Lokomotiv Moskva (RUS),Galatasaray (TUR),2,0
+2018-11-28,2018_19,Champions League,Group D,league_phase,FC Porto (POR),FC Schalke 04 (GER),3,1
+2018-12-11,2018_19,Champions League,Group D,league_phase,FC Schalke 04 (GER),Lokomotiv Moskva (RUS),1,0
+2018-12-11,2018_19,Champions League,Group D,league_phase,Galatasaray (TUR),FC Porto (POR),2,3
+2018-09-19,2018_19,Champions League,Group E,league_phase,AFC Ajax (NED),AEK Athen (GRE),3,0
+2018-09-19,2018_19,Champions League,Group E,league_phase,SL Benfica (POR),Bayern München (GER),0,2
+2018-10-02,2018_19,Champions League,Group E,league_phase,Bayern München (GER),AFC Ajax (NED),1,1
+2018-10-02,2018_19,Champions League,Group E,league_phase,AEK Athen (GRE),SL Benfica (POR),2,3
+2018-10-23,2018_19,Champions League,Group E,league_phase,AEK Athen (GRE),Bayern München (GER),0,2
+2018-10-23,2018_19,Champions League,Group E,league_phase,AFC Ajax (NED),SL Benfica (POR),1,0
+2018-11-07,2018_19,Champions League,Group E,league_phase,SL Benfica (POR),AFC Ajax (NED),1,1
+2018-11-07,2018_19,Champions League,Group E,league_phase,Bayern München (GER),AEK Athen (GRE),2,0
+2018-11-27,2018_19,Champions League,Group E,league_phase,AEK Athen (GRE),AFC Ajax (NED),0,2
+2018-11-27,2018_19,Champions League,Group E,league_phase,Bayern München (GER),SL Benfica (POR),5,1
+2018-12-12,2018_19,Champions League,Group E,league_phase,AFC Ajax (NED),Bayern München (GER),3,3
+2018-12-12,2018_19,Champions League,Group E,league_phase,SL Benfica (POR),AEK Athen (GRE),1,0
+2018-09-19,2018_19,Champions League,Group F,league_phase,Shakhtar Donetsk (UKR),1899 Hoffenheim (GER),2,2
+2018-09-19,2018_19,Champions League,Group F,league_phase,Manchester City (ENG),Olympique Lyonnais (FRA),1,2
+2018-10-02,2018_19,Champions League,Group F,league_phase,1899 Hoffenheim (GER),Manchester City (ENG),1,2
+2018-10-02,2018_19,Champions League,Group F,league_phase,Olympique Lyonnais (FRA),Shakhtar Donetsk (UKR),2,2
+2018-10-23,2018_19,Champions League,Group F,league_phase,Shakhtar Donetsk (UKR),Manchester City (ENG),0,3
+2018-10-23,2018_19,Champions League,Group F,league_phase,1899 Hoffenheim (GER),Olympique Lyonnais (FRA),3,3
+2018-11-07,2018_19,Champions League,Group F,league_phase,Manchester City (ENG),Shakhtar Donetsk (UKR),6,0
+2018-11-07,2018_19,Champions League,Group F,league_phase,Olympique Lyonnais (FRA),1899 Hoffenheim (GER),2,2
+2018-11-27,2018_19,Champions League,Group F,league_phase,Olympique Lyonnais (FRA),Manchester City (ENG),2,2
+2018-11-27,2018_19,Champions League,Group F,league_phase,1899 Hoffenheim (GER),Shakhtar Donetsk (UKR),2,3
+2018-12-12,2018_19,Champions League,Group F,league_phase,Shakhtar Donetsk (UKR),Olympique Lyonnais (FRA),1,1
+2018-12-12,2018_19,Champions League,Group F,league_phase,Manchester City (ENG),1899 Hoffenheim (GER),2,1
+2018-09-19,2018_19,Champions League,Group G,league_phase,Real Madrid (ESP),AS Roma (ITA),3,0
+2018-09-19,2018_19,Champions League,Group G,league_phase,Viktoria Plzeň (CZE),CSKA Moskva (RUS),2,2
+2018-10-02,2018_19,Champions League,Group G,league_phase,CSKA Moskva (RUS),Real Madrid (ESP),1,0
+2018-10-02,2018_19,Champions League,Group G,league_phase,AS Roma (ITA),Viktoria Plzeň (CZE),5,0
+2018-10-23,2018_19,Champions League,Group G,league_phase,AS Roma (ITA),CSKA Moskva (RUS),3,0
+2018-10-23,2018_19,Champions League,Group G,league_phase,Real Madrid (ESP),Viktoria Plzeň (CZE),2,1
+2018-11-07,2018_19,Champions League,Group G,league_phase,CSKA Moskva (RUS),AS Roma (ITA),1,2
+2018-11-07,2018_19,Champions League,Group G,league_phase,Viktoria Plzeň (CZE),Real Madrid (ESP),0,5
+2018-11-27,2018_19,Champions League,Group G,league_phase,CSKA Moskva (RUS),Viktoria Plzeň (CZE),1,2
+2018-11-27,2018_19,Champions League,Group G,league_phase,AS Roma (ITA),Real Madrid (ESP),0,2
+2018-12-12,2018_19,Champions League,Group G,league_phase,Real Madrid (ESP),CSKA Moskva (RUS),0,3
+2018-12-12,2018_19,Champions League,Group G,league_phase,Viktoria Plzeň (CZE),AS Roma (ITA),2,1
+2018-09-19,2018_19,Champions League,Group H,league_phase,Valencia CF (ESP),Juventus (ITA),0,2
+2018-09-19,2018_19,Champions League,Group H,league_phase,BSC Young Boys (SUI),Manchester United (ENG),0,3
+2018-10-02,2018_19,Champions League,Group H,league_phase,Juventus (ITA),BSC Young Boys (SUI),3,0
+2018-10-02,2018_19,Champions League,Group H,league_phase,Manchester United (ENG),Valencia CF (ESP),0,0
+2018-10-23,2018_19,Champions League,Group H,league_phase,BSC Young Boys (SUI),Valencia CF (ESP),1,1
+2018-10-23,2018_19,Champions League,Group H,league_phase,Manchester United (ENG),Juventus (ITA),0,1
+2018-11-07,2018_19,Champions League,Group H,league_phase,Valencia CF (ESP),BSC Young Boys (SUI),3,1
+2018-11-07,2018_19,Champions League,Group H,league_phase,Juventus (ITA),Manchester United (ENG),1,2
+2018-11-27,2018_19,Champions League,Group H,league_phase,Juventus (ITA),Valencia CF (ESP),1,0
+2018-11-27,2018_19,Champions League,Group H,league_phase,Manchester United (ENG),BSC Young Boys (SUI),1,0
+2018-12-12,2018_19,Champions League,Group H,league_phase,Valencia CF (ESP),Manchester United (ENG),2,1
+2018-12-12,2018_19,Champions League,Group H,league_phase,BSC Young Boys (SUI),Juventus (ITA),2,1
+2019-02-12,2018_19,Champions League,Round of 16,round_of_16,Manchester United (ENG),Paris Saint-Germain (FRA),0,2
+2019-02-12,2018_19,Champions League,Round of 16,round_of_16,AS Roma (ITA),FC Porto (POR),2,1
+2019-02-13,2018_19,Champions League,Round of 16,round_of_16,Tottenham Hotspur (ENG),Borussia Dortmund (GER),3,0
+2019-02-13,2018_19,Champions League,Round of 16,round_of_16,AFC Ajax (NED),Real Madrid (ESP),1,2
+2019-02-19,2018_19,Champions League,Round of 16,round_of_16,Olympique Lyonnais (FRA),FC Barcelona (ESP),0,0
+2019-02-19,2018_19,Champions League,Round of 16,round_of_16,Liverpool FC (ENG),Bayern München (GER),0,0
+2019-02-20,2018_19,Champions League,Round of 16,round_of_16,FC Schalke 04 (GER),Manchester City (ENG),2,3
+2019-02-20,2018_19,Champions League,Round of 16,round_of_16,Atlético Madrid (ESP),Juventus (ITA),2,0
+2019-03-05,2018_19,Champions League,Round of 16,round_of_16,Borussia Dortmund (GER),Tottenham Hotspur (ENG),0,1
+2019-03-05,2018_19,Champions League,Round of 16,round_of_16,Real Madrid (ESP),AFC Ajax (NED),1,4
+2019-03-06,2018_19,Champions League,Round of 16,round_of_16,Paris Saint-Germain (FRA),Manchester United (ENG),1,3
+2019-03-06,2018_19,Champions League,Round of 16,round_of_16,FC Porto (POR),AS Roma (ITA),3,1
+2019-03-12,2018_19,Champions League,Round of 16,round_of_16,Manchester City (ENG),FC Schalke 04 (GER),7,0
+2019-03-12,2018_19,Champions League,Round of 16,round_of_16,Juventus (ITA),Atlético Madrid (ESP),3,0
+2019-03-13,2018_19,Champions League,Round of 16,round_of_16,FC Barcelona (ESP),Olympique Lyonnais (FRA),5,1
+2019-03-13,2018_19,Champions League,Round of 16,round_of_16,Bayern München (GER),Liverpool FC (ENG),1,3
+2019-04-09,2018_19,Champions League,Quarterfinals,quarterfinal,Liverpool FC (ENG),FC Porto (POR),2,0
+2019-04-09,2018_19,Champions League,Quarterfinals,quarterfinal,Tottenham Hotspur (ENG),Manchester City (ENG),1,0
+2019-04-10,2018_19,Champions League,Quarterfinals,quarterfinal,AFC Ajax (NED),Juventus (ITA),1,1
+2019-04-10,2018_19,Champions League,Quarterfinals,quarterfinal,Manchester United (ENG),FC Barcelona (ESP),0,1
+2019-04-16,2018_19,Champions League,Quarterfinals,quarterfinal,Juventus (ITA),AFC Ajax (NED),1,2
+2019-04-16,2018_19,Champions League,Quarterfinals,quarterfinal,FC Barcelona (ESP),Manchester United (ENG),3,0
+2019-04-17,2018_19,Champions League,Quarterfinals,quarterfinal,FC Porto (POR),Liverpool FC (ENG),1,4
+2019-04-17,2018_19,Champions League,Quarterfinals,quarterfinal,Manchester City (ENG),Tottenham Hotspur (ENG),4,3
+2019-04-30,2018_19,Champions League,Semifinals,semifinal,Tottenham Hotspur (ENG),AFC Ajax (NED),0,1
+2019-05-01,2018_19,Champions League,Semifinals,semifinal,FC Barcelona (ESP),Liverpool FC (ENG),3,0
+2019-05-07,2018_19,Champions League,Semifinals,semifinal,Liverpool FC (ENG),FC Barcelona (ESP),4,0
+2019-05-08,2018_19,Champions League,Semifinals,semifinal,AFC Ajax (NED),Tottenham Hotspur (ENG),2,3
+2019-06-01,2018_19,Champions League,Final,final,Tottenham Hotspur (ENG),Liverpool FC (ENG),0,2

@@ -1,0 +1,126 @@
+date,season,competition,stage_raw,stage,home_team,away_team,home_goals,away_goals
+2020-10-21,2020_21,Champions League,Group A,league_phase,RB Salzburg (AUT),Lokomotiv Moskva (RUS),2,2
+2020-10-21,2020_21,Champions League,Group A,league_phase,Bayern München (GER),Atlético Madrid (ESP),4,0
+2020-10-27,2020_21,Champions League,Group A,league_phase,Lokomotiv Moskva (RUS),Bayern München (GER),1,2
+2020-10-27,2020_21,Champions League,Group A,league_phase,Atlético Madrid (ESP),RB Salzburg (AUT),3,2
+2020-11-03,2020_21,Champions League,Group A,league_phase,Lokomotiv Moskva (RUS),Atlético Madrid (ESP),1,1
+2020-11-03,2020_21,Champions League,Group A,league_phase,RB Salzburg (AUT),Bayern München (GER),2,6
+2020-11-25,2020_21,Champions League,Group A,league_phase,Atlético Madrid (ESP),Lokomotiv Moskva (RUS),0,0
+2020-11-25,2020_21,Champions League,Group A,league_phase,Bayern München (GER),RB Salzburg (AUT),3,1
+2020-12-01,2020_21,Champions League,Group A,league_phase,Lokomotiv Moskva (RUS),RB Salzburg (AUT),1,3
+2020-12-01,2020_21,Champions League,Group A,league_phase,Atlético Madrid (ESP),Bayern München (GER),1,1
+2020-12-09,2020_21,Champions League,Group A,league_phase,Bayern München (GER),Lokomotiv Moskva (RUS),2,0
+2020-12-09,2020_21,Champions League,Group A,league_phase,RB Salzburg (AUT),Atlético Madrid (ESP),0,2
+2020-10-21,2020_21,Champions League,Group B,league_phase,Real Madrid (ESP),Shakhtar Donetsk (UKR),2,3
+2020-10-21,2020_21,Champions League,Group B,league_phase,Inter (ITA),Bor. Mönchengladbach (GER),2,2
+2020-10-27,2020_21,Champions League,Group B,league_phase,Shakhtar Donetsk (UKR),Inter (ITA),0,0
+2020-10-27,2020_21,Champions League,Group B,league_phase,Bor. Mönchengladbach (GER),Real Madrid (ESP),2,2
+2020-11-03,2020_21,Champions League,Group B,league_phase,Shakhtar Donetsk (UKR),Bor. Mönchengladbach (GER),0,6
+2020-11-03,2020_21,Champions League,Group B,league_phase,Real Madrid (ESP),Inter (ITA),3,2
+2020-11-25,2020_21,Champions League,Group B,league_phase,Bor. Mönchengladbach (GER),Shakhtar Donetsk (UKR),4,0
+2020-11-25,2020_21,Champions League,Group B,league_phase,Inter (ITA),Real Madrid (ESP),0,2
+2020-12-01,2020_21,Champions League,Group B,league_phase,Shakhtar Donetsk (UKR),Real Madrid (ESP),2,0
+2020-12-01,2020_21,Champions League,Group B,league_phase,Bor. Mönchengladbach (GER),Inter (ITA),2,3
+2020-12-09,2020_21,Champions League,Group B,league_phase,Inter (ITA),Shakhtar Donetsk (UKR),0,0
+2020-12-09,2020_21,Champions League,Group B,league_phase,Real Madrid (ESP),Bor. Mönchengladbach (GER),2,0
+2020-10-21,2020_21,Champions League,Group C,league_phase,Manchester City (ENG),FC Porto (POR),3,1
+2020-10-21,2020_21,Champions League,Group C,league_phase,Olympiakos Piraeus (GRE),Olympique Marseille (FRA),1,0
+2020-10-27,2020_21,Champions League,Group C,league_phase,FC Porto (POR),Olympiakos Piraeus (GRE),2,0
+2020-10-27,2020_21,Champions League,Group C,league_phase,Olympique Marseille (FRA),Manchester City (ENG),0,3
+2020-11-03,2020_21,Champions League,Group C,league_phase,FC Porto (POR),Olympique Marseille (FRA),3,0
+2020-11-03,2020_21,Champions League,Group C,league_phase,Manchester City (ENG),Olympiakos Piraeus (GRE),3,0
+2020-11-25,2020_21,Champions League,Group C,league_phase,Olympiakos Piraeus (GRE),Manchester City (ENG),0,1
+2020-11-25,2020_21,Champions League,Group C,league_phase,Olympique Marseille (FRA),FC Porto (POR),0,2
+2020-12-01,2020_21,Champions League,Group C,league_phase,FC Porto (POR),Manchester City (ENG),0,0
+2020-12-01,2020_21,Champions League,Group C,league_phase,Olympique Marseille (FRA),Olympiakos Piraeus (GRE),2,1
+2020-12-09,2020_21,Champions League,Group C,league_phase,Manchester City (ENG),Olympique Marseille (FRA),3,0
+2020-12-09,2020_21,Champions League,Group C,league_phase,Olympiakos Piraeus (GRE),FC Porto (POR),0,2
+2020-10-21,2020_21,Champions League,Group D,league_phase,AFC Ajax (NED),Liverpool FC (ENG),0,1
+2020-10-21,2020_21,Champions League,Group D,league_phase,FC Midtjylland (DEN),Atalanta (ITA),0,4
+2020-10-27,2020_21,Champions League,Group D,league_phase,Atalanta (ITA),AFC Ajax (NED),2,2
+2020-10-27,2020_21,Champions League,Group D,league_phase,Liverpool FC (ENG),FC Midtjylland (DEN),2,0
+2020-11-03,2020_21,Champions League,Group D,league_phase,Atalanta (ITA),Liverpool FC (ENG),0,5
+2020-11-03,2020_21,Champions League,Group D,league_phase,FC Midtjylland (DEN),AFC Ajax (NED),1,2
+2020-11-25,2020_21,Champions League,Group D,league_phase,AFC Ajax (NED),FC Midtjylland (DEN),3,1
+2020-11-25,2020_21,Champions League,Group D,league_phase,Liverpool FC (ENG),Atalanta (ITA),0,2
+2020-12-01,2020_21,Champions League,Group D,league_phase,Atalanta (ITA),FC Midtjylland (DEN),1,1
+2020-12-01,2020_21,Champions League,Group D,league_phase,Liverpool FC (ENG),AFC Ajax (NED),1,0
+2020-12-09,2020_21,Champions League,Group D,league_phase,AFC Ajax (NED),Atalanta (ITA),0,1
+2020-12-09,2020_21,Champions League,Group D,league_phase,FC Midtjylland (DEN),Liverpool FC (ENG),1,1
+2020-10-20,2020_21,Champions League,Group E,league_phase,Chelsea FC (ENG),Sevilla FC (ESP),0,0
+2020-10-20,2020_21,Champions League,Group E,league_phase,Stade Rennais (FRA),FK Krasnodar (RUS),1,1
+2020-10-28,2020_21,Champions League,Group E,league_phase,FK Krasnodar (RUS),Chelsea FC (ENG),0,4
+2020-10-28,2020_21,Champions League,Group E,league_phase,Sevilla FC (ESP),Stade Rennais (FRA),1,0
+2020-11-04,2020_21,Champions League,Group E,league_phase,Chelsea FC (ENG),Stade Rennais (FRA),3,0
+2020-11-04,2020_21,Champions League,Group E,league_phase,Sevilla FC (ESP),FK Krasnodar (RUS),3,2
+2020-11-24,2020_21,Champions League,Group E,league_phase,Stade Rennais (FRA),Chelsea FC (ENG),1,2
+2020-11-24,2020_21,Champions League,Group E,league_phase,FK Krasnodar (RUS),Sevilla FC (ESP),1,2
+2020-12-02,2020_21,Champions League,Group E,league_phase,FK Krasnodar (RUS),Stade Rennais (FRA),1,0
+2020-12-02,2020_21,Champions League,Group E,league_phase,Sevilla FC (ESP),Chelsea FC (ENG),0,4
+2020-12-08,2020_21,Champions League,Group E,league_phase,Chelsea FC (ENG),FK Krasnodar (RUS),1,1
+2020-12-08,2020_21,Champions League,Group E,league_phase,Stade Rennais (FRA),Sevilla FC (ESP),1,3
+2020-10-20,2020_21,Champions League,Group F,league_phase,Zenit St. Petersburg (RUS),Club Brugge KV (BEL),1,2
+2020-10-20,2020_21,Champions League,Group F,league_phase,Lazio Roma (ITA),Borussia Dortmund (GER),3,1
+2020-10-28,2020_21,Champions League,Group F,league_phase,Borussia Dortmund (GER),Zenit St. Petersburg (RUS),2,0
+2020-10-28,2020_21,Champions League,Group F,league_phase,Club Brugge KV (BEL),Lazio Roma (ITA),1,1
+2020-11-04,2020_21,Champions League,Group F,league_phase,Zenit St. Petersburg (RUS),Lazio Roma (ITA),1,1
+2020-11-04,2020_21,Champions League,Group F,league_phase,Club Brugge KV (BEL),Borussia Dortmund (GER),0,3
+2020-11-24,2020_21,Champions League,Group F,league_phase,Borussia Dortmund (GER),Club Brugge KV (BEL),3,0
+2020-11-24,2020_21,Champions League,Group F,league_phase,Lazio Roma (ITA),Zenit St. Petersburg (RUS),3,1
+2020-12-02,2020_21,Champions League,Group F,league_phase,Borussia Dortmund (GER),Lazio Roma (ITA),1,1
+2020-12-02,2020_21,Champions League,Group F,league_phase,Club Brugge KV (BEL),Zenit St. Petersburg (RUS),3,0
+2020-12-08,2020_21,Champions League,Group F,league_phase,Zenit St. Petersburg (RUS),Borussia Dortmund (GER),1,2
+2020-12-08,2020_21,Champions League,Group F,league_phase,Lazio Roma (ITA),Club Brugge KV (BEL),2,2
+2020-10-20,2020_21,Champions League,Gruppe G,Gruppe G,Dinamo Kiev (UKR),Juventus (ITA),0,2
+2020-10-20,2020_21,Champions League,Gruppe G,Gruppe G,FC Barcelona (ESP),Ferencvárosi TC (HUN),5,1
+2020-10-28,2020_21,Champions League,Gruppe G,Gruppe G,Ferencvárosi TC (HUN),Dinamo Kiev (UKR),2,2
+2020-10-28,2020_21,Champions League,Gruppe G,Gruppe G,Juventus (ITA),FC Barcelona (ESP),0,2
+2020-11-04,2020_21,Champions League,Gruppe G,Gruppe G,FC Barcelona (ESP),Dinamo Kiev (UKR),2,1
+2020-11-04,2020_21,Champions League,Gruppe G,Gruppe G,Ferencvárosi TC (HUN),Juventus (ITA),1,4
+2020-11-24,2020_21,Champions League,Gruppe G,Gruppe G,Dinamo Kiev (UKR),FC Barcelona (ESP),0,4
+2020-11-24,2020_21,Champions League,Gruppe G,Gruppe G,Juventus (ITA),Ferencvárosi TC (HUN),2,1
+2020-12-02,2020_21,Champions League,Gruppe G,Gruppe G,Juventus (ITA),Dinamo Kiev (UKR),3,0
+2020-12-02,2020_21,Champions League,Gruppe G,Gruppe G,Ferencvárosi TC (HUN),FC Barcelona (ESP),0,3
+2020-12-08,2020_21,Champions League,Gruppe G,Gruppe G,Dinamo Kiev (UKR),Ferencvárosi TC (HUN),1,0
+2020-12-08,2020_21,Champions League,Gruppe G,Gruppe G,FC Barcelona (ESP),Juventus (ITA),0,3
+2020-10-20,2020_21,Champions League,Gruppe H,Gruppe H,RB Leipzig (GER),İstanbul Başakşehir (TUR),2,0
+2020-10-20,2020_21,Champions League,Gruppe H,Gruppe H,Paris Saint-Germain (FRA),Manchester United (ENG),1,2
+2020-10-28,2020_21,Champions League,Gruppe H,Gruppe H,İstanbul Başakşehir (TUR),Paris Saint-Germain (FRA),0,2
+2020-10-28,2020_21,Champions League,Gruppe H,Gruppe H,Manchester United (ENG),RB Leipzig (GER),5,0
+2020-11-04,2020_21,Champions League,Gruppe H,Gruppe H,İstanbul Başakşehir (TUR),Manchester United (ENG),2,1
+2020-11-04,2020_21,Champions League,Gruppe H,Gruppe H,RB Leipzig (GER),Paris Saint-Germain (FRA),2,1
+2020-11-24,2020_21,Champions League,Gruppe H,Gruppe H,Manchester United (ENG),İstanbul Başakşehir (TUR),4,1
+2020-11-24,2020_21,Champions League,Gruppe H,Gruppe H,Paris Saint-Germain (FRA),RB Leipzig (GER),1,0
+2020-12-02,2020_21,Champions League,Gruppe H,Gruppe H,İstanbul Başakşehir (TUR),RB Leipzig (GER),3,4
+2020-12-02,2020_21,Champions League,Gruppe H,Gruppe H,Manchester United (ENG),Paris Saint-Germain (FRA),1,3
+2020-12-08,2020_21,Champions League,Gruppe H,Gruppe H,RB Leipzig (GER),Manchester United (ENG),3,2
+2020-12-09,2020_21,Champions League,Gruppe H,Gruppe H,Paris Saint-Germain (FRA),İstanbul Başakşehir (TUR),5,1
+2021-02-16,2020_21,Champions League,Round of 16,round_of_16,RB Leipzig (GER),Liverpool FC (ENG),0,2
+2021-02-16,2020_21,Champions League,Round of 16,round_of_16,FC Barcelona (ESP),Paris Saint-Germain (FRA),1,4
+2021-02-17,2020_21,Champions League,Round of 16,round_of_16,FC Porto (POR),Juventus (ITA),2,1
+2021-02-17,2020_21,Champions League,Round of 16,round_of_16,Sevilla FC (ESP),Borussia Dortmund (GER),2,3
+2021-02-23,2020_21,Champions League,Round of 16,round_of_16,Lazio Roma (ITA),Bayern München (GER),1,4
+2021-02-23,2020_21,Champions League,Round of 16,round_of_16,Atlético Madrid (ESP),Chelsea FC (ENG),0,1
+2021-02-24,2020_21,Champions League,Round of 16,round_of_16,Bor. Mönchengladbach (GER),Manchester City (ENG),0,2
+2021-02-24,2020_21,Champions League,Round of 16,round_of_16,Atalanta (ITA),Real Madrid (ESP),0,1
+2021-03-09,2020_21,Champions League,Round of 16,round_of_16,Juventus (ITA),FC Porto (POR),3,2
+2021-03-09,2020_21,Champions League,Round of 16,round_of_16,Borussia Dortmund (GER),Sevilla FC (ESP),2,2
+2021-03-10,2020_21,Champions League,Round of 16,round_of_16,Liverpool FC (ENG),RB Leipzig (GER),2,0
+2021-03-10,2020_21,Champions League,Round of 16,round_of_16,Paris Saint-Germain (FRA),FC Barcelona (ESP),1,1
+2021-03-16,2020_21,Champions League,Round of 16,round_of_16,Manchester City (ENG),Bor. Mönchengladbach (GER),2,0
+2021-03-16,2020_21,Champions League,Round of 16,round_of_16,Real Madrid (ESP),Atalanta (ITA),3,1
+2021-03-17,2020_21,Champions League,Round of 16,round_of_16,Bayern München (GER),Lazio Roma (ITA),2,1
+2021-03-17,2020_21,Champions League,Round of 16,round_of_16,Chelsea FC (ENG),Atlético Madrid (ESP),2,0
+2021-04-06,2020_21,Champions League,Quarterfinals,quarterfinal,Manchester City (ENG),Borussia Dortmund (GER),2,1
+2021-04-06,2020_21,Champions League,Quarterfinals,quarterfinal,Real Madrid (ESP),Liverpool FC (ENG),3,1
+2021-04-07,2020_21,Champions League,Quarterfinals,quarterfinal,FC Porto (POR),Chelsea FC (ENG),0,2
+2021-04-07,2020_21,Champions League,Quarterfinals,quarterfinal,Bayern München (GER),Paris Saint-Germain (FRA),2,3
+2021-04-13,2020_21,Champions League,Quarterfinals,quarterfinal,Chelsea FC (ENG),FC Porto (POR),0,1
+2021-04-13,2020_21,Champions League,Quarterfinals,quarterfinal,Paris Saint-Germain (FRA),Bayern München (GER),0,1
+2021-04-14,2020_21,Champions League,Quarterfinals,quarterfinal,Borussia Dortmund (GER),Manchester City (ENG),1,2
+2021-04-14,2020_21,Champions League,Quarterfinals,quarterfinal,Liverpool FC (ENG),Real Madrid (ESP),0,0
+2021-04-27,2020_21,Champions League,Semifinals,semifinal,Real Madrid (ESP),Chelsea FC (ENG),1,1
+2021-04-28,2020_21,Champions League,Semifinals,semifinal,Paris Saint-Germain (FRA),Manchester City (ENG),1,2
+2021-05-04,2020_21,Champions League,Semifinals,semifinal,Manchester City (ENG),Paris Saint-Germain (FRA),2,0
+2021-05-05,2020_21,Champions League,Semifinals,semifinal,Chelsea FC (ENG),Real Madrid (ESP),2,0
+2021-05-29,2020_21,Champions League,Final,final,Manchester City (ENG),Chelsea FC (ENG),0,1

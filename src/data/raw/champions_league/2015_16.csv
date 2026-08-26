@@ -1,0 +1,126 @@
+date,season,competition,stage_raw,stage,home_team,away_team,home_goals,away_goals
+2015-09-15,2015_16,Champions League,Group A,league_phase,Real Madrid (ESP),Shakhtar Donetsk (UKR),4,0
+2015-09-15,2015_16,Champions League,Group A,league_phase,Paris Saint-Germain (FRA),Malmö FF (SWE),2,0
+2015-09-30,2015_16,Champions League,Group A,league_phase,Malmö FF (SWE),Real Madrid (ESP),0,2
+2015-09-30,2015_16,Champions League,Group A,league_phase,Shakhtar Donetsk (UKR),Paris Saint-Germain (FRA),0,3
+2015-10-21,2015_16,Champions League,Group A,league_phase,Paris Saint-Germain (FRA),Real Madrid (ESP),0,0
+2015-10-21,2015_16,Champions League,Group A,league_phase,Malmö FF (SWE),Shakhtar Donetsk (UKR),1,0
+2015-11-03,2015_16,Champions League,Group A,league_phase,Real Madrid (ESP),Paris Saint-Germain (FRA),1,0
+2015-11-03,2015_16,Champions League,Group A,league_phase,Shakhtar Donetsk (UKR),Malmö FF (SWE),4,0
+2015-11-25,2015_16,Champions League,Group A,league_phase,Malmö FF (SWE),Paris Saint-Germain (FRA),0,5
+2015-11-25,2015_16,Champions League,Group A,league_phase,Shakhtar Donetsk (UKR),Real Madrid (ESP),3,4
+2015-12-08,2015_16,Champions League,Group A,league_phase,Paris Saint-Germain (FRA),Shakhtar Donetsk (UKR),2,0
+2015-12-08,2015_16,Champions League,Group A,league_phase,Real Madrid (ESP),Malmö FF (SWE),8,0
+2015-09-15,2015_16,Champions League,Group B,league_phase,VfL Wolfsburg (GER),CSKA Moskva (RUS),1,0
+2015-09-15,2015_16,Champions League,Group B,league_phase,PSV Eindhoven (NED),Manchester United (ENG),2,1
+2015-09-30,2015_16,Champions League,Group B,league_phase,CSKA Moskva (RUS),PSV Eindhoven (NED),3,2
+2015-09-30,2015_16,Champions League,Group B,league_phase,Manchester United (ENG),VfL Wolfsburg (GER),2,1
+2015-10-21,2015_16,Champions League,Group B,league_phase,CSKA Moskva (RUS),Manchester United (ENG),1,1
+2015-10-21,2015_16,Champions League,Group B,league_phase,VfL Wolfsburg (GER),PSV Eindhoven (NED),2,0
+2015-11-03,2015_16,Champions League,Group B,league_phase,PSV Eindhoven (NED),VfL Wolfsburg (GER),2,0
+2015-11-03,2015_16,Champions League,Group B,league_phase,Manchester United (ENG),CSKA Moskva (RUS),1,0
+2015-11-25,2015_16,Champions League,Group B,league_phase,CSKA Moskva (RUS),VfL Wolfsburg (GER),0,2
+2015-11-25,2015_16,Champions League,Group B,league_phase,Manchester United (ENG),PSV Eindhoven (NED),0,0
+2015-12-08,2015_16,Champions League,Group B,league_phase,VfL Wolfsburg (GER),Manchester United (ENG),3,2
+2015-12-08,2015_16,Champions League,Group B,league_phase,PSV Eindhoven (NED),CSKA Moskva (RUS),2,1
+2015-09-15,2015_16,Champions League,Group C,league_phase,SL Benfica (POR),FK Astana (KAZ),2,0
+2015-09-15,2015_16,Champions League,Group C,league_phase,Galatasaray (TUR),Atlético Madrid (ESP),0,2
+2015-09-30,2015_16,Champions League,Group C,league_phase,FK Astana (KAZ),Galatasaray (TUR),2,2
+2015-09-30,2015_16,Champions League,Group C,league_phase,Atlético Madrid (ESP),SL Benfica (POR),1,2
+2015-10-21,2015_16,Champions League,Group C,league_phase,Galatasaray (TUR),SL Benfica (POR),2,1
+2015-10-21,2015_16,Champions League,Group C,league_phase,Atlético Madrid (ESP),FK Astana (KAZ),4,0
+2015-11-03,2015_16,Champions League,Group C,league_phase,FK Astana (KAZ),Atlético Madrid (ESP),0,0
+2015-11-03,2015_16,Champions League,Group C,league_phase,SL Benfica (POR),Galatasaray (TUR),2,1
+2015-11-25,2015_16,Champions League,Group C,league_phase,FK Astana (KAZ),SL Benfica (POR),2,2
+2015-11-25,2015_16,Champions League,Group C,league_phase,Atlético Madrid (ESP),Galatasaray (TUR),2,0
+2015-12-08,2015_16,Champions League,Group C,league_phase,Galatasaray (TUR),FK Astana (KAZ),1,1
+2015-12-08,2015_16,Champions League,Group C,league_phase,SL Benfica (POR),Atlético Madrid (ESP),1,2
+2015-09-15,2015_16,Champions League,Group D,league_phase,Sevilla FC (ESP),Bor. Mönchengladbach (GER),3,0
+2015-09-15,2015_16,Champions League,Group D,league_phase,Manchester City (ENG),Juventus (ITA),1,2
+2015-09-30,2015_16,Champions League,Group D,league_phase,Juventus (ITA),Sevilla FC (ESP),2,0
+2015-09-30,2015_16,Champions League,Group D,league_phase,Bor. Mönchengladbach (GER),Manchester City (ENG),1,2
+2015-10-21,2015_16,Champions League,Group D,league_phase,Manchester City (ENG),Sevilla FC (ESP),2,1
+2015-10-21,2015_16,Champions League,Group D,league_phase,Juventus (ITA),Bor. Mönchengladbach (GER),0,0
+2015-11-03,2015_16,Champions League,Group D,league_phase,Bor. Mönchengladbach (GER),Juventus (ITA),1,1
+2015-11-03,2015_16,Champions League,Group D,league_phase,Sevilla FC (ESP),Manchester City (ENG),1,3
+2015-11-25,2015_16,Champions League,Group D,league_phase,Juventus (ITA),Manchester City (ENG),1,0
+2015-11-25,2015_16,Champions League,Group D,league_phase,Bor. Mönchengladbach (GER),Sevilla FC (ESP),4,2
+2015-12-08,2015_16,Champions League,Group D,league_phase,Manchester City (ENG),Bor. Mönchengladbach (GER),4,2
+2015-12-08,2015_16,Champions League,Group D,league_phase,Sevilla FC (ESP),Juventus (ITA),1,0
+2015-09-16,2015_16,Champions League,Group E,league_phase,AS Roma (ITA),FC Barcelona (ESP),1,1
+2015-09-16,2015_16,Champions League,Group E,league_phase,Bayer Leverkusen (GER),BATE Borisov (BLR),4,1
+2015-09-29,2015_16,Champions League,Group E,league_phase,FC Barcelona (ESP),Bayer Leverkusen (GER),2,1
+2015-09-29,2015_16,Champions League,Group E,league_phase,BATE Borisov (BLR),AS Roma (ITA),3,2
+2015-10-20,2015_16,Champions League,Group E,league_phase,BATE Borisov (BLR),FC Barcelona (ESP),0,2
+2015-10-20,2015_16,Champions League,Group E,league_phase,Bayer Leverkusen (GER),AS Roma (ITA),4,4
+2015-11-04,2015_16,Champions League,Group E,league_phase,AS Roma (ITA),Bayer Leverkusen (GER),3,2
+2015-11-04,2015_16,Champions League,Group E,league_phase,FC Barcelona (ESP),BATE Borisov (BLR),3,0
+2015-11-24,2015_16,Champions League,Group E,league_phase,BATE Borisov (BLR),Bayer Leverkusen (GER),1,1
+2015-11-24,2015_16,Champions League,Group E,league_phase,FC Barcelona (ESP),AS Roma (ITA),6,1
+2015-12-09,2015_16,Champions League,Group E,league_phase,Bayer Leverkusen (GER),FC Barcelona (ESP),1,1
+2015-12-09,2015_16,Champions League,Group E,league_phase,AS Roma (ITA),BATE Borisov (BLR),0,0
+2015-09-16,2015_16,Champions League,Group F,league_phase,Olympiakos Piraeus (GRE),Bayern München (GER),0,3
+2015-09-16,2015_16,Champions League,Group F,league_phase,Dinamo Zagreb (CRO),Arsenal FC (ENG),2,1
+2015-09-29,2015_16,Champions League,Group F,league_phase,Arsenal FC (ENG),Olympiakos Piraeus (GRE),2,3
+2015-09-29,2015_16,Champions League,Group F,league_phase,Bayern München (GER),Dinamo Zagreb (CRO),5,0
+2015-10-20,2015_16,Champions League,Group F,league_phase,Arsenal FC (ENG),Bayern München (GER),2,0
+2015-10-20,2015_16,Champions League,Group F,league_phase,Dinamo Zagreb (CRO),Olympiakos Piraeus (GRE),0,1
+2015-11-04,2015_16,Champions League,Group F,league_phase,Bayern München (GER),Arsenal FC (ENG),5,1
+2015-11-04,2015_16,Champions League,Group F,league_phase,Olympiakos Piraeus (GRE),Dinamo Zagreb (CRO),2,1
+2015-11-24,2015_16,Champions League,Group F,league_phase,Bayern München (GER),Olympiakos Piraeus (GRE),4,0
+2015-11-24,2015_16,Champions League,Group F,league_phase,Arsenal FC (ENG),Dinamo Zagreb (CRO),3,0
+2015-12-09,2015_16,Champions League,Group F,league_phase,Dinamo Zagreb (CRO),Bayern München (GER),0,2
+2015-12-09,2015_16,Champions League,Group F,league_phase,Olympiakos Piraeus (GRE),Arsenal FC (ENG),0,3
+2015-09-16,2015_16,Champions League,Group G,league_phase,Dinamo Kiev (UKR),FC Porto (POR),2,2
+2015-09-16,2015_16,Champions League,Group G,league_phase,Chelsea FC (ENG),Maccabi Tel Aviv (ISR),4,0
+2015-09-29,2015_16,Champions League,Group G,league_phase,FC Porto (POR),Chelsea FC (ENG),2,1
+2015-09-29,2015_16,Champions League,Group G,league_phase,Maccabi Tel Aviv (ISR),Dinamo Kiev (UKR),0,2
+2015-10-20,2015_16,Champions League,Group G,league_phase,FC Porto (POR),Maccabi Tel Aviv (ISR),2,0
+2015-10-20,2015_16,Champions League,Group G,league_phase,Dinamo Kiev (UKR),Chelsea FC (ENG),0,0
+2015-11-04,2015_16,Champions League,Group G,league_phase,Chelsea FC (ENG),Dinamo Kiev (UKR),2,1
+2015-11-04,2015_16,Champions League,Group G,league_phase,Maccabi Tel Aviv (ISR),FC Porto (POR),1,3
+2015-11-24,2015_16,Champions League,Group G,league_phase,Maccabi Tel Aviv (ISR),Chelsea FC (ENG),0,4
+2015-11-24,2015_16,Champions League,Group G,league_phase,FC Porto (POR),Dinamo Kiev (UKR),0,2
+2015-12-09,2015_16,Champions League,Group G,league_phase,Chelsea FC (ENG),FC Porto (POR),2,0
+2015-12-09,2015_16,Champions League,Group G,league_phase,Dinamo Kiev (UKR),Maccabi Tel Aviv (ISR),1,0
+2015-09-16,2015_16,Champions League,Group H,league_phase,Valencia CF (ESP),Zenit St. Petersburg (RUS),2,3
+2015-09-16,2015_16,Champions League,Group H,league_phase,KAA Gent (BEL),Olympique Lyonnais (FRA),1,1
+2015-09-29,2015_16,Champions League,Group H,league_phase,Olympique Lyonnais (FRA),Valencia CF (ESP),0,1
+2015-09-29,2015_16,Champions League,Group H,league_phase,Zenit St. Petersburg (RUS),KAA Gent (BEL),2,1
+2015-10-20,2015_16,Champions League,Group H,league_phase,Valencia CF (ESP),KAA Gent (BEL),2,1
+2015-10-20,2015_16,Champions League,Group H,league_phase,Zenit St. Petersburg (RUS),Olympique Lyonnais (FRA),3,1
+2015-11-04,2015_16,Champions League,Group H,league_phase,Olympique Lyonnais (FRA),Zenit St. Petersburg (RUS),0,2
+2015-11-04,2015_16,Champions League,Group H,league_phase,KAA Gent (BEL),Valencia CF (ESP),1,0
+2015-11-24,2015_16,Champions League,Group H,league_phase,Zenit St. Petersburg (RUS),Valencia CF (ESP),2,0
+2015-11-24,2015_16,Champions League,Group H,league_phase,Olympique Lyonnais (FRA),KAA Gent (BEL),1,2
+2015-12-09,2015_16,Champions League,Group H,league_phase,Valencia CF (ESP),Olympique Lyonnais (FRA),0,2
+2015-12-09,2015_16,Champions League,Group H,league_phase,KAA Gent (BEL),Zenit St. Petersburg (RUS),2,1
+2016-02-16,2015_16,Champions League,Round of 16,round_of_16,Paris Saint-Germain (FRA),Chelsea FC (ENG),2,1
+2016-02-16,2015_16,Champions League,Round of 16,round_of_16,SL Benfica (POR),Zenit St. Petersburg (RUS),1,0
+2016-02-17,2015_16,Champions League,Round of 16,round_of_16,KAA Gent (BEL),VfL Wolfsburg (GER),2,3
+2016-02-17,2015_16,Champions League,Round of 16,round_of_16,AS Roma (ITA),Real Madrid (ESP),0,2
+2016-02-23,2015_16,Champions League,Round of 16,round_of_16,Arsenal FC (ENG),FC Barcelona (ESP),0,2
+2016-02-23,2015_16,Champions League,Round of 16,round_of_16,Juventus (ITA),Bayern München (GER),2,2
+2016-02-24,2015_16,Champions League,Round of 16,round_of_16,PSV Eindhoven (NED),Atlético Madrid (ESP),0,0
+2016-02-24,2015_16,Champions League,Round of 16,round_of_16,Dinamo Kiev (UKR),Manchester City (ENG),1,3
+2016-03-08,2015_16,Champions League,Round of 16,round_of_16,VfL Wolfsburg (GER),KAA Gent (BEL),1,0
+2016-03-08,2015_16,Champions League,Round of 16,round_of_16,Real Madrid (ESP),AS Roma (ITA),2,0
+2016-03-09,2015_16,Champions League,Round of 16,round_of_16,Zenit St. Petersburg (RUS),SL Benfica (POR),1,2
+2016-03-09,2015_16,Champions League,Round of 16,round_of_16,Chelsea FC (ENG),Paris Saint-Germain (FRA),1,2
+2016-03-15,2015_16,Champions League,Round of 16,round_of_16,Atlético Madrid (ESP),PSV Eindhoven (NED),8,7
+2016-03-15,2015_16,Champions League,Round of 16,round_of_16,Manchester City (ENG),Dinamo Kiev (UKR),0,0
+2016-03-16,2015_16,Champions League,Round of 16,round_of_16,FC Barcelona (ESP),Arsenal FC (ENG),3,1
+2016-03-16,2015_16,Champions League,Round of 16,round_of_16,Bayern München (GER),Juventus (ITA),4,2
+2016-04-05,2015_16,Champions League,Quarterfinals,quarterfinal,Bayern München (GER),SL Benfica (POR),1,0
+2016-04-05,2015_16,Champions League,Quarterfinals,quarterfinal,FC Barcelona (ESP),Atlético Madrid (ESP),2,1
+2016-04-06,2015_16,Champions League,Quarterfinals,quarterfinal,VfL Wolfsburg (GER),Real Madrid (ESP),2,0
+2016-04-06,2015_16,Champions League,Quarterfinals,quarterfinal,Paris Saint-Germain (FRA),Manchester City (ENG),2,2
+2016-04-12,2015_16,Champions League,Quarterfinals,quarterfinal,Real Madrid (ESP),VfL Wolfsburg (GER),3,0
+2016-04-12,2015_16,Champions League,Quarterfinals,quarterfinal,Manchester City (ENG),Paris Saint-Germain (FRA),1,0
+2016-04-13,2015_16,Champions League,Quarterfinals,quarterfinal,SL Benfica (POR),Bayern München (GER),2,2
+2016-04-13,2015_16,Champions League,Quarterfinals,quarterfinal,Atlético Madrid (ESP),FC Barcelona (ESP),2,0
+2016-04-26,2015_16,Champions League,Semifinals,semifinal,Manchester City (ENG),Real Madrid (ESP),0,0
+2016-04-27,2015_16,Champions League,Semifinals,semifinal,Atlético Madrid (ESP),Bayern München (GER),1,0
+2016-05-03,2015_16,Champions League,Semifinals,semifinal,Bayern München (GER),Atlético Madrid (ESP),2,1
+2016-05-04,2015_16,Champions League,Semifinals,semifinal,Real Madrid (ESP),Manchester City (ENG),1,0
+2016-05-28,2015_16,Champions League,Final,final,Real Madrid (ESP),Atlético Madrid (ESP),5,3

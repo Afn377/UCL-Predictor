@@ -1,16 +1,16 @@
 from pathlib import Path
 import re
 import subprocess
+import tempfile
 import pandas as pd
 
 
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
+DATA_DIR = Path(__file__).resolve().parent
 
-RAW_DIR = PROJECT_ROOT / "data" / "raw" / "champions_league"
-TEMP_DIR = PROJECT_ROOT / "data" / "external" / "openfootball_champions_league"
+RAW_DIR = DATA_DIR / "raw" / "champions_league"
+TEMP_DIR = Path(tempfile.gettempdir()) / "ucl_forecast_openfootball_champions_league"
 
 RAW_DIR.mkdir(parents=True, exist_ok=True)
-TEMP_DIR.parent.mkdir(parents=True, exist_ok=True)
 
 REPO_URL = "https://github.com/openfootball/champions-league.git"
 
@@ -226,7 +226,7 @@ def main():
 
         print(
             f"Saved {len(df)} matches -> "
-            f"{output_path.relative_to(PROJECT_ROOT)}"
+            f"{output_path.relative_to(DATA_DIR)}"
         )
 
         all_seasons.append(df)

@@ -1,0 +1,190 @@
+date,season,competition,stage_raw,stage,home_team,away_team,home_goals,away_goals
+2025-09-16,2025_26,Champions League,"League, Matchday 1",league_phase,Athletic Club (ESP),Arsenal FC (ENG),0,2
+2025-09-16,2025_26,Champions League,"League, Matchday 1",league_phase,PSV (NED),Royale Union Saint-Gilloise (BEL),1,3
+2025-09-16,2025_26,Champions League,"League, Matchday 1",league_phase,Juventus FC (ITA),Borussia Dortmund (GER),4,4
+2025-09-16,2025_26,Champions League,"League, Matchday 1",league_phase,Sport Lisboa e Benfica (POR),Qarabağ Ağdam FK (AZE),2,3
+2025-09-16,2025_26,Champions League,"League, Matchday 1",league_phase,Tottenham Hotspur FC (ENG),Villarreal CF (ESP),1,0
+2025-09-16,2025_26,Champions League,"League, Matchday 1",league_phase,Real Madrid CF (ESP),Olympique de Marseille (FRA),2,1
+2025-09-17,2025_26,Champions League,"League, Matchday 1",league_phase,SK Slavia Praha (CZE),FK Bodø/Glimt (NOR),2,2
+2025-09-17,2025_26,Champions League,"League, Matchday 1",league_phase,PAE Olympiakos SFP (GRE),Paphos FC (CYP),0,0
+2025-09-17,2025_26,Champions League,"League, Matchday 1",league_phase,AFC Ajax (NED),FC Internazionale Milano (ITA),0,2
+2025-09-17,2025_26,Champions League,"League, Matchday 1",league_phase,Liverpool FC (ENG),Club Atlético de Madrid (ESP),3,2
+2025-09-17,2025_26,Champions League,"League, Matchday 1",league_phase,Paris Saint-Germain FC (FRA),Atalanta BC (ITA),4,0
+2025-09-17,2025_26,Champions League,"League, Matchday 1",league_phase,FC Bayern München (GER),Chelsea FC (ENG),3,1
+2025-09-18,2025_26,Champions League,"League, Matchday 1",league_phase,FC København (DEN),Bayer 04 Leverkusen (GER),2,2
+2025-09-18,2025_26,Champions League,"League, Matchday 1",league_phase,Club Brugge KV (BEL),AS Monaco FC (MCO),4,1
+2025-09-18,2025_26,Champions League,"League, Matchday 1",league_phase,Newcastle United FC (ENG),FC Barcelona (ESP),1,2
+2025-09-18,2025_26,Champions League,"League, Matchday 1",league_phase,Manchester City FC (ENG),SSC Napoli (ITA),2,0
+2025-09-18,2025_26,Champions League,"League, Matchday 1",league_phase,Eintracht Frankfurt (GER),Galatasaray SK (TUR),5,1
+2025-09-18,2025_26,Champions League,"League, Matchday 1",league_phase,Sporting Clube de Portugal (POR),FK Kairat (KAZ),4,1
+2025-09-30,2025_26,Champions League,"League, Matchday 2",league_phase,Atalanta BC (ITA),Club Brugge KV (BEL),2,1
+2025-09-30,2025_26,Champions League,"League, Matchday 2",league_phase,FK Kairat (KAZ),Real Madrid CF (ESP),0,5
+2025-09-30,2025_26,Champions League,"League, Matchday 2",league_phase,Galatasaray SK (TUR),Liverpool FC (ENG),1,0
+2025-09-30,2025_26,Champions League,"League, Matchday 2",league_phase,Club Atlético de Madrid (ESP),Eintracht Frankfurt (GER),5,1
+2025-09-30,2025_26,Champions League,"League, Matchday 2",league_phase,Olympique de Marseille (FRA),AFC Ajax (NED),4,0
+2025-09-30,2025_26,Champions League,"League, Matchday 2",league_phase,FK Bodø/Glimt (NOR),Tottenham Hotspur FC (ENG),2,2
+2025-09-30,2025_26,Champions League,"League, Matchday 2",league_phase,Paphos FC (CYP),FC Bayern München (GER),1,5
+2025-09-30,2025_26,Champions League,"League, Matchday 2",league_phase,Chelsea FC (ENG),Sport Lisboa e Benfica (POR),1,0
+2025-09-30,2025_26,Champions League,"League, Matchday 2",league_phase,FC Internazionale Milano (ITA),SK Slavia Praha (CZE),3,0
+2025-10-01,2025_26,Champions League,"League, Matchday 2",league_phase,Qarabağ Ağdam FK (AZE),FC København (DEN),2,0
+2025-10-01,2025_26,Champions League,"League, Matchday 2",league_phase,Royale Union Saint-Gilloise (BEL),Newcastle United FC (ENG),0,4
+2025-10-01,2025_26,Champions League,"League, Matchday 2",league_phase,Borussia Dortmund (GER),Athletic Club (ESP),4,1
+2025-10-01,2025_26,Champions League,"League, Matchday 2",league_phase,FC Barcelona (ESP),Paris Saint-Germain FC (FRA),1,2
+2025-10-01,2025_26,Champions League,"League, Matchday 2",league_phase,AS Monaco FC (MCO),Manchester City FC (ENG),2,2
+2025-10-01,2025_26,Champions League,"League, Matchday 2",league_phase,Bayer 04 Leverkusen (GER),PSV (NED),1,1
+2025-10-01,2025_26,Champions League,"League, Matchday 2",league_phase,Arsenal FC (ENG),PAE Olympiakos SFP (GRE),2,0
+2025-10-01,2025_26,Champions League,"League, Matchday 2",league_phase,Villarreal CF (ESP),Juventus FC (ITA),2,2
+2025-10-01,2025_26,Champions League,"League, Matchday 2",league_phase,SSC Napoli (ITA),Sporting Clube de Portugal (POR),2,1
+2025-10-21,2025_26,Champions League,"League, Matchday 3",league_phase,FC Barcelona (ESP),PAE Olympiakos SFP (GRE),6,1
+2025-10-21,2025_26,Champions League,"League, Matchday 3",league_phase,FK Kairat (KAZ),Paphos FC (CYP),0,0
+2025-10-21,2025_26,Champions League,"League, Matchday 3",league_phase,Royale Union Saint-Gilloise (BEL),FC Internazionale Milano (ITA),0,4
+2025-10-21,2025_26,Champions League,"League, Matchday 3",league_phase,FC København (DEN),Borussia Dortmund (GER),2,4
+2025-10-21,2025_26,Champions League,"League, Matchday 3",league_phase,Bayer 04 Leverkusen (GER),Paris Saint-Germain FC (FRA),2,7
+2025-10-21,2025_26,Champions League,"League, Matchday 3",league_phase,Villarreal CF (ESP),Manchester City FC (ENG),0,2
+2025-10-21,2025_26,Champions League,"League, Matchday 3",league_phase,Arsenal FC (ENG),Club Atlético de Madrid (ESP),4,0
+2025-10-21,2025_26,Champions League,"League, Matchday 3",league_phase,Newcastle United FC (ENG),Sport Lisboa e Benfica (POR),3,0
+2025-10-21,2025_26,Champions League,"League, Matchday 3",league_phase,PSV (NED),SSC Napoli (ITA),6,2
+2025-10-22,2025_26,Champions League,"League, Matchday 3",league_phase,Galatasaray SK (TUR),FK Bodø/Glimt (NOR),3,1
+2025-10-22,2025_26,Champions League,"League, Matchday 3",league_phase,Athletic Club (ESP),Qarabağ Ağdam FK (AZE),3,1
+2025-10-22,2025_26,Champions League,"League, Matchday 3",league_phase,Eintracht Frankfurt (GER),Liverpool FC (ENG),1,5
+2025-10-22,2025_26,Champions League,"League, Matchday 3",league_phase,Atalanta BC (ITA),SK Slavia Praha (CZE),0,0
+2025-10-22,2025_26,Champions League,"League, Matchday 3",league_phase,Sporting Clube de Portugal (POR),Olympique de Marseille (FRA),2,1
+2025-10-22,2025_26,Champions League,"League, Matchday 3",league_phase,AS Monaco FC (MCO),Tottenham Hotspur FC (ENG),0,0
+2025-10-22,2025_26,Champions League,"League, Matchday 3",league_phase,FC Bayern München (GER),Club Brugge KV (BEL),4,0
+2025-10-22,2025_26,Champions League,"League, Matchday 3",league_phase,Chelsea FC (ENG),AFC Ajax (NED),5,1
+2025-10-22,2025_26,Champions League,"League, Matchday 3",league_phase,Real Madrid CF (ESP),Juventus FC (ITA),1,0
+2025-11-04,2025_26,Champions League,"League, Matchday 4",league_phase,SK Slavia Praha (CZE),Arsenal FC (ENG),0,3
+2025-11-04,2025_26,Champions League,"League, Matchday 4",league_phase,SSC Napoli (ITA),Eintracht Frankfurt (GER),0,0
+2025-11-04,2025_26,Champions League,"League, Matchday 4",league_phase,Juventus FC (ITA),Sporting Clube de Portugal (POR),1,1
+2025-11-04,2025_26,Champions League,"League, Matchday 4",league_phase,Club Atlético de Madrid (ESP),Royale Union Saint-Gilloise (BEL),3,1
+2025-11-04,2025_26,Champions League,"League, Matchday 4",league_phase,Tottenham Hotspur FC (ENG),FC København (DEN),4,0
+2025-11-04,2025_26,Champions League,"League, Matchday 4",league_phase,FK Bodø/Glimt (NOR),AS Monaco FC (MCO),0,1
+2025-11-04,2025_26,Champions League,"League, Matchday 4",league_phase,PAE Olympiakos SFP (GRE),PSV (NED),1,1
+2025-11-04,2025_26,Champions League,"League, Matchday 4",league_phase,Paris Saint-Germain FC (FRA),FC Bayern München (GER),1,2
+2025-11-04,2025_26,Champions League,"League, Matchday 4",league_phase,Liverpool FC (ENG),Real Madrid CF (ESP),1,0
+2025-11-05,2025_26,Champions League,"League, Matchday 4",league_phase,Paphos FC (CYP),Villarreal CF (ESP),1,0
+2025-11-05,2025_26,Champions League,"League, Matchday 4",league_phase,Qarabağ Ağdam FK (AZE),Chelsea FC (ENG),2,2
+2025-11-05,2025_26,Champions League,"League, Matchday 4",league_phase,FC Internazionale Milano (ITA),FK Kairat (KAZ),2,1
+2025-11-05,2025_26,Champions League,"League, Matchday 4",league_phase,Manchester City FC (ENG),Borussia Dortmund (GER),4,1
+2025-11-05,2025_26,Champions League,"League, Matchday 4",league_phase,Club Brugge KV (BEL),FC Barcelona (ESP),3,3
+2025-11-05,2025_26,Champions League,"League, Matchday 4",league_phase,Sport Lisboa e Benfica (POR),Bayer 04 Leverkusen (GER),0,1
+2025-11-05,2025_26,Champions League,"League, Matchday 4",league_phase,Olympique de Marseille (FRA),Atalanta BC (ITA),0,1
+2025-11-05,2025_26,Champions League,"League, Matchday 4",league_phase,AFC Ajax (NED),Galatasaray SK (TUR),0,3
+2025-11-05,2025_26,Champions League,"League, Matchday 4",league_phase,Newcastle United FC (ENG),Athletic Club (ESP),2,0
+2025-11-25,2025_26,Champions League,"League, Matchday 5",league_phase,AFC Ajax (NED),Sport Lisboa e Benfica (POR),0,2
+2025-11-25,2025_26,Champions League,"League, Matchday 5",league_phase,Galatasaray SK (TUR),Royale Union Saint-Gilloise (BEL),0,1
+2025-11-25,2025_26,Champions League,"League, Matchday 5",league_phase,Borussia Dortmund (GER),Villarreal CF (ESP),4,0
+2025-11-25,2025_26,Champions League,"League, Matchday 5",league_phase,Manchester City FC (ENG),Bayer 04 Leverkusen (GER),0,2
+2025-11-25,2025_26,Champions League,"League, Matchday 5",league_phase,FK Bodø/Glimt (NOR),Juventus FC (ITA),2,3
+2025-11-25,2025_26,Champions League,"League, Matchday 5",league_phase,Olympique de Marseille (FRA),Newcastle United FC (ENG),2,1
+2025-11-25,2025_26,Champions League,"League, Matchday 5",league_phase,SK Slavia Praha (CZE),Athletic Club (ESP),0,0
+2025-11-25,2025_26,Champions League,"League, Matchday 5",league_phase,SSC Napoli (ITA),Qarabağ Ağdam FK (AZE),2,0
+2025-11-25,2025_26,Champions League,"League, Matchday 5",league_phase,Chelsea FC (ENG),FC Barcelona (ESP),3,0
+2025-11-26,2025_26,Champions League,"League, Matchday 5",league_phase,Paphos FC (CYP),AS Monaco FC (MCO),2,2
+2025-11-26,2025_26,Champions League,"League, Matchday 5",league_phase,FC København (DEN),FK Kairat (KAZ),3,2
+2025-11-26,2025_26,Champions League,"League, Matchday 5",league_phase,Liverpool FC (ENG),PSV (NED),1,4
+2025-11-26,2025_26,Champions League,"League, Matchday 5",league_phase,Paris Saint-Germain FC (FRA),Tottenham Hotspur FC (ENG),5,3
+2025-11-26,2025_26,Champions League,"League, Matchday 5",league_phase,Eintracht Frankfurt (GER),Atalanta BC (ITA),0,3
+2025-11-26,2025_26,Champions League,"League, Matchday 5",league_phase,Sporting Clube de Portugal (POR),Club Brugge KV (BEL),3,0
+2025-11-26,2025_26,Champions League,"League, Matchday 5",league_phase,Arsenal FC (ENG),FC Bayern München (GER),3,1
+2025-11-26,2025_26,Champions League,"League, Matchday 5",league_phase,PAE Olympiakos SFP (GRE),Real Madrid CF (ESP),3,4
+2025-11-26,2025_26,Champions League,"League, Matchday 5",league_phase,Club Atlético de Madrid (ESP),FC Internazionale Milano (ITA),2,1
+2025-12-09,2025_26,Champions League,"League, Matchday 6",league_phase,FK Kairat (KAZ),PAE Olympiakos SFP (GRE),0,1
+2025-12-09,2025_26,Champions League,"League, Matchday 6",league_phase,FC Bayern München (GER),Sporting Clube de Portugal (POR),3,1
+2025-12-09,2025_26,Champions League,"League, Matchday 6",league_phase,FC Barcelona (ESP),Eintracht Frankfurt (GER),2,1
+2025-12-09,2025_26,Champions League,"League, Matchday 6",league_phase,PSV (NED),Club Atlético de Madrid (ESP),2,3
+2025-12-09,2025_26,Champions League,"League, Matchday 6",league_phase,Royale Union Saint-Gilloise (BEL),Olympique de Marseille (FRA),2,3
+2025-12-09,2025_26,Champions League,"League, Matchday 6",league_phase,Tottenham Hotspur FC (ENG),SK Slavia Praha (CZE),3,0
+2025-12-09,2025_26,Champions League,"League, Matchday 6",league_phase,AS Monaco FC (MCO),Galatasaray SK (TUR),1,0
+2025-12-09,2025_26,Champions League,"League, Matchday 6",league_phase,Atalanta BC (ITA),Chelsea FC (ENG),2,1
+2025-12-09,2025_26,Champions League,"League, Matchday 6",league_phase,FC Internazionale Milano (ITA),Liverpool FC (ENG),0,1
+2025-12-10,2025_26,Champions League,"League, Matchday 6",league_phase,Villarreal CF (ESP),FC København (DEN),2,3
+2025-12-10,2025_26,Champions League,"League, Matchday 6",league_phase,Qarabağ Ağdam FK (AZE),AFC Ajax (NED),2,4
+2025-12-10,2025_26,Champions League,"League, Matchday 6",league_phase,Borussia Dortmund (GER),FK Bodø/Glimt (NOR),2,2
+2025-12-10,2025_26,Champions League,"League, Matchday 6",league_phase,Athletic Club (ESP),Paris Saint-Germain FC (FRA),0,0
+2025-12-10,2025_26,Champions League,"League, Matchday 6",league_phase,Bayer 04 Leverkusen (GER),Newcastle United FC (ENG),2,2
+2025-12-10,2025_26,Champions League,"League, Matchday 6",league_phase,Club Brugge KV (BEL),Arsenal FC (ENG),0,3
+2025-12-10,2025_26,Champions League,"League, Matchday 6",league_phase,Sport Lisboa e Benfica (POR),SSC Napoli (ITA),2,0
+2025-12-10,2025_26,Champions League,"League, Matchday 6",league_phase,Juventus FC (ITA),Paphos FC (CYP),2,0
+2025-12-10,2025_26,Champions League,"League, Matchday 6",league_phase,Real Madrid CF (ESP),Manchester City FC (ENG),1,2
+2026-01-20,2025_26,Champions League,"League, Matchday 7",league_phase,FK Kairat (KAZ),Club Brugge KV (BEL),1,4
+2026-01-20,2025_26,Champions League,"League, Matchday 7",league_phase,FK Bodø/Glimt (NOR),Manchester City FC (ENG),3,1
+2026-01-20,2025_26,Champions League,"League, Matchday 7",league_phase,Tottenham Hotspur FC (ENG),Borussia Dortmund (GER),2,0
+2026-01-20,2025_26,Champions League,"League, Matchday 7",league_phase,Sporting Clube de Portugal (POR),Paris Saint-Germain FC (FRA),2,1
+2026-01-20,2025_26,Champions League,"League, Matchday 7",league_phase,PAE Olympiakos SFP (GRE),Bayer 04 Leverkusen (GER),2,0
+2026-01-20,2025_26,Champions League,"League, Matchday 7",league_phase,Villarreal CF (ESP),AFC Ajax (NED),1,2
+2026-01-20,2025_26,Champions League,"League, Matchday 7",league_phase,FC København (DEN),SSC Napoli (ITA),1,1
+2026-01-20,2025_26,Champions League,"League, Matchday 7",league_phase,Real Madrid CF (ESP),AS Monaco FC (MCO),6,1
+2026-01-20,2025_26,Champions League,"League, Matchday 7",league_phase,FC Internazionale Milano (ITA),Arsenal FC (ENG),1,3
+2026-01-21,2025_26,Champions League,"League, Matchday 7",league_phase,Qarabağ Ağdam FK (AZE),Eintracht Frankfurt (GER),3,2
+2026-01-21,2025_26,Champions League,"League, Matchday 7",league_phase,Galatasaray SK (TUR),Club Atlético de Madrid (ESP),1,1
+2026-01-21,2025_26,Champions League,"League, Matchday 7",league_phase,Olympique de Marseille (FRA),Liverpool FC (ENG),0,3
+2026-01-21,2025_26,Champions League,"League, Matchday 7",league_phase,SK Slavia Praha (CZE),FC Barcelona (ESP),2,4
+2026-01-21,2025_26,Champions League,"League, Matchday 7",league_phase,Atalanta BC (ITA),Athletic Club (ESP),2,3
+2026-01-21,2025_26,Champions League,"League, Matchday 7",league_phase,Juventus FC (ITA),Sport Lisboa e Benfica (POR),2,0
+2026-01-21,2025_26,Champions League,"League, Matchday 7",league_phase,Newcastle United FC (ENG),PSV (NED),3,0
+2026-01-21,2025_26,Champions League,"League, Matchday 7",league_phase,FC Bayern München (GER),Royale Union Saint-Gilloise (BEL),2,0
+2026-01-21,2025_26,Champions League,"League, Matchday 7",league_phase,Chelsea FC (ENG),Paphos FC (CYP),1,0
+2026-01-28,2025_26,Champions League,"League, Matchday 8",league_phase,Liverpool FC (ENG),Qarabağ Ağdam FK (AZE),6,0
+2026-01-28,2025_26,Champions League,"League, Matchday 8",league_phase,FC Barcelona (ESP),FC København (DEN),4,1
+2026-01-28,2025_26,Champions League,"League, Matchday 8",league_phase,Manchester City FC (ENG),Galatasaray SK (TUR),2,0
+2026-01-28,2025_26,Champions League,"League, Matchday 8",league_phase,Bayer 04 Leverkusen (GER),Villarreal CF (ESP),3,0
+2026-01-28,2025_26,Champions League,"League, Matchday 8",league_phase,Arsenal FC (ENG),FK Kairat (KAZ),3,2
+2026-01-28,2025_26,Champions League,"League, Matchday 8",league_phase,Royale Union Saint-Gilloise (BEL),Atalanta BC (ITA),1,0
+2026-01-28,2025_26,Champions League,"League, Matchday 8",league_phase,Club Brugge KV (BEL),Olympique de Marseille (FRA),3,0
+2026-01-28,2025_26,Champions League,"League, Matchday 8",league_phase,Eintracht Frankfurt (GER),Tottenham Hotspur FC (ENG),0,2
+2026-01-28,2025_26,Champions League,"League, Matchday 8",league_phase,AS Monaco FC (MCO),Juventus FC (ITA),0,0
+2026-01-28,2025_26,Champions League,"League, Matchday 8",league_phase,Club Atlético de Madrid (ESP),FK Bodø/Glimt (NOR),1,2
+2026-01-28,2025_26,Champions League,"League, Matchday 8",league_phase,Athletic Club (ESP),Sporting Clube de Portugal (POR),2,3
+2026-01-28,2025_26,Champions League,"League, Matchday 8",league_phase,AFC Ajax (NED),PAE Olympiakos SFP (GRE),1,2
+2026-01-28,2025_26,Champions League,"League, Matchday 8",league_phase,Paris Saint-Germain FC (FRA),Newcastle United FC (ENG),1,1
+2026-01-28,2025_26,Champions League,"League, Matchday 8",league_phase,Paphos FC (CYP),SK Slavia Praha (CZE),4,1
+2026-01-28,2025_26,Champions League,"League, Matchday 8",league_phase,PSV (NED),FC Bayern München (GER),1,2
+2026-01-28,2025_26,Champions League,"League, Matchday 8",league_phase,SSC Napoli (ITA),Chelsea FC (ENG),2,3
+2026-01-28,2025_26,Champions League,"League, Matchday 8",league_phase,Sport Lisboa e Benfica (POR),Real Madrid CF (ESP),4,2
+2026-01-28,2025_26,Champions League,"League, Matchday 8",league_phase,Borussia Dortmund (GER),FC Internazionale Milano (ITA),0,2
+2026-02-17,2025_26,Champions League,"Playoffs, Matchday 1",playoff,Galatasaray SK (TUR),Juventus FC (ITA),5,2
+2026-02-17,2025_26,Champions League,"Playoffs, Matchday 1",playoff,Sport Lisboa e Benfica (POR),Real Madrid CF (ESP),0,1
+2026-02-17,2025_26,Champions League,"Playoffs, Matchday 1",playoff,AS Monaco FC (MCO),Paris Saint-Germain FC (FRA),2,3
+2026-02-17,2025_26,Champions League,"Playoffs, Matchday 1",playoff,Borussia Dortmund (GER),Atalanta BC (ITA),2,0
+2026-02-18,2025_26,Champions League,"Playoffs, Matchday 1",playoff,Qarabağ Ağdam FK (AZE),Newcastle United FC (ENG),1,6
+2026-02-18,2025_26,Champions League,"Playoffs, Matchday 1",playoff,Club Brugge KV (BEL),Club Atlético de Madrid (ESP),3,3
+2026-02-18,2025_26,Champions League,"Playoffs, Matchday 1",playoff,PAE Olympiakos SFP (GRE),Bayer 04 Leverkusen (GER),0,2
+2026-02-18,2025_26,Champions League,"Playoffs, Matchday 1",playoff,FK Bodø/Glimt (NOR),FC Internazionale Milano (ITA),3,1
+2026-02-24,2025_26,Champions League,"Playoffs, Matchday 2",playoff,Club Atlético de Madrid (ESP),Club Brugge KV (BEL),4,1
+2026-02-24,2025_26,Champions League,"Playoffs, Matchday 2",playoff,Newcastle United FC (ENG),Qarabağ Ağdam FK (AZE),3,2
+2026-02-24,2025_26,Champions League,"Playoffs, Matchday 2",playoff,Bayer 04 Leverkusen (GER),PAE Olympiakos SFP (GRE),0,0
+2026-02-24,2025_26,Champions League,"Playoffs, Matchday 2",playoff,FC Internazionale Milano (ITA),FK Bodø/Glimt (NOR),1,2
+2026-02-25,2025_26,Champions League,"Playoffs, Matchday 2",playoff,Atalanta BC (ITA),Borussia Dortmund (GER),4,1
+2026-02-25,2025_26,Champions League,"Playoffs, Matchday 2",playoff,Real Madrid CF (ESP),Sport Lisboa e Benfica (POR),2,1
+2026-02-25,2025_26,Champions League,"Playoffs, Matchday 2",playoff,Paris Saint-Germain FC (FRA),AS Monaco FC (MCO),2,2
+2026-02-25,2025_26,Champions League,"Playoffs, Matchday 2",playoff,Juventus FC (ITA),Galatasaray SK (TUR),3,2
+2026-03-10,2025_26,Champions League,"Finals, Round of 16",round_of_16,Galatasaray SK (TUR),Liverpool FC (ENG),1,0
+2026-03-10,2025_26,Champions League,"Finals, Round of 16",round_of_16,Atalanta BC (ITA),FC Bayern München (GER),1,6
+2026-03-10,2025_26,Champions League,"Finals, Round of 16",round_of_16,Newcastle United FC (ENG),FC Barcelona (ESP),1,1
+2026-03-10,2025_26,Champions League,"Finals, Round of 16",round_of_16,Club Atlético de Madrid (ESP),Tottenham Hotspur FC (ENG),5,2
+2026-03-11,2025_26,Champions League,"Finals, Round of 16",round_of_16,Bayer 04 Leverkusen (GER),Arsenal FC (ENG),1,1
+2026-03-11,2025_26,Champions League,"Finals, Round of 16",round_of_16,Paris Saint-Germain FC (FRA),Chelsea FC (ENG),5,2
+2026-03-11,2025_26,Champions League,"Finals, Round of 16",round_of_16,Real Madrid CF (ESP),Manchester City FC (ENG),3,0
+2026-03-11,2025_26,Champions League,"Finals, Round of 16",round_of_16,FK Bodø/Glimt (NOR),Sporting Clube de Portugal (POR),3,0
+2026-03-17,2025_26,Champions League,"Finals, Round of 16",round_of_16,Sporting Clube de Portugal (POR),FK Bodø/Glimt (NOR),5,0
+2026-03-17,2025_26,Champions League,"Finals, Round of 16",round_of_16,Chelsea FC (ENG),Paris Saint-Germain FC (FRA),0,3
+2026-03-17,2025_26,Champions League,"Finals, Round of 16",round_of_16,Manchester City FC (ENG),Real Madrid CF (ESP),1,2
+2026-03-17,2025_26,Champions League,"Finals, Round of 16",round_of_16,Arsenal FC (ENG),Bayer 04 Leverkusen (GER),2,0
+2026-03-18,2025_26,Champions League,"Finals, Round of 16",round_of_16,FC Barcelona (ESP),Newcastle United FC (ENG),7,2
+2026-03-18,2025_26,Champions League,"Finals, Round of 16",round_of_16,Liverpool FC (ENG),Galatasaray SK (TUR),4,0
+2026-03-18,2025_26,Champions League,"Finals, Round of 16",round_of_16,FC Bayern München (GER),Atalanta BC (ITA),4,1
+2026-03-18,2025_26,Champions League,"Finals, Round of 16",round_of_16,Tottenham Hotspur FC (ENG),Club Atlético de Madrid (ESP),3,2
+2026-04-07,2025_26,Champions League,"Finals, Quarterfinals",quarterfinal,Real Madrid CF (ESP),FC Bayern München (GER),1,2
+2026-04-07,2025_26,Champions League,"Finals, Quarterfinals",quarterfinal,Sporting Clube de Portugal (POR),Arsenal FC (ENG),0,1
+2026-04-08,2025_26,Champions League,"Finals, Quarterfinals",quarterfinal,Paris Saint-Germain FC (FRA),Liverpool FC (ENG),2,0
+2026-04-08,2025_26,Champions League,"Finals, Quarterfinals",quarterfinal,FC Barcelona (ESP),Club Atlético de Madrid (ESP),0,2
+2026-04-14,2025_26,Champions League,"Finals, Quarterfinals",quarterfinal,Liverpool FC (ENG),Paris Saint-Germain FC (FRA),0,2
+2026-04-14,2025_26,Champions League,"Finals, Quarterfinals",quarterfinal,Club Atlético de Madrid (ESP),FC Barcelona (ESP),1,2
+2026-04-15,2025_26,Champions League,"Finals, Quarterfinals",quarterfinal,FC Bayern München (GER),Real Madrid CF (ESP),4,3
+2026-04-15,2025_26,Champions League,"Finals, Quarterfinals",quarterfinal,Arsenal FC (ENG),Sporting Clube de Portugal (POR),0,0
+2026-04-28,2025_26,Champions League,"Finals, Semifinals",semifinal,Paris Saint-Germain FC (FRA),FC Bayern München (GER),5,4
+2026-04-29,2025_26,Champions League,"Finals, Semifinals",semifinal,Club Atlético de Madrid (ESP),Arsenal FC (ENG),1,1
+2026-05-05,2025_26,Champions League,"Finals, Semifinals",semifinal,Arsenal FC (ENG),Club Atlético de Madrid (ESP),1,0
+2026-05-06,2025_26,Champions League,"Finals, Semifinals",semifinal,FC Bayern München (GER),Paris Saint-Germain FC (FRA),1,1
+2026-05-30,2025_26,Champions League,"Finals, Final",final,Paris Saint-Germain FC (FRA),Arsenal FC (ENG),4,3

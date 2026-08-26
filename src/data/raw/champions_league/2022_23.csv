@@ -1,0 +1,126 @@
+date,season,competition,stage_raw,stage,home_team,away_team,home_goals,away_goals
+2022-09-07,2022_23,Champions League,Group A,league_phase,AFC Ajax (NED),Rangers FC (SCO),4,0
+2022-09-07,2022_23,Champions League,Group A,league_phase,SSC Napoli (ITA),Liverpool FC (ENG),4,1
+2022-09-13,2022_23,Champions League,Group A,league_phase,Liverpool FC (ENG),AFC Ajax (NED),2,1
+2022-09-14,2022_23,Champions League,Group A,league_phase,Rangers FC (SCO),SSC Napoli (ITA),0,3
+2022-10-04,2022_23,Champions League,Group A,league_phase,AFC Ajax (NED),SSC Napoli (ITA),1,6
+2022-10-04,2022_23,Champions League,Group A,league_phase,Liverpool FC (ENG),Rangers FC (SCO),2,0
+2022-10-12,2022_23,Champions League,Group A,league_phase,SSC Napoli (ITA),AFC Ajax (NED),4,2
+2022-10-12,2022_23,Champions League,Group A,league_phase,Rangers FC (SCO),Liverpool FC (ENG),1,7
+2022-10-26,2022_23,Champions League,Group A,league_phase,AFC Ajax (NED),Liverpool FC (ENG),0,3
+2022-10-26,2022_23,Champions League,Group A,league_phase,SSC Napoli (ITA),Rangers FC (SCO),3,0
+2022-11-01,2022_23,Champions League,Group A,league_phase,Rangers FC (SCO),AFC Ajax (NED),1,3
+2022-11-01,2022_23,Champions League,Group A,league_phase,Liverpool FC (ENG),SSC Napoli (ITA),2,0
+2022-09-07,2022_23,Champions League,Group B,league_phase,Atlético Madrid (ESP),FC Porto (POR),2,1
+2022-09-07,2022_23,Champions League,Group B,league_phase,Club Brugge KV (BEL),Bayer Leverkusen (GER),1,0
+2022-09-13,2022_23,Champions League,Group B,league_phase,Bayer Leverkusen (GER),Atlético Madrid (ESP),2,0
+2022-09-13,2022_23,Champions League,Group B,league_phase,FC Porto (POR),Club Brugge KV (BEL),0,4
+2022-10-04,2022_23,Champions League,Group B,league_phase,Club Brugge KV (BEL),Atlético Madrid (ESP),2,0
+2022-10-04,2022_23,Champions League,Group B,league_phase,FC Porto (POR),Bayer Leverkusen (GER),2,0
+2022-10-12,2022_23,Champions League,Group B,league_phase,Atlético Madrid (ESP),Club Brugge KV (BEL),0,0
+2022-10-12,2022_23,Champions League,Group B,league_phase,Bayer Leverkusen (GER),FC Porto (POR),0,3
+2022-10-26,2022_23,Champions League,Group B,league_phase,Club Brugge KV (BEL),FC Porto (POR),0,4
+2022-10-26,2022_23,Champions League,Group B,league_phase,Atlético Madrid (ESP),Bayer Leverkusen (GER),2,2
+2022-11-01,2022_23,Champions League,Group B,league_phase,FC Porto (POR),Atlético Madrid (ESP),2,1
+2022-11-01,2022_23,Champions League,Group B,league_phase,Bayer Leverkusen (GER),Club Brugge KV (BEL),0,0
+2022-09-07,2022_23,Champions League,Group C,league_phase,Inter (ITA),Bayern München (GER),0,2
+2022-09-07,2022_23,Champions League,Group C,league_phase,FC Barcelona (ESP),Viktoria Plzeň (CZE),5,1
+2022-09-13,2022_23,Champions League,Group C,league_phase,Viktoria Plzeň (CZE),Inter (ITA),0,2
+2022-09-13,2022_23,Champions League,Group C,league_phase,Bayern München (GER),FC Barcelona (ESP),2,0
+2022-10-04,2022_23,Champions League,Group C,league_phase,Bayern München (GER),Viktoria Plzeň (CZE),5,0
+2022-10-04,2022_23,Champions League,Group C,league_phase,Inter (ITA),FC Barcelona (ESP),1,0
+2022-10-12,2022_23,Champions League,Group C,league_phase,Viktoria Plzeň (CZE),Bayern München (GER),2,4
+2022-10-12,2022_23,Champions League,Group C,league_phase,FC Barcelona (ESP),Inter (ITA),3,3
+2022-10-26,2022_23,Champions League,Group C,league_phase,Inter (ITA),Viktoria Plzeň (CZE),4,0
+2022-10-26,2022_23,Champions League,Group C,league_phase,FC Barcelona (ESP),Bayern München (GER),0,3
+2022-11-01,2022_23,Champions League,Group C,league_phase,Bayern München (GER),Inter (ITA),2,0
+2022-11-01,2022_23,Champions League,Group C,league_phase,Viktoria Plzeň (CZE),FC Barcelona (ESP),2,4
+2022-09-07,2022_23,Champions League,Group D,league_phase,Eintracht Frankfurt (GER),Sporting CP (POR),0,3
+2022-09-07,2022_23,Champions League,Group D,league_phase,Tottenham Hotspur (ENG),Olympique Marseille (FRA),2,0
+2022-09-13,2022_23,Champions League,Group D,league_phase,Sporting CP (POR),Tottenham Hotspur (ENG),2,0
+2022-09-13,2022_23,Champions League,Group D,league_phase,Olympique Marseille (FRA),Eintracht Frankfurt (GER),0,1
+2022-10-04,2022_23,Champions League,Group D,league_phase,Olympique Marseille (FRA),Sporting CP (POR),4,1
+2022-10-04,2022_23,Champions League,Group D,league_phase,Eintracht Frankfurt (GER),Tottenham Hotspur (ENG),0,0
+2022-10-12,2022_23,Champions League,Group D,league_phase,Tottenham Hotspur (ENG),Eintracht Frankfurt (GER),3,2
+2022-10-12,2022_23,Champions League,Group D,league_phase,Sporting CP (POR),Olympique Marseille (FRA),0,2
+2022-10-26,2022_23,Champions League,Group D,league_phase,Eintracht Frankfurt (GER),Olympique Marseille (FRA),2,1
+2022-10-26,2022_23,Champions League,Group D,league_phase,Tottenham Hotspur (ENG),Sporting CP (POR),1,1
+2022-11-01,2022_23,Champions League,Group D,league_phase,Sporting CP (POR),Eintracht Frankfurt (GER),1,2
+2022-11-01,2022_23,Champions League,Group D,league_phase,Olympique Marseille (FRA),Tottenham Hotspur (ENG),1,2
+2022-09-06,2022_23,Champions League,Group E,league_phase,Dinamo Zagreb (CRO),Chelsea FC (ENG),1,0
+2022-09-06,2022_23,Champions League,Group E,league_phase,RB Salzburg (AUT),AC Milan (ITA),1,1
+2022-09-14,2022_23,Champions League,Group E,league_phase,AC Milan (ITA),Dinamo Zagreb (CRO),3,1
+2022-09-14,2022_23,Champions League,Group E,league_phase,Chelsea FC (ENG),RB Salzburg (AUT),1,1
+2022-10-05,2022_23,Champions League,Group E,league_phase,RB Salzburg (AUT),Dinamo Zagreb (CRO),1,0
+2022-10-05,2022_23,Champions League,Group E,league_phase,Chelsea FC (ENG),AC Milan (ITA),3,0
+2022-10-11,2022_23,Champions League,Group E,league_phase,AC Milan (ITA),Chelsea FC (ENG),0,2
+2022-10-11,2022_23,Champions League,Group E,league_phase,Dinamo Zagreb (CRO),RB Salzburg (AUT),1,1
+2022-10-25,2022_23,Champions League,Group E,league_phase,RB Salzburg (AUT),Chelsea FC (ENG),1,2
+2022-10-25,2022_23,Champions League,Group E,league_phase,Dinamo Zagreb (CRO),AC Milan (ITA),0,4
+2022-11-02,2022_23,Champions League,Group E,league_phase,AC Milan (ITA),RB Salzburg (AUT),4,0
+2022-11-02,2022_23,Champions League,Group E,league_phase,Chelsea FC (ENG),Dinamo Zagreb (CRO),2,1
+2022-09-06,2022_23,Champions League,Group F,league_phase,Celtic FC (SCO),Real Madrid (ESP),0,3
+2022-09-06,2022_23,Champions League,Group F,league_phase,RB Leipzig (GER),Shakhtar Donetsk (UKR),1,4
+2022-09-14,2022_23,Champions League,Group F,league_phase,Shakhtar Donetsk (UKR),Celtic FC (SCO),1,1
+2022-09-14,2022_23,Champions League,Group F,league_phase,Real Madrid (ESP),RB Leipzig (GER),2,0
+2022-10-05,2022_23,Champions League,Group F,league_phase,RB Leipzig (GER),Celtic FC (SCO),3,1
+2022-10-05,2022_23,Champions League,Group F,league_phase,Real Madrid (ESP),Shakhtar Donetsk (UKR),2,1
+2022-10-11,2022_23,Champions League,Group F,league_phase,Celtic FC (SCO),RB Leipzig (GER),0,2
+2022-10-11,2022_23,Champions League,Group F,league_phase,Shakhtar Donetsk (UKR),Real Madrid (ESP),1,1
+2022-10-25,2022_23,Champions League,Group F,league_phase,Celtic FC (SCO),Shakhtar Donetsk (UKR),1,1
+2022-10-25,2022_23,Champions League,Group F,league_phase,RB Leipzig (GER),Real Madrid (ESP),3,2
+2022-11-02,2022_23,Champions League,Group F,league_phase,Real Madrid (ESP),Celtic FC (SCO),5,1
+2022-11-02,2022_23,Champions League,Group F,league_phase,Shakhtar Donetsk (UKR),RB Leipzig (GER),0,4
+2022-09-06,2022_23,Champions League,Gruppe G,Gruppe G,Borussia Dortmund (GER),FC København (DEN),3,0
+2022-09-06,2022_23,Champions League,Gruppe G,Gruppe G,Sevilla FC (ESP),Manchester City (ENG),0,4
+2022-09-14,2022_23,Champions League,Gruppe G,Gruppe G,Manchester City (ENG),Borussia Dortmund (GER),2,1
+2022-09-14,2022_23,Champions League,Gruppe G,Gruppe G,FC København (DEN),Sevilla FC (ESP),0,0
+2022-10-05,2022_23,Champions League,Gruppe G,Gruppe G,Sevilla FC (ESP),Borussia Dortmund (GER),1,4
+2022-10-05,2022_23,Champions League,Gruppe G,Gruppe G,Manchester City (ENG),FC København (DEN),5,0
+2022-10-11,2022_23,Champions League,Gruppe G,Gruppe G,FC København (DEN),Manchester City (ENG),0,0
+2022-10-11,2022_23,Champions League,Gruppe G,Gruppe G,Borussia Dortmund (GER),Sevilla FC (ESP),1,1
+2022-10-25,2022_23,Champions League,Gruppe G,Gruppe G,Sevilla FC (ESP),FC København (DEN),3,0
+2022-10-25,2022_23,Champions League,Gruppe G,Gruppe G,Borussia Dortmund (GER),Manchester City (ENG),0,0
+2022-11-02,2022_23,Champions League,Gruppe G,Gruppe G,FC København (DEN),Borussia Dortmund (GER),1,1
+2022-11-02,2022_23,Champions League,Gruppe G,Gruppe G,Manchester City (ENG),Sevilla FC (ESP),3,1
+2022-09-06,2022_23,Champions League,Gruppe H,Gruppe H,Paris Saint-Germain (FRA),Juventus (ITA),2,1
+2022-09-06,2022_23,Champions League,Gruppe H,Gruppe H,SL Benfica (POR),Maccabi Haifa (ISR),2,0
+2022-09-14,2022_23,Champions League,Gruppe H,Gruppe H,Juventus (ITA),SL Benfica (POR),1,2
+2022-09-14,2022_23,Champions League,Gruppe H,Gruppe H,Maccabi Haifa (ISR),Paris Saint-Germain (FRA),1,3
+2022-10-05,2022_23,Champions League,Gruppe H,Gruppe H,Juventus (ITA),Maccabi Haifa (ISR),3,1
+2022-10-05,2022_23,Champions League,Gruppe H,Gruppe H,SL Benfica (POR),Paris Saint-Germain (FRA),1,1
+2022-10-11,2022_23,Champions League,Gruppe H,Gruppe H,Maccabi Haifa (ISR),Juventus (ITA),2,0
+2022-10-11,2022_23,Champions League,Gruppe H,Gruppe H,Paris Saint-Germain (FRA),SL Benfica (POR),1,1
+2022-10-25,2022_23,Champions League,Gruppe H,Gruppe H,SL Benfica (POR),Juventus (ITA),4,3
+2022-10-25,2022_23,Champions League,Gruppe H,Gruppe H,Paris Saint-Germain (FRA),Maccabi Haifa (ISR),7,2
+2022-11-02,2022_23,Champions League,Gruppe H,Gruppe H,Juventus (ITA),Paris Saint-Germain (FRA),1,2
+2022-11-02,2022_23,Champions League,Gruppe H,Gruppe H,Maccabi Haifa (ISR),SL Benfica (POR),1,6
+2023-02-14,2022_23,Champions League,Round of 16,round_of_16,AC Milan (ITA),Tottenham Hotspur (ENG),1,0
+2023-02-14,2022_23,Champions League,Round of 16,round_of_16,Paris Saint-Germain (FRA),Bayern München (GER),0,1
+2023-02-15,2022_23,Champions League,Round of 16,round_of_16,Club Brugge KV (BEL),SL Benfica (POR),0,2
+2023-02-15,2022_23,Champions League,Round of 16,round_of_16,Borussia Dortmund (GER),Chelsea FC (ENG),1,0
+2023-02-21,2022_23,Champions League,Round of 16,round_of_16,Liverpool FC (ENG),Real Madrid (ESP),2,5
+2023-02-21,2022_23,Champions League,Round of 16,round_of_16,Eintracht Frankfurt (GER),SSC Napoli (ITA),0,2
+2023-02-22,2022_23,Champions League,Round of 16,round_of_16,RB Leipzig (GER),Manchester City (ENG),1,1
+2023-02-22,2022_23,Champions League,Round of 16,round_of_16,Inter (ITA),FC Porto (POR),1,0
+2023-03-07,2022_23,Champions League,Round of 16,round_of_16,SL Benfica (POR),Club Brugge KV (BEL),5,1
+2023-03-07,2022_23,Champions League,Round of 16,round_of_16,Chelsea FC (ENG),Borussia Dortmund (GER),2,0
+2023-03-08,2022_23,Champions League,Round of 16,round_of_16,Bayern München (GER),Paris Saint-Germain (FRA),2,0
+2023-03-08,2022_23,Champions League,Round of 16,round_of_16,Tottenham Hotspur (ENG),AC Milan (ITA),0,0
+2023-03-14,2022_23,Champions League,Round of 16,round_of_16,Manchester City (ENG),RB Leipzig (GER),7,0
+2023-03-14,2022_23,Champions League,Round of 16,round_of_16,FC Porto (POR),Inter (ITA),0,0
+2023-03-15,2022_23,Champions League,Round of 16,round_of_16,Real Madrid (ESP),Liverpool FC (ENG),1,0
+2023-03-15,2022_23,Champions League,Round of 16,round_of_16,SSC Napoli (ITA),Eintracht Frankfurt (GER),3,0
+2023-04-11,2022_23,Champions League,Quarterfinals,quarterfinal,SL Benfica (POR),Inter (ITA),0,2
+2023-04-11,2022_23,Champions League,Quarterfinals,quarterfinal,Manchester City (ENG),Bayern München (GER),3,0
+2023-04-12,2022_23,Champions League,Quarterfinals,quarterfinal,Real Madrid (ESP),Chelsea FC (ENG),2,0
+2023-04-12,2022_23,Champions League,Quarterfinals,quarterfinal,AC Milan (ITA),SSC Napoli (ITA),1,0
+2023-04-18,2022_23,Champions League,Quarterfinals,quarterfinal,Chelsea FC (ENG),Real Madrid (ESP),0,2
+2023-04-18,2022_23,Champions League,Quarterfinals,quarterfinal,SSC Napoli (ITA),AC Milan (ITA),1,1
+2023-04-19,2022_23,Champions League,Quarterfinals,quarterfinal,Inter (ITA),SL Benfica (POR),3,3
+2023-04-19,2022_23,Champions League,Quarterfinals,quarterfinal,Bayern München (GER),Manchester City (ENG),1,1
+2023-05-09,2022_23,Champions League,Semifinals,semifinal,Real Madrid (ESP),Manchester City (ENG),1,1
+2023-05-10,2022_23,Champions League,Semifinals,semifinal,AC Milan (ITA),Inter (ITA),0,2
+2023-05-16,2022_23,Champions League,Semifinals,semifinal,Inter (ITA),AC Milan (ITA),1,0
+2023-05-17,2022_23,Champions League,Semifinals,semifinal,Manchester City (ENG),Real Madrid (ESP),4,0
+2023-06-10,2022_23,Champions League,Final,final,Manchester City (ENG),Inter (ITA),1,0

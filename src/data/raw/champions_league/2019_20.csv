@@ -1,0 +1,120 @@
+date,season,competition,stage_raw,stage,home_team,away_team,home_goals,away_goals
+2019-09-18,2019_20,Champions League,Group A,league_phase,Club Brugge KV (BEL),Galatasaray (TUR),0,0
+2019-09-18,2019_20,Champions League,Group A,league_phase,Paris Saint-Germain (FRA),Real Madrid (ESP),3,0
+2019-10-01,2019_20,Champions League,Group A,league_phase,Real Madrid (ESP),Club Brugge KV (BEL),2,2
+2019-10-01,2019_20,Champions League,Group A,league_phase,Galatasaray (TUR),Paris Saint-Germain (FRA),0,1
+2019-10-22,2019_20,Champions League,Group A,league_phase,Club Brugge KV (BEL),Paris Saint-Germain (FRA),0,5
+2019-10-22,2019_20,Champions League,Group A,league_phase,Galatasaray (TUR),Real Madrid (ESP),0,1
+2019-11-06,2019_20,Champions League,Group A,league_phase,Paris Saint-Germain (FRA),Club Brugge KV (BEL),1,0
+2019-11-06,2019_20,Champions League,Group A,league_phase,Real Madrid (ESP),Galatasaray (TUR),6,0
+2019-11-26,2019_20,Champions League,Group A,league_phase,Galatasaray (TUR),Club Brugge KV (BEL),1,1
+2019-11-26,2019_20,Champions League,Group A,league_phase,Real Madrid (ESP),Paris Saint-Germain (FRA),2,2
+2019-12-11,2019_20,Champions League,Group A,league_phase,Paris Saint-Germain (FRA),Galatasaray (TUR),5,0
+2019-12-11,2019_20,Champions League,Group A,league_phase,Club Brugge KV (BEL),Real Madrid (ESP),1,3
+2019-09-18,2019_20,Champions League,Group B,league_phase,Olympiakos Piraeus (GRE),Tottenham Hotspur (ENG),2,2
+2019-09-18,2019_20,Champions League,Group B,league_phase,Bayern München (GER),Crvena Zvezda (SRB),3,0
+2019-10-01,2019_20,Champions League,Group B,league_phase,Tottenham Hotspur (ENG),Bayern München (GER),2,7
+2019-10-01,2019_20,Champions League,Group B,league_phase,Crvena Zvezda (SRB),Olympiakos Piraeus (GRE),3,1
+2019-10-22,2019_20,Champions League,Group B,league_phase,Tottenham Hotspur (ENG),Crvena Zvezda (SRB),5,0
+2019-10-22,2019_20,Champions League,Group B,league_phase,Olympiakos Piraeus (GRE),Bayern München (GER),2,3
+2019-11-06,2019_20,Champions League,Group B,league_phase,Bayern München (GER),Olympiakos Piraeus (GRE),2,0
+2019-11-06,2019_20,Champions League,Group B,league_phase,Crvena Zvezda (SRB),Tottenham Hotspur (ENG),0,4
+2019-11-26,2019_20,Champions League,Group B,league_phase,Tottenham Hotspur (ENG),Olympiakos Piraeus (GRE),4,2
+2019-11-26,2019_20,Champions League,Group B,league_phase,Crvena Zvezda (SRB),Bayern München (GER),0,6
+2019-12-11,2019_20,Champions League,Group B,league_phase,Bayern München (GER),Tottenham Hotspur (ENG),3,1
+2019-12-11,2019_20,Champions League,Group B,league_phase,Olympiakos Piraeus (GRE),Crvena Zvezda (SRB),1,0
+2019-09-18,2019_20,Champions League,Group C,league_phase,Shakhtar Donetsk (UKR),Manchester City (ENG),0,3
+2019-09-18,2019_20,Champions League,Group C,league_phase,Dinamo Zagreb (CRO),Atalanta (ITA),4,0
+2019-10-01,2019_20,Champions League,Group C,league_phase,Atalanta (ITA),Shakhtar Donetsk (UKR),1,2
+2019-10-01,2019_20,Champions League,Group C,league_phase,Manchester City (ENG),Dinamo Zagreb (CRO),2,0
+2019-10-22,2019_20,Champions League,Group C,league_phase,Shakhtar Donetsk (UKR),Dinamo Zagreb (CRO),2,2
+2019-10-22,2019_20,Champions League,Group C,league_phase,Manchester City (ENG),Atalanta (ITA),5,1
+2019-11-06,2019_20,Champions League,Group C,league_phase,Dinamo Zagreb (CRO),Shakhtar Donetsk (UKR),3,3
+2019-11-06,2019_20,Champions League,Group C,league_phase,Atalanta (ITA),Manchester City (ENG),1,1
+2019-11-26,2019_20,Champions League,Group C,league_phase,Manchester City (ENG),Shakhtar Donetsk (UKR),1,1
+2019-11-26,2019_20,Champions League,Group C,league_phase,Atalanta (ITA),Dinamo Zagreb (CRO),2,0
+2019-12-11,2019_20,Champions League,Group C,league_phase,Shakhtar Donetsk (UKR),Atalanta (ITA),0,3
+2019-12-11,2019_20,Champions League,Group C,league_phase,Dinamo Zagreb (CRO),Manchester City (ENG),1,4
+2019-09-18,2019_20,Champions League,Group D,league_phase,Atlético Madrid (ESP),Juventus (ITA),2,2
+2019-09-18,2019_20,Champions League,Group D,league_phase,Bayer Leverkusen (GER),Lokomotiv Moskva (RUS),1,2
+2019-10-01,2019_20,Champions League,Group D,league_phase,Juventus (ITA),Bayer Leverkusen (GER),3,0
+2019-10-01,2019_20,Champions League,Group D,league_phase,Lokomotiv Moskva (RUS),Atlético Madrid (ESP),0,2
+2019-10-22,2019_20,Champions League,Group D,league_phase,Atlético Madrid (ESP),Bayer Leverkusen (GER),1,0
+2019-10-22,2019_20,Champions League,Group D,league_phase,Juventus (ITA),Lokomotiv Moskva (RUS),2,1
+2019-11-06,2019_20,Champions League,Group D,league_phase,Lokomotiv Moskva (RUS),Juventus (ITA),1,2
+2019-11-06,2019_20,Champions League,Group D,league_phase,Bayer Leverkusen (GER),Atlético Madrid (ESP),2,1
+2019-11-26,2019_20,Champions League,Group D,league_phase,Lokomotiv Moskva (RUS),Bayer Leverkusen (GER),0,2
+2019-11-26,2019_20,Champions League,Group D,league_phase,Juventus (ITA),Atlético Madrid (ESP),1,0
+2019-12-11,2019_20,Champions League,Group D,league_phase,Atlético Madrid (ESP),Lokomotiv Moskva (RUS),2,0
+2019-12-11,2019_20,Champions League,Group D,league_phase,Bayer Leverkusen (GER),Juventus (ITA),0,2
+2019-09-17,2019_20,Champions League,Group E,league_phase,SSC Napoli (ITA),Liverpool FC (ENG),2,0
+2019-09-17,2019_20,Champions League,Group E,league_phase,RB Salzburg (AUT),KRC Genk (BEL),6,2
+2019-10-02,2019_20,Champions League,Group E,league_phase,KRC Genk (BEL),SSC Napoli (ITA),0,0
+2019-10-02,2019_20,Champions League,Group E,league_phase,Liverpool FC (ENG),RB Salzburg (AUT),4,3
+2019-10-23,2019_20,Champions League,Group E,league_phase,RB Salzburg (AUT),SSC Napoli (ITA),2,3
+2019-10-23,2019_20,Champions League,Group E,league_phase,KRC Genk (BEL),Liverpool FC (ENG),1,4
+2019-11-05,2019_20,Champions League,Group E,league_phase,Liverpool FC (ENG),KRC Genk (BEL),2,1
+2019-11-05,2019_20,Champions League,Group E,league_phase,SSC Napoli (ITA),RB Salzburg (AUT),1,1
+2019-11-27,2019_20,Champions League,Group E,league_phase,Liverpool FC (ENG),SSC Napoli (ITA),1,1
+2019-11-27,2019_20,Champions League,Group E,league_phase,KRC Genk (BEL),RB Salzburg (AUT),1,4
+2019-12-10,2019_20,Champions League,Group E,league_phase,SSC Napoli (ITA),KRC Genk (BEL),4,0
+2019-12-10,2019_20,Champions League,Group E,league_phase,RB Salzburg (AUT),Liverpool FC (ENG),0,2
+2019-09-17,2019_20,Champions League,Group F,league_phase,Inter (ITA),Slavia Praha (CZE),1,1
+2019-09-17,2019_20,Champions League,Group F,league_phase,Borussia Dortmund (GER),FC Barcelona (ESP),0,0
+2019-10-02,2019_20,Champions League,Group F,league_phase,Slavia Praha (CZE),Borussia Dortmund (GER),0,2
+2019-10-02,2019_20,Champions League,Group F,league_phase,FC Barcelona (ESP),Inter (ITA),2,1
+2019-10-23,2019_20,Champions League,Group F,league_phase,Inter (ITA),Borussia Dortmund (GER),2,0
+2019-10-23,2019_20,Champions League,Group F,league_phase,Slavia Praha (CZE),FC Barcelona (ESP),1,2
+2019-11-05,2019_20,Champions League,Group F,league_phase,FC Barcelona (ESP),Slavia Praha (CZE),0,0
+2019-11-05,2019_20,Champions League,Group F,league_phase,Borussia Dortmund (GER),Inter (ITA),3,2
+2019-11-27,2019_20,Champions League,Group F,league_phase,FC Barcelona (ESP),Borussia Dortmund (GER),3,1
+2019-11-27,2019_20,Champions League,Group F,league_phase,Slavia Praha (CZE),Inter (ITA),1,3
+2019-12-10,2019_20,Champions League,Group F,league_phase,Borussia Dortmund (GER),Slavia Praha (CZE),2,1
+2019-12-10,2019_20,Champions League,Group F,league_phase,Inter (ITA),FC Barcelona (ESP),1,2
+2019-09-17,2019_20,Champions League,Group G,league_phase,Olympique Lyonnais (FRA),Zenit St. Petersburg (RUS),1,1
+2019-09-17,2019_20,Champions League,Group G,league_phase,SL Benfica (POR),RB Leipzig (GER),1,2
+2019-10-02,2019_20,Champions League,Group G,league_phase,Zenit St. Petersburg (RUS),SL Benfica (POR),3,1
+2019-10-02,2019_20,Champions League,Group G,league_phase,RB Leipzig (GER),Olympique Lyonnais (FRA),0,2
+2019-10-23,2019_20,Champions League,Group G,league_phase,RB Leipzig (GER),Zenit St. Petersburg (RUS),2,1
+2019-10-23,2019_20,Champions League,Group G,league_phase,SL Benfica (POR),Olympique Lyonnais (FRA),2,1
+2019-11-05,2019_20,Champions League,Group G,league_phase,Zenit St. Petersburg (RUS),RB Leipzig (GER),0,2
+2019-11-05,2019_20,Champions League,Group G,league_phase,Olympique Lyonnais (FRA),SL Benfica (POR),3,1
+2019-11-27,2019_20,Champions League,Group G,league_phase,Zenit St. Petersburg (RUS),Olympique Lyonnais (FRA),2,0
+2019-11-27,2019_20,Champions League,Group G,league_phase,RB Leipzig (GER),SL Benfica (POR),2,2
+2019-12-10,2019_20,Champions League,Group G,league_phase,SL Benfica (POR),Zenit St. Petersburg (RUS),3,0
+2019-12-10,2019_20,Champions League,Group G,league_phase,Olympique Lyonnais (FRA),RB Leipzig (GER),2,2
+2019-09-17,2019_20,Champions League,Group H,league_phase,Chelsea FC (ENG),Valencia CF (ESP),0,1
+2019-09-17,2019_20,Champions League,Group H,league_phase,AFC Ajax (NED),Lille OSC (FRA),3,0
+2019-10-02,2019_20,Champions League,Group H,league_phase,Valencia CF (ESP),AFC Ajax (NED),0,3
+2019-10-02,2019_20,Champions League,Group H,league_phase,Lille OSC (FRA),Chelsea FC (ENG),1,2
+2019-10-23,2019_20,Champions League,Group H,league_phase,AFC Ajax (NED),Chelsea FC (ENG),0,1
+2019-10-23,2019_20,Champions League,Group H,league_phase,Lille OSC (FRA),Valencia CF (ESP),1,1
+2019-11-05,2019_20,Champions League,Group H,league_phase,Chelsea FC (ENG),AFC Ajax (NED),4,4
+2019-11-05,2019_20,Champions League,Group H,league_phase,Valencia CF (ESP),Lille OSC (FRA),4,1
+2019-11-27,2019_20,Champions League,Group H,league_phase,Valencia CF (ESP),Chelsea FC (ENG),2,2
+2019-11-27,2019_20,Champions League,Group H,league_phase,Lille OSC (FRA),AFC Ajax (NED),0,2
+2019-12-10,2019_20,Champions League,Group H,league_phase,Chelsea FC (ENG),Lille OSC (FRA),2,1
+2019-12-10,2019_20,Champions League,Group H,league_phase,AFC Ajax (NED),Valencia CF (ESP),0,1
+2020-02-18,2019_20,Champions League,Round of 16,round_of_16,Borussia Dortmund (GER),Paris Saint-Germain (FRA),2,1
+2020-02-18,2019_20,Champions League,Round of 16,round_of_16,Atlético Madrid (ESP),Liverpool FC (ENG),1,0
+2020-02-19,2019_20,Champions League,Round of 16,round_of_16,Atalanta (ITA),Valencia CF (ESP),4,1
+2020-02-19,2019_20,Champions League,Round of 16,round_of_16,Tottenham Hotspur (ENG),RB Leipzig (GER),0,1
+2020-02-25,2019_20,Champions League,Round of 16,round_of_16,Chelsea FC (ENG),Bayern München (GER),0,3
+2020-02-25,2019_20,Champions League,Round of 16,round_of_16,SSC Napoli (ITA),FC Barcelona (ESP),1,1
+2020-02-26,2019_20,Champions League,Round of 16,round_of_16,Real Madrid (ESP),Manchester City (ENG),1,2
+2020-02-26,2019_20,Champions League,Round of 16,round_of_16,Olympique Lyonnais (FRA),Juventus (ITA),1,0
+2020-03-10,2019_20,Champions League,Round of 16,round_of_16,Valencia CF (ESP),Atalanta (ITA),3,4
+2020-03-10,2019_20,Champions League,Round of 16,round_of_16,RB Leipzig (GER),Tottenham Hotspur (ENG),3,0
+2020-03-11,2019_20,Champions League,Round of 16,round_of_16,Paris Saint-Germain (FRA),Borussia Dortmund (GER),2,0
+2020-03-11,2019_20,Champions League,Round of 16,round_of_16,Liverpool FC (ENG),Atlético Madrid (ESP),2,3
+2019-08-07,2019_20,Champions League,Round of 16,round_of_16,Manchester City (ENG),Real Madrid (ESP),2,1
+2019-08-07,2019_20,Champions League,Round of 16,round_of_16,Juventus (ITA),Olympique Lyonnais (FRA),2,1
+2019-08-08,2019_20,Champions League,Round of 16,round_of_16,Bayern München (GER),Chelsea FC (ENG),4,1
+2019-08-08,2019_20,Champions League,Round of 16,round_of_16,FC Barcelona (ESP),SSC Napoli (ITA),3,1
+2019-08-12,2019_20,Champions League,Quarterfinals,quarterfinal,Atalanta (ITA),Paris Saint-Germain (FRA),1,2
+2019-08-13,2019_20,Champions League,Quarterfinals,quarterfinal,RB Leipzig (GER),Atlético Madrid (ESP),2,1
+2019-08-14,2019_20,Champions League,Quarterfinals,quarterfinal,FC Barcelona (ESP),Bayern München (GER),2,8
+2019-08-15,2019_20,Champions League,Quarterfinals,quarterfinal,Manchester City (ENG),Olympique Lyonnais (FRA),1,3
+2019-08-18,2019_20,Champions League,Semifinals,semifinal,RB Leipzig (GER),Paris Saint-Germain (FRA),0,3
+2019-08-19,2019_20,Champions League,Semifinals,semifinal,Olympique Lyonnais (FRA),Bayern München (GER),0,3
+2019-08-23,2019_20,Champions League,Final,final,Paris Saint-Germain (FRA),Bayern München (GER),0,1
