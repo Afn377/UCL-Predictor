@@ -13,6 +13,16 @@ PROCESSED_DIR = DATA_DIR / "processed"
 DEFAULT_OUTPUT_PATH = PROCESSED_DIR / "matches.csv"
 
 REQUIRED_DOMESTIC_COLUMNS = ["Date", "HomeTeam", "AwayTeam", "FTHG", "FTAG", "FTR"]
+REQUIRED_UCL_COLUMNS = [
+    "date",
+    "season",
+    "competition",
+    "stage",
+    "home_team",
+    "away_team",
+    "home_goals",
+    "away_goals",
+]
 
 COMPETITION_NAMES = {
     "premier-league": "Premier League",
@@ -32,6 +42,11 @@ RESULT_FROM_FTR = {
     "A": RESULT_FROM_GOALS["away"],
     "D": RESULT_FROM_GOALS["draw"],
     "H": RESULT_FROM_GOALS["home"],
+}
+
+STAGE_NORMALIZATIONS = {
+    "gruppe g": "league_phase",
+    "gruppe h": "league_phase",
 }
 
 
@@ -63,6 +78,12 @@ def derive_result(home_goals: pd.Series, away_goals: pd.Series) -> pd.Series:
     result = result.mask(home_goals > away_goals, RESULT_FROM_GOALS["home"])
     result = result.mask(home_goals < away_goals, RESULT_FROM_GOALS["away"])
     return result
+
+
+def normalize_stage_values(values: pd.Series) -> pd.Series:
+    stage_text = values.astype("string").str.strip()
+    normalized = stage_text.str.lower().map(STAGE_NORMALIZATIONS)
+    return normalized.fillna(stage_text)
 
 
 def load_domestic_file(path: Path, competition: str) -> tuple[pd.DataFrame, int, int, int]:
@@ -109,8 +130,62 @@ def load_domestic_file(path: Path, competition: str) -> tuple[pd.DataFrame, int,
             "date": core["date"].dt.normalize(),
             "season": path.stem,
             "competition": competition,
+            "stage": pd.NA,
             "home_team": core["HomeTeam"].astype(str).str.strip(),
             "away_team": core["AwayTeam"].astype(str).str.strip(),
+            "home_goals": core["home_goals"],
+            "away_goals": core["away_goals"],
+            "result": core["result"],
+        }
+    )
+
+    return normalized, rows_read, blank_rows, incomplete_rows
+
+
+def load_ucl_file(path: Path) -> tuple[pd.DataFrame, int, int, int]:
+    df = pd.read_csv(path)
+    missing_columns = [col for col in REQUIRED_UCL_COLUMNS if col not in df.columns]
+
+    if missing_columns:
+        missing = ", ".join(missing_columns)
+        raise ValueError(f"{path} is missing required columns: {missing}")
+
+    rows_read = len(df)
+    core = df[REQUIRED_UCL_COLUMNS].copy()
+
+    blank_mask = core.isna().all(axis=1)
+    blank_rows = int(blank_mask.sum())
+    core = core.loc[~blank_mask].copy()
+
+    core["date"] = pd.to_datetime(core["date"], format="%Y-%m-%d", errors="coerce")
+    core["home_goals"] = pd.to_numeric(core["home_goals"], errors="coerce")
+    core["away_goals"] = pd.to_numeric(core["away_goals"], errors="coerce")
+
+    incomplete_mask = (
+        core["date"].isna()
+        | core["season"].isna()
+        | core["competition"].isna()
+        | core["stage"].isna()
+        | core["home_team"].isna()
+        | core["away_team"].isna()
+        | core["home_goals"].isna()
+        | core["away_goals"].isna()
+    )
+    incomplete_rows = int(incomplete_mask.sum())
+    core = core.loc[~incomplete_mask].copy()
+
+    core["home_goals"] = core["home_goals"].astype("int64")
+    core["away_goals"] = core["away_goals"].astype("int64")
+    core["result"] = derive_result(core["home_goals"], core["away_goals"])
+
+    normalized = pd.DataFrame(
+        {
+            "date": core["date"].dt.normalize(),
+            "season": core["season"].astype(str).str.strip(),
+            "competition": "Champions League",
+            "stage": normalize_stage_values(core["stage"]),
+            "home_team": core["home_team"].astype(str).str.strip(),
+            "away_team": core["away_team"].astype(str).str.strip(),
             "home_goals": core["home_goals"],
             "away_goals": core["away_goals"],
             "result": core["result"],
@@ -134,6 +209,14 @@ def iter_domestic_files(raw_dir: Path) -> list[tuple[Path, str]]:
     return files
 
 
+def iter_ucl_files(raw_dir: Path) -> list[Path]:
+    folder = raw_dir / "champions_league"
+    if not folder.exists():
+        return []
+
+    return sorted(folder.glob("*.csv"))
+
+
 def build_master_matches(raw_dir: Path = RAW_DIR) -> tuple[pd.DataFrame, BuildReport]:
     frames: list[pd.DataFrame] = []
     rows_read = 0
@@ -151,8 +234,16 @@ def build_master_matches(raw_dir: Path = RAW_DIR) -> tuple[pd.DataFrame, BuildRe
         blank_rows += file_blank_rows
         incomplete_rows += file_incomplete_rows
 
+    ucl_files = iter_ucl_files(raw_dir)
+    for csv_path in ucl_files:
+        frame, file_rows_read, file_blank_rows, file_incomplete_rows = load_ucl_file(csv_path)
+        frames.append(frame)
+        rows_read += file_rows_read
+        blank_rows += file_blank_rows
+        incomplete_rows += file_incomplete_rows
+
     if not frames:
-        raise ValueError(f"No domestic CSV files found under {raw_dir}")
+        raise ValueError(f"No match CSV files found under {raw_dir}")
 
     matches = pd.concat(frames, ignore_index=True)
     matches = matches.sort_values(
@@ -176,7 +267,7 @@ def build_master_matches(raw_dir: Path = RAW_DIR) -> tuple[pd.DataFrame, BuildRe
         rows_written=len(matches),
         blank_rows_dropped=blank_rows,
         incomplete_rows_dropped=incomplete_rows,
-        input_files=len(input_files),
+        input_files=len(input_files) + len(ucl_files),
     )
     return matches, report
 
@@ -189,7 +280,7 @@ def write_master_matches(output_path: Path = DEFAULT_OUTPUT_PATH, raw_dir: Path 
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Build the processed domestic master match dataset.")
+    parser = argparse.ArgumentParser(description="Build the processed master match dataset.")
     parser.add_argument("--raw-dir", type=Path, default=RAW_DIR)
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT_PATH)
     args = parser.parse_args()

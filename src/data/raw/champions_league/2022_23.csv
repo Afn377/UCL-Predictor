@@ -71,30 +71,30 @@ date,season,competition,stage_raw,stage,home_team,away_team,home_goals,away_goal
 2022-10-25,2022_23,Champions League,Group F,league_phase,RB Leipzig (GER),Real Madrid (ESP),3,2
 2022-11-02,2022_23,Champions League,Group F,league_phase,Real Madrid (ESP),Celtic FC (SCO),5,1
 2022-11-02,2022_23,Champions League,Group F,league_phase,Shakhtar Donetsk (UKR),RB Leipzig (GER),0,4
-2022-09-06,2022_23,Champions League,Gruppe G,Gruppe G,Borussia Dortmund (GER),FC København (DEN),3,0
-2022-09-06,2022_23,Champions League,Gruppe G,Gruppe G,Sevilla FC (ESP),Manchester City (ENG),0,4
-2022-09-14,2022_23,Champions League,Gruppe G,Gruppe G,Manchester City (ENG),Borussia Dortmund (GER),2,1
-2022-09-14,2022_23,Champions League,Gruppe G,Gruppe G,FC København (DEN),Sevilla FC (ESP),0,0
-2022-10-05,2022_23,Champions League,Gruppe G,Gruppe G,Sevilla FC (ESP),Borussia Dortmund (GER),1,4
-2022-10-05,2022_23,Champions League,Gruppe G,Gruppe G,Manchester City (ENG),FC København (DEN),5,0
-2022-10-11,2022_23,Champions League,Gruppe G,Gruppe G,FC København (DEN),Manchester City (ENG),0,0
-2022-10-11,2022_23,Champions League,Gruppe G,Gruppe G,Borussia Dortmund (GER),Sevilla FC (ESP),1,1
-2022-10-25,2022_23,Champions League,Gruppe G,Gruppe G,Sevilla FC (ESP),FC København (DEN),3,0
-2022-10-25,2022_23,Champions League,Gruppe G,Gruppe G,Borussia Dortmund (GER),Manchester City (ENG),0,0
-2022-11-02,2022_23,Champions League,Gruppe G,Gruppe G,FC København (DEN),Borussia Dortmund (GER),1,1
-2022-11-02,2022_23,Champions League,Gruppe G,Gruppe G,Manchester City (ENG),Sevilla FC (ESP),3,1
-2022-09-06,2022_23,Champions League,Gruppe H,Gruppe H,Paris Saint-Germain (FRA),Juventus (ITA),2,1
-2022-09-06,2022_23,Champions League,Gruppe H,Gruppe H,SL Benfica (POR),Maccabi Haifa (ISR),2,0
-2022-09-14,2022_23,Champions League,Gruppe H,Gruppe H,Juventus (ITA),SL Benfica (POR),1,2
-2022-09-14,2022_23,Champions League,Gruppe H,Gruppe H,Maccabi Haifa (ISR),Paris Saint-Germain (FRA),1,3
-2022-10-05,2022_23,Champions League,Gruppe H,Gruppe H,Juventus (ITA),Maccabi Haifa (ISR),3,1
-2022-10-05,2022_23,Champions League,Gruppe H,Gruppe H,SL Benfica (POR),Paris Saint-Germain (FRA),1,1
-2022-10-11,2022_23,Champions League,Gruppe H,Gruppe H,Maccabi Haifa (ISR),Juventus (ITA),2,0
-2022-10-11,2022_23,Champions League,Gruppe H,Gruppe H,Paris Saint-Germain (FRA),SL Benfica (POR),1,1
-2022-10-25,2022_23,Champions League,Gruppe H,Gruppe H,SL Benfica (POR),Juventus (ITA),4,3
-2022-10-25,2022_23,Champions League,Gruppe H,Gruppe H,Paris Saint-Germain (FRA),Maccabi Haifa (ISR),7,2
-2022-11-02,2022_23,Champions League,Gruppe H,Gruppe H,Juventus (ITA),Paris Saint-Germain (FRA),1,2
-2022-11-02,2022_23,Champions League,Gruppe H,Gruppe H,Maccabi Haifa (ISR),SL Benfica (POR),1,6
+2022-09-06,2022_23,Champions League,Gruppe G,league_phase,Borussia Dortmund (GER),FC København (DEN),3,0
+2022-09-06,2022_23,Champions League,Gruppe G,league_phase,Sevilla FC (ESP),Manchester City (ENG),0,4
+2022-09-14,2022_23,Champions League,Gruppe G,league_phase,Manchester City (ENG),Borussia Dortmund (GER),2,1
+2022-09-14,2022_23,Champions League,Gruppe G,league_phase,FC København (DEN),Sevilla FC (ESP),0,0
+2022-10-05,2022_23,Champions League,Gruppe G,league_phase,Sevilla FC (ESP),Borussia Dortmund (GER),1,4
+2022-10-05,2022_23,Champions League,Gruppe G,league_phase,Manchester City (ENG),FC København (DEN),5,0
+2022-10-11,2022_23,Champions League,Gruppe G,league_phase,FC København (DEN),Manchester City (ENG),0,0
+2022-10-11,2022_23,Champions League,Gruppe G,league_phase,Borussia Dortmund (GER),Sevilla FC (ESP),1,1
+2022-10-25,2022_23,Champions League,Gruppe G,league_phase,Sevilla FC (ESP),FC København (DEN),3,0
+2022-10-25,2022_23,Champions League,Gruppe G,league_phase,Borussia Dortmund (GER),Manchester City (ENG),0,0
+2022-11-02,2022_23,Champions League,Gruppe G,league_phase,FC København (DEN),Borussia Dortmund (GER),1,1
+2022-11-02,2022_23,Champions League,Gruppe G,league_phase,Manchester City (ENG),Sevilla FC (ESP),3,1
+2022-09-06,2022_23,Champions League,Gruppe H,league_phase,Paris Saint-Germain (FRA),Juventus (ITA),2,1
+2022-09-06,2022_23,Champions League,Gruppe H,league_phase,SL Benfica (POR),Maccabi Haifa (ISR),2,0
+2022-09-14,2022_23,Champions League,Gruppe H,league_phase,Juventus (ITA),SL Benfica (POR),1,2
+2022-09-14,2022_23,Champions League,Gruppe H,league_phase,Maccabi Haifa (ISR),Paris Saint-Germain (FRA),1,3
+2022-10-05,2022_23,Champions League,Gruppe H,league_phase,Juventus (ITA),Maccabi Haifa (ISR),3,1
+2022-10-05,2022_23,Champions League,Gruppe H,league_phase,SL Benfica (POR),Paris Saint-Germain (FRA),1,1
+2022-10-11,2022_23,Champions League,Gruppe H,league_phase,Maccabi Haifa (ISR),Juventus (ITA),2,0
+2022-10-11,2022_23,Champions League,Gruppe H,league_phase,Paris Saint-Germain (FRA),SL Benfica (POR),1,1
+2022-10-25,2022_23,Champions League,Gruppe H,league_phase,SL Benfica (POR),Juventus (ITA),4,3
+2022-10-25,2022_23,Champions League,Gruppe H,league_phase,Paris Saint-Germain (FRA),Maccabi Haifa (ISR),7,2
+2022-11-02,2022_23,Champions League,Gruppe H,league_phase,Juventus (ITA),Paris Saint-Germain (FRA),1,2
+2022-11-02,2022_23,Champions League,Gruppe H,league_phase,Maccabi Haifa (ISR),SL Benfica (POR),1,6
 2023-02-14,2022_23,Champions League,Round of 16,round_of_16,AC Milan (ITA),Tottenham Hotspur (ENG),1,0
 2023-02-14,2022_23,Champions League,Round of 16,round_of_16,Paris Saint-Germain (FRA),Bayern München (GER),0,1
 2023-02-15,2022_23,Champions League,Round of 16,round_of_16,Club Brugge KV (BEL),SL Benfica (POR),0,2

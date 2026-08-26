@@ -107,14 +107,14 @@ date,season,competition,stage_raw,stage,home_team,away_team,home_goals,away_goal
 2020-03-10,2019_20,Champions League,Round of 16,round_of_16,RB Leipzig (GER),Tottenham Hotspur (ENG),3,0
 2020-03-11,2019_20,Champions League,Round of 16,round_of_16,Paris Saint-Germain (FRA),Borussia Dortmund (GER),2,0
 2020-03-11,2019_20,Champions League,Round of 16,round_of_16,Liverpool FC (ENG),Atlético Madrid (ESP),2,3
-2019-08-07,2019_20,Champions League,Round of 16,round_of_16,Manchester City (ENG),Real Madrid (ESP),2,1
-2019-08-07,2019_20,Champions League,Round of 16,round_of_16,Juventus (ITA),Olympique Lyonnais (FRA),2,1
-2019-08-08,2019_20,Champions League,Round of 16,round_of_16,Bayern München (GER),Chelsea FC (ENG),4,1
-2019-08-08,2019_20,Champions League,Round of 16,round_of_16,FC Barcelona (ESP),SSC Napoli (ITA),3,1
-2019-08-12,2019_20,Champions League,Quarterfinals,quarterfinal,Atalanta (ITA),Paris Saint-Germain (FRA),1,2
-2019-08-13,2019_20,Champions League,Quarterfinals,quarterfinal,RB Leipzig (GER),Atlético Madrid (ESP),2,1
-2019-08-14,2019_20,Champions League,Quarterfinals,quarterfinal,FC Barcelona (ESP),Bayern München (GER),2,8
-2019-08-15,2019_20,Champions League,Quarterfinals,quarterfinal,Manchester City (ENG),Olympique Lyonnais (FRA),1,3
-2019-08-18,2019_20,Champions League,Semifinals,semifinal,RB Leipzig (GER),Paris Saint-Germain (FRA),0,3
-2019-08-19,2019_20,Champions League,Semifinals,semifinal,Olympique Lyonnais (FRA),Bayern München (GER),0,3
-2019-08-23,2019_20,Champions League,Final,final,Paris Saint-Germain (FRA),Bayern München (GER),0,1
+2020-08-07,2019_20,Champions League,Round of 16,round_of_16,Manchester City (ENG),Real Madrid (ESP),2,1
+2020-08-07,2019_20,Champions League,Round of 16,round_of_16,Juventus (ITA),Olympique Lyonnais (FRA),2,1
+2020-08-08,2019_20,Champions League,Round of 16,round_of_16,Bayern München (GER),Chelsea FC (ENG),4,1
+2020-08-08,2019_20,Champions League,Round of 16,round_of_16,FC Barcelona (ESP),SSC Napoli (ITA),3,1
+2020-08-12,2019_20,Champions League,Quarterfinals,quarterfinal,Atalanta (ITA),Paris Saint-Germain (FRA),1,2
+2020-08-13,2019_20,Champions League,Quarterfinals,quarterfinal,RB Leipzig (GER),Atlético Madrid (ESP),2,1
+2020-08-14,2019_20,Champions League,Quarterfinals,quarterfinal,FC Barcelona (ESP),Bayern München (GER),2,8
+2020-08-15,2019_20,Champions League,Quarterfinals,quarterfinal,Manchester City (ENG),Olympique Lyonnais (FRA),1,3
+2020-08-18,2019_20,Champions League,Semifinals,semifinal,RB Leipzig (GER),Paris Saint-Germain (FRA),0,3
+2020-08-19,2019_20,Champions League,Semifinals,semifinal,Olympique Lyonnais (FRA),Bayern München (GER),0,3
+2020-08-23,2019_20,Champions League,Final,final,Paris Saint-Germain (FRA),Bayern München (GER),0,1

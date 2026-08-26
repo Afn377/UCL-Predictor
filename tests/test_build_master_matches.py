@@ -95,3 +95,58 @@ def test_build_master_matches_validates_ftr_against_goals(tmp_path: Path) -> Non
         assert "FTR/result mismatches" in str(exc)
     else:
         raise AssertionError("Expected FTR/result mismatch validation to fail")
+
+
+def test_build_master_matches_includes_champions_league_rows(tmp_path: Path) -> None:
+    raw_dir = make_raw_tree(tmp_path)
+    write_csv(
+        raw_dir / "champions_league" / "2020_21.csv",
+        [
+            {
+                "date": "2020-12-01",
+                "season": "2020_21",
+                "competition": "Champions League",
+                "stage_raw": "Group A",
+                "stage": "league_phase",
+                "home_team": "UCL Home",
+                "away_team": "UCL Away",
+                "home_goals": 0,
+                "away_goals": 1,
+            }
+        ],
+    )
+
+    matches, report = build_master_matches(raw_dir=raw_dir)
+    ucl_rows = matches[matches["competition"] == "Champions League"]
+
+    assert report.input_files == 6
+    assert len(ucl_rows) == 1
+    assert ucl_rows.iloc[0]["stage"] == "league_phase"
+    assert ucl_rows.iloc[0]["result"] == 0
+    assert "stage" in matches.columns
+
+
+def test_build_master_matches_normalizes_ucl_gruppe_stage(tmp_path: Path) -> None:
+    raw_dir = make_raw_tree(tmp_path)
+    write_csv(
+        raw_dir / "champions_league" / "2019_20.csv",
+        [
+            {
+                "date": "2019-09-17",
+                "season": "2019_20",
+                "competition": "Champions League",
+                "stage_raw": "Gruppe G",
+                "stage": "Gruppe G",
+                "home_team": "RB Leipzig (GER)",
+                "away_team": "Benfica (POR)",
+                "home_goals": 2,
+                "away_goals": 1,
+            }
+        ],
+    )
+
+    matches, _ = build_master_matches(raw_dir=raw_dir)
+    ucl_row = matches[matches["competition"] == "Champions League"].iloc[0]
+
+    assert ucl_row["stage"] == "league_phase"
+    assert ucl_row["result"] == 2

@@ -71,30 +71,30 @@ date,season,competition,stage_raw,stage,home_team,away_team,home_goals,away_goal
 2020-12-02,2020_21,Champions League,Group F,league_phase,Club Brugge KV (BEL),Zenit St. Petersburg (RUS),3,0
 2020-12-08,2020_21,Champions League,Group F,league_phase,Zenit St. Petersburg (RUS),Borussia Dortmund (GER),1,2
 2020-12-08,2020_21,Champions League,Group F,league_phase,Lazio Roma (ITA),Club Brugge KV (BEL),2,2
-2020-10-20,2020_21,Champions League,Gruppe G,Gruppe G,Dinamo Kiev (UKR),Juventus (ITA),0,2
-2020-10-20,2020_21,Champions League,Gruppe G,Gruppe G,FC Barcelona (ESP),Ferencvárosi TC (HUN),5,1
-2020-10-28,2020_21,Champions League,Gruppe G,Gruppe G,Ferencvárosi TC (HUN),Dinamo Kiev (UKR),2,2
-2020-10-28,2020_21,Champions League,Gruppe G,Gruppe G,Juventus (ITA),FC Barcelona (ESP),0,2
-2020-11-04,2020_21,Champions League,Gruppe G,Gruppe G,FC Barcelona (ESP),Dinamo Kiev (UKR),2,1
-2020-11-04,2020_21,Champions League,Gruppe G,Gruppe G,Ferencvárosi TC (HUN),Juventus (ITA),1,4
-2020-11-24,2020_21,Champions League,Gruppe G,Gruppe G,Dinamo Kiev (UKR),FC Barcelona (ESP),0,4
-2020-11-24,2020_21,Champions League,Gruppe G,Gruppe G,Juventus (ITA),Ferencvárosi TC (HUN),2,1
-2020-12-02,2020_21,Champions League,Gruppe G,Gruppe G,Juventus (ITA),Dinamo Kiev (UKR),3,0
-2020-12-02,2020_21,Champions League,Gruppe G,Gruppe G,Ferencvárosi TC (HUN),FC Barcelona (ESP),0,3
-2020-12-08,2020_21,Champions League,Gruppe G,Gruppe G,Dinamo Kiev (UKR),Ferencvárosi TC (HUN),1,0
-2020-12-08,2020_21,Champions League,Gruppe G,Gruppe G,FC Barcelona (ESP),Juventus (ITA),0,3
-2020-10-20,2020_21,Champions League,Gruppe H,Gruppe H,RB Leipzig (GER),İstanbul Başakşehir (TUR),2,0
-2020-10-20,2020_21,Champions League,Gruppe H,Gruppe H,Paris Saint-Germain (FRA),Manchester United (ENG),1,2
-2020-10-28,2020_21,Champions League,Gruppe H,Gruppe H,İstanbul Başakşehir (TUR),Paris Saint-Germain (FRA),0,2
-2020-10-28,2020_21,Champions League,Gruppe H,Gruppe H,Manchester United (ENG),RB Leipzig (GER),5,0
-2020-11-04,2020_21,Champions League,Gruppe H,Gruppe H,İstanbul Başakşehir (TUR),Manchester United (ENG),2,1
-2020-11-04,2020_21,Champions League,Gruppe H,Gruppe H,RB Leipzig (GER),Paris Saint-Germain (FRA),2,1
-2020-11-24,2020_21,Champions League,Gruppe H,Gruppe H,Manchester United (ENG),İstanbul Başakşehir (TUR),4,1
-2020-11-24,2020_21,Champions League,Gruppe H,Gruppe H,Paris Saint-Germain (FRA),RB Leipzig (GER),1,0
-2020-12-02,2020_21,Champions League,Gruppe H,Gruppe H,İstanbul Başakşehir (TUR),RB Leipzig (GER),3,4
-2020-12-02,2020_21,Champions League,Gruppe H,Gruppe H,Manchester United (ENG),Paris Saint-Germain (FRA),1,3
-2020-12-08,2020_21,Champions League,Gruppe H,Gruppe H,RB Leipzig (GER),Manchester United (ENG),3,2
-2020-12-09,2020_21,Champions League,Gruppe H,Gruppe H,Paris Saint-Germain (FRA),İstanbul Başakşehir (TUR),5,1
+2020-10-20,2020_21,Champions League,Gruppe G,league_phase,Dinamo Kiev (UKR),Juventus (ITA),0,2
+2020-10-20,2020_21,Champions League,Gruppe G,league_phase,FC Barcelona (ESP),Ferencvárosi TC (HUN),5,1
+2020-10-28,2020_21,Champions League,Gruppe G,league_phase,Ferencvárosi TC (HUN),Dinamo Kiev (UKR),2,2
+2020-10-28,2020_21,Champions League,Gruppe G,league_phase,Juventus (ITA),FC Barcelona (ESP),0,2
+2020-11-04,2020_21,Champions League,Gruppe G,league_phase,FC Barcelona (ESP),Dinamo Kiev (UKR),2,1
+2020-11-04,2020_21,Champions League,Gruppe G,league_phase,Ferencvárosi TC (HUN),Juventus (ITA),1,4
+2020-11-24,2020_21,Champions League,Gruppe G,league_phase,Dinamo Kiev (UKR),FC Barcelona (ESP),0,4
+2020-11-24,2020_21,Champions League,Gruppe G,league_phase,Juventus (ITA),Ferencvárosi TC (HUN),2,1
+2020-12-02,2020_21,Champions League,Gruppe G,league_phase,Juventus (ITA),Dinamo Kiev (UKR),3,0
+2020-12-02,2020_21,Champions League,Gruppe G,league_phase,Ferencvárosi TC (HUN),FC Barcelona (ESP),0,3
+2020-12-08,2020_21,Champions League,Gruppe G,league_phase,Dinamo Kiev (UKR),Ferencvárosi TC (HUN),1,0
+2020-12-08,2020_21,Champions League,Gruppe G,league_phase,FC Barcelona (ESP),Juventus (ITA),0,3
+2020-10-20,2020_21,Champions League,Gruppe H,league_phase,RB Leipzig (GER),İstanbul Başakşehir (TUR),2,0
+2020-10-20,2020_21,Champions League,Gruppe H,league_phase,Paris Saint-Germain (FRA),Manchester United (ENG),1,2
+2020-10-28,2020_21,Champions League,Gruppe H,league_phase,İstanbul Başakşehir (TUR),Paris Saint-Germain (FRA),0,2
+2020-10-28,2020_21,Champions League,Gruppe H,league_phase,Manchester United (ENG),RB Leipzig (GER),5,0
+2020-11-04,2020_21,Champions League,Gruppe H,league_phase,İstanbul Başakşehir (TUR),Manchester United (ENG),2,1
+2020-11-04,2020_21,Champions League,Gruppe H,league_phase,RB Leipzig (GER),Paris Saint-Germain (FRA),2,1
+2020-11-24,2020_21,Champions League,Gruppe H,league_phase,Manchester United (ENG),İstanbul Başakşehir (TUR),4,1
+2020-11-24,2020_21,Champions League,Gruppe H,league_phase,Paris Saint-Germain (FRA),RB Leipzig (GER),1,0
+2020-12-02,2020_21,Champions League,Gruppe H,league_phase,İstanbul Başakşehir (TUR),RB Leipzig (GER),3,4
+2020-12-02,2020_21,Champions League,Gruppe H,league_phase,Manchester United (ENG),Paris Saint-Germain (FRA),1,3
+2020-12-08,2020_21,Champions League,Gruppe H,league_phase,RB Leipzig (GER),Manchester United (ENG),3,2
+2020-12-09,2020_21,Champions League,Gruppe H,league_phase,Paris Saint-Germain (FRA),İstanbul Başakşehir (TUR),5,1
 2021-02-16,2020_21,Champions League,Round of 16,round_of_16,RB Leipzig (GER),Liverpool FC (ENG),0,2
 2021-02-16,2020_21,Champions League,Round of 16,round_of_16,FC Barcelona (ESP),Paris Saint-Germain (FRA),1,4
 2021-02-17,2020_21,Champions League,Round of 16,round_of_16,FC Porto (POR),Juventus (ITA),2,1

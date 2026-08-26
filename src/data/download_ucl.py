@@ -56,7 +56,7 @@ def normalize_stage(stage):
     if "playoff" in stage_lower or "play-off" in stage_lower:
         return "playoff"
 
-    if "league" in stage_lower or "group" in stage_lower:
+    if "league" in stage_lower or "group" in stage_lower or "gruppe" in stage_lower:
         return "league_phase"
 
     if "round of 16" in stage_lower or "last 16" in stage_lower:
@@ -104,6 +104,7 @@ def parse_season(season):
         # Older files may use headings without the bullet.
         stage_keywords = [
             "group",
+            "gruppe",
             "league",
             "round of 16",
             "quarter-final",
@@ -146,7 +147,14 @@ def parse_season(season):
                 # Jan-Jul belong to the second year.
                 month_num = pd.to_datetime(month, format="%b").month
 
-                if month_num >= 7:
+                if month_num >= 7 and normalize_stage(current_stage) in {
+                    "round_of_16",
+                    "quarterfinal",
+                    "semifinal",
+                    "final",
+                }:
+                    year = start_year + 1
+                elif month_num >= 7:
                     year = start_year
                 else:
                     year = start_year + 1
