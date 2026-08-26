@@ -3,6 +3,7 @@ from pathlib import Path
 import pandas as pd
 
 from src.data.build_master_matches import build_master_matches, derive_result
+from src.data.team_names import load_team_name_mapping, normalize_team_name
 
 
 def write_csv(path: Path, rows: list[dict[str, object]]) -> None:
@@ -70,7 +71,7 @@ def test_build_master_matches_drops_blank_rows_and_sorts_by_date(tmp_path: Path)
     assert report.blank_rows_dropped == 1
     assert "Early Home" in set(matches["home_team"])
     assert matches["date"].is_monotonic_increasing
-    assert not matches[["date", "home_team", "away_team", "home_goals", "away_goals"]].isna().any().any()
+    assert not matches[["date", "home_team_raw", "away_team_raw", "home_team", "away_team", "home_goals", "away_goals"]].isna().any().any()
 
 
 def test_build_master_matches_validates_ftr_against_goals(tmp_path: Path) -> None:
@@ -150,3 +151,60 @@ def test_build_master_matches_normalizes_ucl_gruppe_stage(tmp_path: Path) -> Non
 
     assert ucl_row["stage"] == "league_phase"
     assert ucl_row["result"] == 2
+
+
+def test_build_master_matches_preserves_raw_names_and_applies_mapping(tmp_path: Path) -> None:
+    raw_dir = make_raw_tree(tmp_path)
+    mapping_path = tmp_path / "team_name_mapping.csv"
+    write_csv(
+        mapping_path,
+        [
+            {
+                "source_name": "Arsenal FC (ENG)",
+                "canonical_name": "Arsenal",
+            }
+        ],
+    )
+    write_csv(
+        raw_dir / "champions_league" / "2020_21.csv",
+        [
+            {
+                "date": "2020-12-01",
+                "season": "2020_21",
+                "competition": "Champions League",
+                "stage_raw": "Group A",
+                "stage": "league_phase",
+                "home_team": "Arsenal FC (ENG)",
+                "away_team": "Unmapped Club (AAA)",
+                "home_goals": 2,
+                "away_goals": 0,
+            }
+        ],
+    )
+
+    matches, report = build_master_matches(raw_dir=raw_dir, team_mapping_path=mapping_path)
+    ucl_row = matches[matches["competition"] == "Champions League"].iloc[0]
+
+    assert ucl_row["home_team_raw"] == "Arsenal FC (ENG)"
+    assert ucl_row["home_team"] == "Arsenal"
+    assert ucl_row["away_team_raw"] == "Unmapped Club (AAA)"
+    assert ucl_row["away_team"] == "Unmapped Club (AAA)"
+    assert report.unmapped_ucl_team_names == ("Unmapped Club (AAA)",)
+
+
+def test_team_name_mapping_loads_and_normalizes(tmp_path: Path) -> None:
+    mapping_path = tmp_path / "team_name_mapping.csv"
+    write_csv(
+        mapping_path,
+        [
+            {
+                "source_name": "FC Barcelona (ESP)",
+                "canonical_name": "Barcelona",
+            }
+        ],
+    )
+
+    mapping = load_team_name_mapping(mapping_path)
+
+    assert normalize_team_name("FC Barcelona (ESP)", mapping) == "Barcelona"
+    assert normalize_team_name("Already Canonical", mapping) == "Already Canonical"

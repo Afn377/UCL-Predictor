@@ -6,11 +6,18 @@ from pathlib import Path
 
 import pandas as pd
 
+from src.data.team_names import (
+    find_unmapped_ucl_style_names,
+    load_team_name_mapping,
+    normalize_team_names,
+)
+
 
 DATA_DIR = Path(__file__).resolve().parent
 RAW_DIR = DATA_DIR / "raw"
 PROCESSED_DIR = DATA_DIR / "processed"
 DEFAULT_OUTPUT_PATH = PROCESSED_DIR / "matches.csv"
+DEFAULT_TEAM_MAPPING_PATH = DATA_DIR / "team_name_mapping.csv"
 
 REQUIRED_DOMESTIC_COLUMNS = ["Date", "HomeTeam", "AwayTeam", "FTHG", "FTAG", "FTR"]
 REQUIRED_UCL_COLUMNS = [
@@ -57,6 +64,7 @@ class BuildReport:
     blank_rows_dropped: int
     incomplete_rows_dropped: int
     input_files: int
+    unmapped_ucl_team_names: tuple[str, ...]
 
 
 def parse_match_dates(values: pd.Series) -> pd.Series:
@@ -131,8 +139,8 @@ def load_domestic_file(path: Path, competition: str) -> tuple[pd.DataFrame, int,
             "season": path.stem,
             "competition": competition,
             "stage": pd.NA,
-            "home_team": core["HomeTeam"].astype(str).str.strip(),
-            "away_team": core["AwayTeam"].astype(str).str.strip(),
+            "home_team_raw": core["HomeTeam"].astype(str).str.strip(),
+            "away_team_raw": core["AwayTeam"].astype(str).str.strip(),
             "home_goals": core["home_goals"],
             "away_goals": core["away_goals"],
             "result": core["result"],
@@ -184,8 +192,8 @@ def load_ucl_file(path: Path) -> tuple[pd.DataFrame, int, int, int]:
             "season": core["season"].astype(str).str.strip(),
             "competition": "Champions League",
             "stage": normalize_stage_values(core["stage"]),
-            "home_team": core["home_team"].astype(str).str.strip(),
-            "away_team": core["away_team"].astype(str).str.strip(),
+            "home_team_raw": core["home_team"].astype(str).str.strip(),
+            "away_team_raw": core["away_team"].astype(str).str.strip(),
             "home_goals": core["home_goals"],
             "away_goals": core["away_goals"],
             "result": core["result"],
@@ -217,7 +225,10 @@ def iter_ucl_files(raw_dir: Path) -> list[Path]:
     return sorted(folder.glob("*.csv"))
 
 
-def build_master_matches(raw_dir: Path = RAW_DIR) -> tuple[pd.DataFrame, BuildReport]:
+def build_master_matches(
+    raw_dir: Path = RAW_DIR,
+    team_mapping_path: Path = DEFAULT_TEAM_MAPPING_PATH,
+) -> tuple[pd.DataFrame, BuildReport]:
     frames: list[pd.DataFrame] = []
     rows_read = 0
     blank_rows = 0
@@ -246,6 +257,9 @@ def build_master_matches(raw_dir: Path = RAW_DIR) -> tuple[pd.DataFrame, BuildRe
         raise ValueError(f"No match CSV files found under {raw_dir}")
 
     matches = pd.concat(frames, ignore_index=True)
+    team_mapping = load_team_name_mapping(team_mapping_path)
+    matches["home_team"] = normalize_team_names(matches["home_team_raw"], team_mapping)
+    matches["away_team"] = normalize_team_names(matches["away_team_raw"], team_mapping)
     matches = matches.sort_values(
         ["date", "competition", "home_team", "away_team"],
         kind="mergesort",
@@ -262,18 +276,39 @@ def build_master_matches(raw_dir: Path = RAW_DIR) -> tuple[pd.DataFrame, BuildRe
         ].head()
         raise ValueError(f"Unexpected duplicate matches found:\n{examples.to_string(index=False)}")
 
+    column_order = [
+        "date",
+        "season",
+        "competition",
+        "stage",
+        "home_team_raw",
+        "away_team_raw",
+        "home_team",
+        "away_team",
+        "home_goals",
+        "away_goals",
+        "result",
+    ]
+    matches = matches[column_order]
+    unmapped_ucl_team_names = find_unmapped_ucl_style_names(matches)
+
     report = BuildReport(
         rows_read=rows_read,
         rows_written=len(matches),
         blank_rows_dropped=blank_rows,
         incomplete_rows_dropped=incomplete_rows,
         input_files=len(input_files) + len(ucl_files),
+        unmapped_ucl_team_names=unmapped_ucl_team_names,
     )
     return matches, report
 
 
-def write_master_matches(output_path: Path = DEFAULT_OUTPUT_PATH, raw_dir: Path = RAW_DIR) -> BuildReport:
-    matches, report = build_master_matches(raw_dir=raw_dir)
+def write_master_matches(
+    output_path: Path = DEFAULT_OUTPUT_PATH,
+    raw_dir: Path = RAW_DIR,
+    team_mapping_path: Path = DEFAULT_TEAM_MAPPING_PATH,
+) -> BuildReport:
+    matches, report = build_master_matches(raw_dir=raw_dir, team_mapping_path=team_mapping_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     matches.to_csv(output_path, index=False)
     return report
@@ -283,12 +318,21 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Build the processed master match dataset.")
     parser.add_argument("--raw-dir", type=Path, default=RAW_DIR)
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT_PATH)
+    parser.add_argument("--team-mapping", type=Path, default=DEFAULT_TEAM_MAPPING_PATH)
     args = parser.parse_args()
 
-    report = write_master_matches(output_path=args.output, raw_dir=args.raw_dir)
+    report = write_master_matches(
+        output_path=args.output,
+        raw_dir=args.raw_dir,
+        team_mapping_path=args.team_mapping,
+    )
     print(f"Read {report.rows_read} rows from {report.input_files} files.")
     print(f"Dropped {report.blank_rows_dropped} blank rows.")
     print(f"Dropped {report.incomplete_rows_dropped} incomplete rows.")
+    if report.unmapped_ucl_team_names:
+        preview = ", ".join(report.unmapped_ucl_team_names[:20])
+        suffix = " ..." if len(report.unmapped_ucl_team_names) > 20 else ""
+        print(f"Unmapped UCL-style team names ({len(report.unmapped_ucl_team_names)}): {preview}{suffix}")
     print(f"Wrote {report.rows_written} matches to {args.output}.")
 
 
