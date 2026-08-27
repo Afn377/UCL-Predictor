@@ -3,14 +3,13 @@
 import argparse
 import time
 from io import StringIO
-from pathlib import Path
 
 import pandas as pd
 import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
-RAW_DIR = Path(__file__).resolve().parent / "raw"
+from src.data.build_master_matches import RAW_DIR
 
 LEAGUES = {
     "primeira-liga": "P1",
