@@ -13,6 +13,14 @@ PROCESSED_DIR = PROJECT_ROOT / "data" / "processed"
 DEFAULT_OUTPUT_PATH = PROCESSED_DIR / "matches.csv"
 
 REQUIRED_DOMESTIC_COLUMNS = ["Date", "HomeTeam", "AwayTeam", "FTHG", "FTAG", "FTR"]
+OPTIONAL_DOMESTIC_COLUMNS = {
+    "HS": "home_shots",
+    "AS": "away_shots",
+    "HST": "home_shots_on_target",
+    "AST": "away_shots_on_target",
+    "HC": "home_corners",
+    "AC": "away_corners",
+}
 
 COMPETITION_NAMES = {
     "premier-league": "Premier League",
@@ -74,7 +82,10 @@ def load_domestic_file(path: Path, competition: str) -> tuple[pd.DataFrame, int,
         raise ValueError(f"{path} is missing required columns: {missing}")
 
     rows_read = len(df)
-    core = df[REQUIRED_DOMESTIC_COLUMNS].copy()
+    available_optional_columns = [
+        column for column in OPTIONAL_DOMESTIC_COLUMNS if column in df.columns
+    ]
+    core = df[[*REQUIRED_DOMESTIC_COLUMNS, *available_optional_columns]].copy()
 
     blank_mask = core.isna().all(axis=1)
     blank_rows = int(blank_mask.sum())
@@ -83,6 +94,11 @@ def load_domestic_file(path: Path, competition: str) -> tuple[pd.DataFrame, int,
     core["date"] = parse_match_dates(core["Date"])
     core["home_goals"] = pd.to_numeric(core["FTHG"], errors="coerce")
     core["away_goals"] = pd.to_numeric(core["FTAG"], errors="coerce")
+    for raw_column, normalized_column in OPTIONAL_DOMESTIC_COLUMNS.items():
+        if raw_column in core.columns:
+            core[normalized_column] = pd.to_numeric(core[raw_column], errors="coerce")
+        else:
+            core[normalized_column] = pd.NA
 
     incomplete_mask = (
         core["date"].isna()
@@ -113,6 +129,12 @@ def load_domestic_file(path: Path, competition: str) -> tuple[pd.DataFrame, int,
             "away_team": core["AwayTeam"].astype(str).str.strip(),
             "home_goals": core["home_goals"],
             "away_goals": core["away_goals"],
+            "home_shots": core["home_shots"],
+            "away_shots": core["away_shots"],
+            "home_shots_on_target": core["home_shots_on_target"],
+            "away_shots_on_target": core["away_shots_on_target"],
+            "home_corners": core["home_corners"],
+            "away_corners": core["away_corners"],
             "result": core["result"],
         }
     )

@@ -95,3 +95,36 @@ def test_build_master_matches_validates_ftr_against_goals(tmp_path: Path) -> Non
         assert "FTR/result mismatches" in str(exc)
     else:
         raise AssertionError("Expected FTR/result mismatch validation to fail")
+
+def test_build_master_matches_preserves_domestic_shot_columns(tmp_path: Path) -> None:
+    raw_dir = make_raw_tree(tmp_path)
+    write_csv(
+        raw_dir / "premier-league" / "2021_22.csv",
+        [
+            {
+                "Date": "01/01/21",
+                "HomeTeam": "Shot Home",
+                "AwayTeam": "Shot Away",
+                "FTHG": 2,
+                "FTAG": 1,
+                "FTR": "H",
+                "HS": 14,
+                "AS": 8,
+                "HST": 6,
+                "AST": 3,
+                "HC": 7,
+                "AC": 2,
+            }
+        ],
+    )
+
+    matches, _ = build_master_matches(raw_dir=raw_dir)
+    shot_row = matches[matches["home_team"] == "Shot Home"].iloc[0]
+
+    assert shot_row["home_shots"] == 14
+    assert shot_row["away_shots"] == 8
+    assert shot_row["home_shots_on_target"] == 6
+    assert shot_row["away_shots_on_target"] == 3
+    assert shot_row["home_corners"] == 7
+    assert shot_row["away_corners"] == 2
+
