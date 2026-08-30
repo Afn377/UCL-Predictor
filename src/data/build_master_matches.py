@@ -12,7 +12,6 @@ from src.data.team_names import (
     normalize_team_names,
 )
 
-
 DATA_DIR = Path(__file__).resolve().parent
 RAW_DIR = DATA_DIR / "raw"
 PROCESSED_DIR = DATA_DIR / "processed"
@@ -28,7 +27,6 @@ OPTIONAL_DOMESTIC_COLUMNS = {
     "HC": "home_corners",
     "AC": "away_corners",
 }
-
 REQUIRED_UCL_COLUMNS = [
     "date",
     "season",
@@ -47,6 +45,25 @@ COMPETITION_NAMES = {
     "serie-a": "Serie A",
     "ligue-1": "Ligue 1",
 }
+EXTRA_COMPETITIONS = {
+    "primeira-liga": "Primeira Liga",
+    "eredivisie": "Eredivisie",
+    "belgian-pro-league": "Belgian Pro League",
+    "scottish-premiership": "Scottish Premiership",
+    "super-lig": "Super Lig",
+    "austrian-bundesliga": "Austrian Bundesliga",
+    "swiss-super-league": "Swiss Super League",
+    "danish-superliga": "Danish Superliga",
+    "greek-super-league": "Greek Super League",
+}
+SCORE_METADATA = [
+    "home_extra_time_goals",
+    "away_extra_time_goals",
+    "home_penalties",
+    "away_penalties",
+    "went_to_extra_time",
+    "score_raw",
+]
 
 RESULT_FROM_GOALS = {
     "away": 0,
@@ -77,6 +94,7 @@ class BuildReport:
 
 
 def parse_match_dates(values: pd.Series) -> pd.Series:
+    # football-data mixes 4- and 2-digit years
     date_text = values.astype("string").str.strip()
     parsed = pd.to_datetime(date_text, format="%d/%m/%Y", errors="coerce")
     missing_mask = parsed.isna()
@@ -98,25 +116,31 @@ def derive_result(home_goals: pd.Series, away_goals: pd.Series) -> pd.Series:
 
 
 def normalize_stage_values(values: pd.Series) -> pd.Series:
+    # map known variants, keep unknown text for inspection
     stage_text = values.astype("string").str.strip()
     normalized = stage_text.str.lower().map(STAGE_NORMALIZATIONS)
     return normalized.fillna(stage_text)
 
 
-def load_domestic_file(path: Path, competition: str) -> tuple[pd.DataFrame, int, int, int]:
-    df = pd.read_csv(path)
-    missing_columns = [col for col in REQUIRED_DOMESTIC_COLUMNS if col not in df.columns]
+def load_domestic_file(
+    path: Path, competition: str
+) -> tuple[pd.DataFrame, int, int, int]:
+    raw_matches = pd.read_csv(path)
+    missing_columns = [
+        col for col in REQUIRED_DOMESTIC_COLUMNS if col not in raw_matches.columns
+    ]
 
     if missing_columns:
         missing = ", ".join(missing_columns)
         raise ValueError(f"{path} is missing required columns: {missing}")
 
-    rows_read = len(df)
+    rows_read = len(raw_matches)
     available_optional_columns = [
-        column for column in OPTIONAL_DOMESTIC_COLUMNS if column in df.columns
+        column for column in OPTIONAL_DOMESTIC_COLUMNS if column in raw_matches.columns
     ]
-    core = df[[*REQUIRED_DOMESTIC_COLUMNS, *available_optional_columns]].copy()
+    core = raw_matches[[*REQUIRED_DOMESTIC_COLUMNS, *available_optional_columns]].copy()
 
+    # some provider files end with blank rows; count them
     blank_mask = core.isna().all(axis=1)
     blank_rows = int(blank_mask.sum())
     core = core.loc[~blank_mask].copy()
@@ -130,6 +154,7 @@ def load_domestic_file(path: Path, competition: str) -> tuple[pd.DataFrame, int,
         else:
             core[normalized_column] = pd.NA
 
+    # need both clubs, a date, and a regulation-time score
     incomplete_mask = (
         core["date"].isna()
         | core["HomeTeam"].isna()
@@ -147,8 +172,12 @@ def load_domestic_file(path: Path, competition: str) -> tuple[pd.DataFrame, int,
     ftr_result = core["FTR"].map(RESULT_FROM_FTR)
     mismatches = core[ftr_result.notna() & (ftr_result != core["result"])]
     if not mismatches.empty:
-        examples = mismatches[["Date", "HomeTeam", "AwayTeam", "FTHG", "FTAG", "FTR"]].head()
-        raise ValueError(f"{path} has FTR/result mismatches:\n{examples.to_string(index=False)}")
+        examples = mismatches[
+            ["Date", "HomeTeam", "AwayTeam", "FTHG", "FTAG", "FTR"]
+        ].head()
+        raise ValueError(
+            f"{path} has FTR/result mismatches:\n{examples.to_string(index=False)}"
+        )
 
     normalized = pd.DataFrame(
         {
@@ -173,16 +202,23 @@ def load_domestic_file(path: Path, competition: str) -> tuple[pd.DataFrame, int,
     return normalized, rows_read, blank_rows, incomplete_rows
 
 
-def load_ucl_file(path: Path) -> tuple[pd.DataFrame, int, int, int]:
-    df = pd.read_csv(path)
-    missing_columns = [col for col in REQUIRED_UCL_COLUMNS if col not in df.columns]
+def load_ucl_file(
+    path: Path, competition="Champions League"
+) -> tuple[pd.DataFrame, int, int, int]:
+    # downloader normalizes UCL, but schema still checked
+    raw_matches = pd.read_csv(path)
+    missing_columns = [
+        col for col in REQUIRED_UCL_COLUMNS if col not in raw_matches.columns
+    ]
 
     if missing_columns:
         missing = ", ".join(missing_columns)
         raise ValueError(f"{path} is missing required columns: {missing}")
 
-    rows_read = len(df)
-    core = df[REQUIRED_UCL_COLUMNS].copy()
+    rows_read = len(raw_matches)
+    core = raw_matches[
+        REQUIRED_UCL_COLUMNS + [c for c in SCORE_METADATA if c in raw_matches]
+    ].copy()
 
     blank_mask = core.isna().all(axis=1)
     blank_rows = int(blank_mask.sum())
@@ -213,26 +249,40 @@ def load_ucl_file(path: Path) -> tuple[pd.DataFrame, int, int, int]:
         {
             "date": core["date"].dt.normalize(),
             "season": core["season"].astype(str).str.strip(),
-            "competition": "Champions League",
+            "competition": competition,
             "stage": normalize_stage_values(core["stage"]),
             "home_team_raw": core["home_team"].astype(str).str.strip(),
             "away_team_raw": core["away_team"].astype(str).str.strip(),
             "home_goals": core["home_goals"],
             "away_goals": core["away_goals"],
+            "home_shots": pd.NA,
+            "away_shots": pd.NA,
+            "home_shots_on_target": pd.NA,
+            "away_shots_on_target": pd.NA,
+            "home_corners": pd.NA,
+            "away_corners": pd.NA,
             "result": core["result"],
         }
     )
 
+    for column in SCORE_METADATA:
+        normalized[column] = core[column] if column in core else pd.NA
     return normalized, rows_read, blank_rows, incomplete_rows
 
 
 def iter_domestic_files(raw_dir: Path) -> list[tuple[Path, str]]:
     files: list[tuple[Path, str]] = []
 
-    for folder_name, competition_name in COMPETITION_NAMES.items():
+    for folder_name, competition_name in (
+        COMPETITION_NAMES | EXTRA_COMPETITIONS
+    ).items():
         folder = raw_dir / folder_name
         if not folder.exists():
-            raise FileNotFoundError(f"Expected raw data folder does not exist: {folder}")
+            if folder_name in EXTRA_COMPETITIONS:
+                continue
+            raise FileNotFoundError(
+                f"Expected raw data folder does not exist: {folder}"
+            )
 
         for csv_path in sorted(folder.glob("*.csv")):
             files.append((csv_path, competition_name))
@@ -259,9 +309,11 @@ def build_master_matches(
     input_files = iter_domestic_files(raw_dir)
 
     for csv_path, competition in input_files:
-        frame, file_rows_read, file_blank_rows, file_incomplete_rows = load_domestic_file(
-            csv_path,
-            competition,
+        frame, file_rows_read, file_blank_rows, file_incomplete_rows = (
+            load_domestic_file(
+                csv_path,
+                competition,
+            )
         )
         frames.append(frame)
         rows_read += file_rows_read
@@ -270,15 +322,31 @@ def build_master_matches(
 
     ucl_files = iter_ucl_files(raw_dir)
     for csv_path in ucl_files:
-        frame, file_rows_read, file_blank_rows, file_incomplete_rows = load_ucl_file(csv_path)
+        frame, file_rows_read, file_blank_rows, file_incomplete_rows = load_ucl_file(
+            csv_path
+        )
         frames.append(frame)
         rows_read += file_rows_read
         blank_rows += file_blank_rows
         incomplete_rows += file_incomplete_rows
 
+    european_files = []
+    for folder, competition in [
+        ("europa_league", "Europa League"),
+        ("conference_league", "Conference League"),
+    ]:
+        for csv_path in sorted((raw_dir / folder).glob("*.csv")):
+            frame, read, blank, incomplete = load_ucl_file(csv_path, competition)
+            frames.append(frame)
+            rows_read += read
+            blank_rows += blank
+            incomplete_rows += incomplete
+            european_files.append(csv_path)
+
     if not frames:
         raise ValueError(f"No match CSV files found under {raw_dir}")
 
+    # map names before sorting and duplicate checks
     matches = pd.concat(frames, ignore_index=True)
     team_mapping = load_team_name_mapping(team_mapping_path)
     matches["home_team"] = normalize_team_names(matches["home_team_raw"], team_mapping)
@@ -288,6 +356,7 @@ def build_master_matches(
         kind="mergesort",
     ).reset_index(drop=True)
 
+    # dup fixture keys would repeat results in rolling features
     duplicates = matches.duplicated(
         subset=["date", "competition", "home_team", "away_team"],
         keep=False,
@@ -295,9 +364,18 @@ def build_master_matches(
     if duplicates.any():
         examples = matches.loc[
             duplicates,
-            ["date", "competition", "home_team", "away_team", "home_goals", "away_goals"],
+            [
+                "date",
+                "competition",
+                "home_team",
+                "away_team",
+                "home_goals",
+                "away_goals",
+            ],
         ].head()
-        raise ValueError(f"Unexpected duplicate matches found:\n{examples.to_string(index=False)}")
+        raise ValueError(
+            f"Unexpected duplicate matches found:\n{examples.to_string(index=False)}"
+        )
 
     column_order = [
         "date",
@@ -310,15 +388,20 @@ def build_master_matches(
         "away_team",
         "home_goals",
         "away_goals",
-        "result",
         "home_shots",
         "away_shots",
         "home_shots_on_target",
         "away_shots_on_target",
         "home_corners",
         "away_corners",
+        "result",
     ]
-    matches = matches[column_order]
+    matches = matches[column_order + [c for c in SCORE_METADATA if c in matches]]
+    # ids survive provider display-name changes
+    from src.data.team_names import club_id
+
+    for side in ("home", "away"):
+        matches[f"{side}_team_id"] = matches[f"{side}_team"].map(club_id)
     unmapped_ucl_team_names = find_unmapped_ucl_style_names(matches)
 
     report = BuildReport(
@@ -326,7 +409,7 @@ def build_master_matches(
         rows_written=len(matches),
         blank_rows_dropped=blank_rows,
         incomplete_rows_dropped=incomplete_rows,
-        input_files=len(input_files) + len(ucl_files),
+        input_files=len(input_files) + len(ucl_files) + len(european_files),
         unmapped_ucl_team_names=unmapped_ucl_team_names,
     )
     return matches, report
@@ -337,14 +420,18 @@ def write_master_matches(
     raw_dir: Path = RAW_DIR,
     team_mapping_path: Path = DEFAULT_TEAM_MAPPING_PATH,
 ) -> BuildReport:
-    matches, report = build_master_matches(raw_dir=raw_dir, team_mapping_path=team_mapping_path)
+    matches, report = build_master_matches(
+        raw_dir=raw_dir, team_mapping_path=team_mapping_path
+    )
     output_path.parent.mkdir(parents=True, exist_ok=True)
     matches.to_csv(output_path, index=False)
     return report
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Build the processed master match dataset.")
+    parser = argparse.ArgumentParser(
+        description="Build the processed master match dataset."
+    )
     parser.add_argument("--raw-dir", type=Path, default=RAW_DIR)
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT_PATH)
     parser.add_argument("--team-mapping", type=Path, default=DEFAULT_TEAM_MAPPING_PATH)
@@ -361,7 +448,9 @@ def main() -> None:
     if report.unmapped_ucl_team_names:
         preview = ", ".join(report.unmapped_ucl_team_names[:20])
         suffix = " ..." if len(report.unmapped_ucl_team_names) > 20 else ""
-        print(f"Unmapped UCL-style team names ({len(report.unmapped_ucl_team_names)}): {preview}{suffix}")
+        print(
+            f"Unmapped UCL-style team names ({len(report.unmapped_ucl_team_names)}): {preview}{suffix}"
+        )
     print(f"Wrote {report.rows_written} matches to {args.output}.")
 
 
