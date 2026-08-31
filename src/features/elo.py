@@ -11,8 +11,7 @@ DEFAULT_INPUT_PATH = PROJECT_ROOT / "src" / "data" / "processed" / "matches.csv"
 DEFAULT_OUTPUT_PATH = PROJECT_ROOT / "src" / "data" / "processed" / "matches_with_elo.csv"
 
 DEFAULT_INITIAL_RATING = 1500.0
-DEFAULT_K_FACTOR = 30.0
-HOME_ADVANTAGE = 60.0
+DEFAULT_K_FACTOR = 20.0
 
 REQUIRED_COLUMNS = ["date", "home_team", "away_team", "result"]
 
@@ -62,7 +61,7 @@ def add_elo_features(
         home_elo_before.append(home_rating)
         away_elo_before.append(away_rating)
 
-        expected_home = expected_score(home_rating + HOME_ADVANTAGE, away_rating)
+        expected_home = expected_score(home_rating, away_rating)
         expected_away = 1 - expected_home
         actual_home, actual_away = score_from_result(int(row.result))
 

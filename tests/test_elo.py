@@ -65,9 +65,9 @@ def test_second_match_uses_updated_pre_match_ratings() -> None:
 
     featured = add_elo_features(matches)
 
-    assert featured.loc[1, "home_elo_before"] == 1487.5649603601544
-    assert featured.loc[1, "away_elo_before"] == 1512.4350396398456
-    assert featured.loc[1, "elo_diff"] == -24.870079279691254
+    assert featured.loc[1, "home_elo_before"] == 1490
+    assert featured.loc[1, "away_elo_before"] == 1510
+    assert featured.loc[1, "elo_diff"] == -20
 
 
 def test_draw_moves_ratings_toward_each_other() -> None:
@@ -96,9 +96,9 @@ def test_draw_moves_ratings_toward_each_other() -> None:
 
     featured = add_elo_features(matches)
 
-    assert featured.loc[2, "home_elo_before"] < 1515
-    assert featured.loc[2, "away_elo_before"] > 1485
-    assert featured.loc[2, "elo_diff"] < 30
+    assert featured.loc[2, "home_elo_before"] < 1510
+    assert featured.loc[2, "away_elo_before"] > 1490
+    assert featured.loc[2, "elo_diff"] < 20
 
 
 def test_matches_are_sorted_chronologically_before_elo_updates() -> None:
@@ -123,30 +123,4 @@ def test_matches_are_sorted_chronologically_before_elo_updates() -> None:
 
     assert featured.loc[0, "date"] == pd.Timestamp("2020-01-01")
     assert featured.loc[1, "home_team"] == "Chelsea"
-    assert featured.loc[1, "home_elo_before"] == 1487.5649603601544
-
-
-def test_home_advantage_raises_home_expected_score() -> None:
-    matches = make_matches(
-        [
-            {
-                "date": "2020-01-01",
-                "home_team": "Arsenal",
-                "away_team": "Chelsea",
-                "result": 2,
-            },
-            {
-                "date": "2020-01-08",
-                "home_team": "Chelsea",
-                "away_team": "Arsenal",
-                "result": 1,
-            },
-        ]
-    )
-
-    featured = add_elo_features(matches)
-
-    k_factor = 30.0
-    home_gain = featured.loc[1, "away_elo_before"] - 1500
-
-    assert home_gain < k_factor * 0.5
+    assert featured.loc[1, "home_elo_before"] == 1490
