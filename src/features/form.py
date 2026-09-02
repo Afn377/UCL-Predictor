@@ -10,7 +10,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_INPUT_PATH = PROJECT_ROOT / "src" / "data" / "processed" / "matches_with_elo.csv"
 DEFAULT_OUTPUT_PATH = PROJECT_ROOT / "src" / "data" / "processed" / "matches_with_features.csv"
 
-DEFAULT_WINDOWS = (3, 5)
+DEFAULT_WINDOWS = (5, 10)
 
 REQUIRED_COLUMNS = [
     "date",
