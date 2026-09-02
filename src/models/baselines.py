@@ -34,5 +34,46 @@ def train_logistic_model(train, features):
 
 
 def predict_logistic_probabilities(model, data, features):
+    # predict probabilities for each of 0, 1, 2 classes and return the result
     probabilities = model.predict_proba(data[features])
     return probabilities
+
+
+def evaluate_probabilities(y_true, probabilities):
+    return {
+        "log_loss": log_loss(y_true, probabilities, labels=CLASSES),
+        # pick the class with highest probability to compare to the true outcome
+        "accuracy": accuracy_score(y_true, probabilities.argmax(axis=1))
+    }
+
+
+def run_baselines(input_path=DEFAULT_INPUT):
+    # tell pandas to treat the date column as a datetime object
+    df = pd.read_csv(input_path, parse_dates=["date"])
+    train, test = temporal_train_test_split(df)
+
+    rows = []
+
+    # predict the base rate probabilities for each class
+    naive_probabilities = naive_base_rate_probabilities(train, len(test)).to_numpy()
+    rows.append({"model":"naive_base_rate", **evaluate_probabilities(test["result"], naive_probabilities)})
+
+    # predict the probabilities using logistic regression with only ELO
+    elo_model = train_logistic_model(train, ELO_FEATURES)
+    elo_probabilities = predict_logistic_probabilities(elo_model, test, ELO_FEATURES)
+    rows.append({"model":"elo_logistic", **evaluate_probabilities(test["result"], elo_probabilities)})
+
+    # predict probabilities using logistic regression with all features
+    feature_model = train_logistic_model(train, FULL_FEATURES)
+    feature_probabilities = predict_logistic_probabilities(feature_model, test, FULL_FEATURES)
+    rows.append({"model":"feature_logistic", **evaluate_probabilities(test["result"], feature_probabilities)})
+
+    return pd.DataFrame(rows)
+
+
+def main():
+    results = run_baselines()
+    print(results.to_string(index=False))
+
+if __name__ == "__main__":
+    main()
