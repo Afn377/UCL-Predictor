@@ -101,6 +101,25 @@ def scoreline_result_probabilities(lambda_home: float, lambda_away: float, max_g
     }
 
 
+def result_probability_array(predictions: pd.DataFrame, max_goals: int = 10) -> pd.DataFrame:
+    rows = []
+    for row in predictions.itertuples(index=False):
+        probabilities = scoreline_result_probabilities(
+            row.lambda_home,
+            row.lambda_away,
+            max_goals=max_goals,
+        )
+        rows.append(
+            {
+                0: probabilities["away_win_probability"],
+                1: probabilities["draw_probability"],
+                2: probabilities["home_win_probability"],
+            }
+        )
+
+    return pd.DataFrame(rows)
+
+
 def evaluate_poisson_predictions(test: pd.DataFrame, predictions: pd.DataFrame) -> dict[str, float]:
     return {
         "home_goal_deviance": mean_poisson_deviance(test["home_goals"], predictions["lambda_home"]),

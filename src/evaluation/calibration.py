@@ -15,10 +15,11 @@ from src.models.baselines import (
     predict_logistic_probabilities,
     train_logistic_model,
 )
+from src.models.poisson import predict_goal_lambdas, result_probability_array, train_poisson_models
 
 
 ROOT = Path(__file__).resolve().parents[2]
-DEFAULT_INPUT = ROOT / "src" / "data" / "processed" / "model_dataset.csv"
+DEFAULT_INPUT = ROOT / "src" / "data" / "processed" / "matches_with_features.csv"
 DEFAULT_PREDICTIONS_OUTPUT = ROOT / "src" / "data" / "processed" / "temporal_predictions.csv"
 DEFAULT_CALIBRATION_OUTPUT = ROOT / "src" / "data" / "processed" / "calibration_curve.csv"
 
@@ -37,6 +38,12 @@ def predictions_for_model(
 ) -> pd.DataFrame:
     if model_name == "naive_base_rate":
         probabilities = naive_base_rate_probabilities(train, len(test)).to_numpy()
+    elif model_name == "poisson_score_model":
+        if features is None:
+            raise ValueError("features must be provided for the Poisson model")
+        home_model, away_model = train_poisson_models(train, features)
+        goal_predictions = predict_goal_lambdas(home_model, away_model, test, features)
+        probabilities = result_probability_array(goal_predictions).to_numpy()
     else:
         if features is None:
             raise ValueError("features must be provided for logistic models")
@@ -49,6 +56,7 @@ def predictions_for_model(
 
 def collect_temporal_predictions(input_path: Path = DEFAULT_INPUT) -> pd.DataFrame:
     df = pd.read_csv(input_path, parse_dates=["date"])
+    df = df.dropna(subset=FULL_FEATURES).reset_index(drop=True)
     prediction_frames: list[pd.DataFrame] = []
 
     for split_name, test_start, test_end in SEASON_SPLITS:
@@ -67,6 +75,7 @@ def collect_temporal_predictions(input_path: Path = DEFAULT_INPUT) -> pd.DataFra
                 predictions_for_model(train, test, "naive_base_rate").assign(split=split_name),
                 predictions_for_model(train, test, "elo_logistic", ELO_FEATURES).assign(split=split_name),
                 predictions_for_model(train, test, "feature_logistic", FULL_FEATURES).assign(split=split_name),
+                predictions_for_model(train, test, "poisson_score_model", FULL_FEATURES).assign(split=split_name),
             ]
         )
 

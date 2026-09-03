@@ -12,9 +12,14 @@ from src.models.baselines import (
     train_logistic_model,
     predict_logistic_probabilities,
 )
+from src.models.poisson import (
+    predict_goal_lambdas,
+    result_probability_array,
+    train_poisson_models,
+)
 
 ROOT = Path(__file__).resolve().parents[2]
-DEFAULT_INPUT = ROOT / "src" / "data" / "processed" / "model_dataset.csv"
+DEFAULT_INPUT = ROOT / "src" / "data" / "processed" / "matches_with_features.csv"
 DEFAULT_OUTPUT = ROOT / "src" / "data" / "processed" / "temporal_evaluation.csv"
 
 SEASON_SPLITS = [
@@ -88,11 +93,25 @@ def evaluate_models_for_split(train, test, split_name):
         }
     )
 
+    home_poisson, away_poisson = train_poisson_models(train, FULL_FEATURES)
+    goal_predictions = predict_goal_lambdas(home_poisson, away_poisson, test, FULL_FEATURES)
+    poisson_probs = result_probability_array(goal_predictions).to_numpy()
+    rows.append(
+        {
+            "split": split_name,
+            "model": "poisson_score_model",
+            "train_rows": len(train),
+            "test_rows": len(test),
+            **evaluate_probabilities_with_brier(test["result"], poisson_probs),
+        }
+    )
+
     return rows
 
 
 def run_temporal_evaluation(input_path=DEFAULT_INPUT):
     df = pd.read_csv(input_path, parse_dates=["date"])
+    df = df.dropna(subset=FULL_FEATURES).reset_index(drop=True)
 
     all_rows = []
 

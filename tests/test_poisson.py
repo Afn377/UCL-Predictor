@@ -8,6 +8,7 @@ from src.models.poisson import (
     prepare_score_model_dataset,
     scoreline_probabilities,
     scoreline_result_probabilities,
+    result_probability_array,
     temporal_train_test_split,
     train_poisson_models,
 )
@@ -73,6 +74,22 @@ def test_scoreline_result_probabilities_sum_to_one_after_truncation() -> None:
         "home_win_probability",
     }
     assert np.isclose(sum(probabilities.values()), 1)
+
+
+def test_result_probability_array_uses_class_order() -> None:
+    predictions = pd.DataFrame(
+        [
+            {
+                "lambda_home": 1.5,
+                "lambda_away": 1.0,
+            }
+        ]
+    )
+
+    probabilities = result_probability_array(predictions)
+
+    assert list(probabilities.columns) == [0, 1, 2]
+    assert np.isclose(probabilities.iloc[0].sum(), 1)
 
 
 def test_evaluate_poisson_predictions_returns_deviance_metrics() -> None:
