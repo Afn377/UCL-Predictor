@@ -57,9 +57,21 @@ def train_score_models_until(model_input: pd.DataFrame, cutoff_date: str | pd.Ti
     return train_poisson_models(train)
 
 
-def _fixture_features(home_team: str, away_team: str, match_history: pd.DataFrame) -> pd.DataFrame:
+def _fixture_features(
+    home_team: str,
+    away_team: str,
+    match_history: pd.DataFrame,
+    match_date: str | pd.Timestamp,
+    competition: str,
+) -> pd.DataFrame:
     try:
-        return build_prediction_features(home_team, away_team, match_history)
+        return build_prediction_features(
+            home_team,
+            away_team,
+            match_history,
+            match_date=match_date,
+            competition=competition,
+        )
     except ValueError:
         return pd.DataFrame([{feature: 0.0 for feature in FULL_FEATURES}])
 
@@ -75,7 +87,13 @@ def predict_remaining_goal_lambdas(
 
     rows = []
     for fixture in remaining.itertuples(index=False):
-        features = _fixture_features(str(fixture.home_team), str(fixture.away_team), history)
+        features = _fixture_features(
+            str(fixture.home_team),
+            str(fixture.away_team),
+            history,
+            fixture.date,
+            fixture.competition,
+        )
         rows.append(
             {
                 "date": fixture.date,

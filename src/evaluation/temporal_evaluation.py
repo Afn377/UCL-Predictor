@@ -17,6 +17,7 @@ from src.models.poisson import (
     result_probability_array,
     train_poisson_models,
 )
+from src.models.xgboost_model import train_xgboost_classifier
 
 ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_INPUT = ROOT / "src" / "data" / "processed" / "matches_with_features.csv"
@@ -90,6 +91,18 @@ def evaluate_models_for_split(train, test, split_name):
             "train_rows": len(train),
             "test_rows": len(test),
             **evaluate_probabilities_with_brier(test["result"], feature_probs),
+        }
+    )
+
+    xgboost_model = train_xgboost_classifier(train, FULL_FEATURES)
+    xgboost_probs = xgboost_model.predict_proba(test[FULL_FEATURES])
+    rows.append(
+        {
+            "split": split_name,
+            "model": "xgboost_classifier",
+            "train_rows": len(train),
+            "test_rows": len(test),
+            **evaluate_probabilities_with_brier(test["result"], xgboost_probs),
         }
     )
 

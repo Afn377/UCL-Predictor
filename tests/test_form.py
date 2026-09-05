@@ -168,3 +168,95 @@ def test_diff_features_compare_home_and_away_prior_form() -> None:
     assert target["away_ppg_5_before"] == 0
     assert target["ppg_5_diff"] == 3
     assert target["goal_difference_5_diff"] == 3
+
+
+def test_rest_and_congestion_features_use_prior_match_dates() -> None:
+    matches = make_matches(
+        [
+            {
+                "date": "2020-01-01",
+                "home_team": "Arsenal",
+                "away_team": "Team A",
+                "home_goals": 1,
+                "away_goals": 0,
+                "result": 2,
+            },
+            {
+                "date": "2020-01-05",
+                "home_team": "Arsenal",
+                "away_team": "Team B",
+                "home_goals": 1,
+                "away_goals": 1,
+                "result": 1,
+            },
+            {
+                "date": "2020-01-12",
+                "home_team": "Arsenal",
+                "away_team": "Team C",
+                "home_goals": 0,
+                "away_goals": 2,
+                "result": 0,
+            },
+        ]
+    )
+
+    featured = add_rolling_form_features(matches, windows=(5,))
+
+    assert featured.loc[1, "home_days_since_match_before"] == 4
+    assert featured.loc[1, "home_matches_last_7_before"] == 1
+    assert featured.loc[2, "home_days_since_match_before"] == 7
+    assert featured.loc[2, "home_matches_last_7_before"] == 1
+    assert featured.loc[2, "home_matches_last_14_before"] == 2
+
+
+def test_advanced_strength_features_use_prior_context() -> None:
+    matches = make_matches(
+        [
+            {
+                "date": "2024-09-01",
+                "season": "2024_25",
+                "competition": "Champions League",
+                "home_team": "Arsenal",
+                "away_team": "Team A",
+                "home_goals": 2,
+                "away_goals": 0,
+                "home_elo_before": 1600.0,
+                "away_elo_before": 1560.0,
+                "result": 2,
+            },
+            {
+                "date": "2024-09-08",
+                "season": "2024_25",
+                "competition": "Premier League",
+                "home_team": "Team B",
+                "away_team": "Chelsea",
+                "home_goals": 0,
+                "away_goals": 1,
+                "home_elo_before": 1500.0,
+                "away_elo_before": 1510.0,
+                "result": 0,
+            },
+            {
+                "date": "2024-09-15",
+                "season": "2024_25",
+                "competition": "Champions League",
+                "home_team": "Arsenal",
+                "away_team": "Chelsea",
+                "home_goals": 1,
+                "away_goals": 1,
+                "home_elo_before": 1620.0,
+                "away_elo_before": 1520.0,
+                "result": 1,
+            },
+        ]
+    )
+
+    featured = add_rolling_form_features(matches)
+    target = featured[(featured["home_team"] == "Arsenal") & (featured["away_team"] == "Chelsea")].iloc[0]
+
+    assert target["is_new_ucl_format"] == 1
+    assert target["home_ucl_matches_before"] == 1
+    assert target["away_ucl_matches_before"] == 0
+    assert target["ucl_experience_matches_diff"] == 1
+    assert target["home_opponent_adjusted_goal_difference_38_before"] > 2
+    assert target["home_goals_against_top_opponents_38_before"] == 0
