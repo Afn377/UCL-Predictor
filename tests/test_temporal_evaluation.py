@@ -14,9 +14,16 @@ def make_dataset():
         rows.append(
             {
                 "date": pd.Timestamp("2020-01-01") + pd.Timedelta(days=i),
+                "season": "2020_21",
+                "competition": "Premier League",
+                "stage": None,
+                "home_team": f"Home {i}",
+                "away_team": f"Away {i}",
                 "elo_diff": i - 45,
                 "ppg_5_diff": (i % 5) - 2,
                 "goal_difference_5_diff": (i % 7) - 3,
+                "home_goals": i % 4,
+                "away_goals": (i + 1) % 3,
                 "result": i % 3,
             }
         )
@@ -25,9 +32,16 @@ def make_dataset():
         rows.append(
             {
                 "date": pd.Timestamp("2021-01-01") + pd.Timedelta(days=i),
+                "season": "2021_22",
+                "competition": "Premier League",
+                "stage": None,
+                "home_team": f"Test Home {i}",
+                "away_team": f"Test Away {i}",
                 "elo_diff": i - 15,
                 "ppg_5_diff": (i % 5) - 2,
                 "goal_difference_5_diff": (i % 7) - 3,
+                "home_goals": i % 4,
+                "away_goals": (i + 1) % 3,
                 "result": i % 3,
             }
         )
@@ -76,7 +90,7 @@ def test_evaluate_probabilities_with_brier_returns_three_metrics():
     assert set(result) == {"log_loss", "accuracy", "brier_score"}
 
 
-def test_evaluate_models_for_split_returns_three_models():
+def test_evaluate_models_for_split_returns_four_models():
     df = make_dataset()
     train, test = make_temporal_split(
         df,
@@ -87,10 +101,11 @@ def test_evaluate_models_for_split_returns_three_models():
 
     rows = evaluate_models_for_split(train, test, split_name="2021_22")
 
-    assert len(rows) == 3
+    assert len(rows) == 4
     assert {row["model"] for row in rows} == {
         "naive_base_rate",
         "elo_logistic",
         "feature_logistic",
+        "poisson_score_model",
     }
     assert all(row["split"] == "2021_22" for row in rows)

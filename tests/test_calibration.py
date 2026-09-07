@@ -19,9 +19,12 @@ def make_dataset() -> pd.DataFrame:
                 "competition": "Premier League",
                 "home_team": f"Home {i}",
                 "away_team": f"Away {i}",
+                "stage": None,
                 "elo_diff": i - 20,
                 "ppg_5_diff": (i % 5) - 2,
                 "goal_difference_5_diff": (i % 7) - 3,
+                "home_goals": i % 4,
+                "away_goals": (i + 1) % 3,
                 "result": i % 3,
             }
         )
@@ -44,6 +47,23 @@ def test_predictions_for_naive_model_outputs_metadata_and_probabilities() -> Non
     assert len(predictions) == len(test)
     assert set(PROBABILITY_COLUMNS).issubset(predictions.columns)
     assert set(predictions["model"]) == {"naive_base_rate"}
+    assert np.allclose(predictions[PROBABILITY_COLUMNS].sum(axis=1), 1)
+
+
+def test_predictions_for_poisson_model_outputs_result_probabilities() -> None:
+    data = make_dataset()
+    train = data.iloc[:30]
+    test = data.iloc[30:]
+
+    predictions = predictions_for_model(
+        train,
+        test,
+        "poisson_score_model",
+        ["elo_diff", "ppg_5_diff", "goal_difference_5_diff"],
+    )
+
+    assert len(predictions) == len(test)
+    assert set(predictions["model"]) == {"poisson_score_model"}
     assert np.allclose(predictions[PROBABILITY_COLUMNS].sum(axis=1), 1)
 
 
