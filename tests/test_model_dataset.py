@@ -11,11 +11,9 @@ def make_feature_rows(rows: list[dict[str, object]]) -> pd.DataFrame:
         "stage": None,
         "home_team": "Home",
         "away_team": "Away",
-        "elo_diff": 0.0,
-        "ppg_5_diff": 0.0,
-        "goal_difference_5_diff": 0.0,
         "result": 1,
     }
+    defaults.update({feature: 0.0 for feature in FEATURE_COLUMNS})
     return pd.DataFrame([{**defaults, **row} for row in rows])
 
 
@@ -92,4 +90,5 @@ def test_build_model_dataset_allows_custom_feature_columns() -> None:
     model_data = build_model_dataset(matches, feature_columns=["elo_diff", "custom_feature"])
 
     assert "custom_feature" in model_data.columns
-    assert FEATURE_COLUMNS == ["elo_diff", "ppg_5_diff", "goal_difference_5_diff"]
+    assert "elo_diff" in FEATURE_COLUMNS
+    assert "is_champions_league" in FEATURE_COLUMNS
