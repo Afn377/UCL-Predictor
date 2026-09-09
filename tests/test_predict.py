@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 
+from src.features.model_dataset import FEATURE_COLUMNS
 from src.models.predict import (
     build_prediction_features,
     final_elo_ratings,
@@ -63,11 +64,34 @@ def make_model_dataset() -> pd.DataFrame:
                 "away_team": teams[(i + 1) % len(teams)],
                 "elo_diff": i - 30,
                 "ppg_5_diff": (i % 5) - 2,
+                "goals_for_5_diff": (i % 4) - 1,
+                "goals_against_5_diff": (i % 3) - 1,
                 "goal_difference_5_diff": (i % 7) - 3,
+                "venue_ppg_5_diff": (i % 5) - 2,
+                "venue_goals_for_5_diff": (i % 4) - 1,
+                "venue_goals_against_5_diff": (i % 3) - 1,
+                "venue_goal_difference_5_diff": (i % 7) - 3,
+                "ppg_10_diff": (i % 6) - 3,
+                "goals_for_10_diff": (i % 5) - 2,
+                "goals_against_10_diff": (i % 4) - 1,
+                "goal_difference_10_diff": (i % 8) - 4,
+                "venue_ppg_10_diff": (i % 6) - 3,
+                "venue_goals_for_10_diff": (i % 5) - 2,
+                "venue_goals_against_10_diff": (i % 4) - 1,
+                "venue_goal_difference_10_diff": (i % 8) - 4,
+                "rest_days_diff": (i % 9) - 4,
+                "matches_last_7_diff": (i % 3) - 1,
+                "matches_last_14_diff": (i % 4) - 2,
+                "matches_last_30_diff": (i % 5) - 2,
+                "is_champions_league": i % 2,
                 "result": i % 3,
             }
         )
-    return pd.DataFrame(rows)
+    data = pd.DataFrame(rows)
+    for feature in FEATURE_COLUMNS:
+        if feature not in data.columns:
+            data[feature] = 0.0
+    return data
 
 
 def test_final_elo_ratings_updates_after_matches() -> None:
@@ -86,7 +110,7 @@ def test_latest_form_by_team_uses_recent_completed_matches() -> None:
 def test_build_prediction_features_returns_model_columns() -> None:
     features = build_prediction_features("Arsenal", "Chelsea", make_history())
 
-    assert list(features.columns) == ["elo_diff", "ppg_5_diff", "goal_difference_5_diff"]
+    assert list(features.columns) == FEATURE_COLUMNS
     assert features.loc[0, "elo_diff"] > 0
 
 

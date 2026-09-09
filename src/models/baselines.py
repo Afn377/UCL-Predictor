@@ -2,6 +2,11 @@ from pathlib import Path
 import pandas as pd
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, log_loss
+from sklearn.pipeline import make_pipeline
+from sklearn.preprocessing import StandardScaler
+
+from src.features.model_dataset import FEATURE_COLUMNS
+from src.models.xgboost_model import train_xgboost_classifier
 
 ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_INPUT = ROOT / "src" / "data" / "processed" / "model_dataset.csv"
@@ -10,7 +15,7 @@ CLASSES = [0,1,2]
 TEMPORAL_SPLIT_DATE = "2024-07-01" # 2024 UCL started July 9, 2024
 
 ELO_FEATURES = ["elo_diff"]
-FULL_FEATURES = ["elo_diff", "ppg_5_diff", "goal_difference_5_diff"]
+FULL_FEATURES = FEATURE_COLUMNS
 
 
 def temporal_train_test_split(df):
@@ -28,7 +33,7 @@ def naive_base_rate_probabilities(train, n_rows):
 
 
 def train_logistic_model(train, features):
-    model = LogisticRegression(max_iter=1000)
+    model = make_pipeline(StandardScaler(), LogisticRegression(max_iter=2000))
     model.fit(train[features], train["result"])
     return model
 
@@ -67,6 +72,10 @@ def run_baselines(input_path=DEFAULT_INPUT):
     feature_model = train_logistic_model(train, FULL_FEATURES)
     feature_probabilities = predict_logistic_probabilities(feature_model, test, FULL_FEATURES)
     rows.append({"model":"feature_logistic", **evaluate_probabilities(test["result"], feature_probabilities)})
+
+    xgboost_model = train_xgboost_classifier(train, FULL_FEATURES)
+    xgboost_probabilities = xgboost_model.predict_proba(test[FULL_FEATURES])
+    rows.append({"model":"xgboost_classifier", **evaluate_probabilities(test["result"], xgboost_probabilities)})
 
     return pd.DataFrame(rows)
 

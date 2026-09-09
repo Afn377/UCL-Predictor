@@ -16,6 +16,7 @@ from src.models.baselines import (
     train_logistic_model,
 )
 from src.models.poisson import predict_goal_lambdas, result_probability_array, train_poisson_models
+from src.models.xgboost_model import train_xgboost_classifier
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -44,6 +45,11 @@ def predictions_for_model(
         home_model, away_model = train_poisson_models(train, features)
         goal_predictions = predict_goal_lambdas(home_model, away_model, test, features)
         probabilities = result_probability_array(goal_predictions).to_numpy()
+    elif model_name == "xgboost_classifier":
+        if features is None:
+            raise ValueError("features must be provided for the XGBoost model")
+        model = train_xgboost_classifier(train, features)
+        probabilities = model.predict_proba(test[features])
     else:
         if features is None:
             raise ValueError("features must be provided for logistic models")
@@ -75,6 +81,7 @@ def collect_temporal_predictions(input_path: Path = DEFAULT_INPUT) -> pd.DataFra
                 predictions_for_model(train, test, "naive_base_rate").assign(split=split_name),
                 predictions_for_model(train, test, "elo_logistic", ELO_FEATURES).assign(split=split_name),
                 predictions_for_model(train, test, "feature_logistic", FULL_FEATURES).assign(split=split_name),
+                predictions_for_model(train, test, "xgboost_classifier", FULL_FEATURES).assign(split=split_name),
                 predictions_for_model(train, test, "poisson_score_model", FULL_FEATURES).assign(split=split_name),
             ]
         )

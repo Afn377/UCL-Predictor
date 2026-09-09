@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 
+from src.features.model_dataset import FEATURE_COLUMNS
 from src.models.poisson import (
     evaluate_poisson_predictions,
     poisson_probability,
@@ -12,6 +13,30 @@ from src.models.poisson import (
     temporal_train_test_split,
     train_poisson_models,
 )
+
+
+def extra_features(i: int) -> dict[str, float]:
+    return {
+        "goals_for_5_diff": (i % 4) - 1,
+        "goals_against_5_diff": (i % 3) - 1,
+        "venue_ppg_5_diff": (i % 5) - 2,
+        "venue_goals_for_5_diff": (i % 4) - 1,
+        "venue_goals_against_5_diff": (i % 3) - 1,
+        "venue_goal_difference_5_diff": (i % 7) - 3,
+        "ppg_10_diff": (i % 6) - 3,
+        "goals_for_10_diff": (i % 5) - 2,
+        "goals_against_10_diff": (i % 4) - 1,
+        "goal_difference_10_diff": (i % 8) - 4,
+        "venue_ppg_10_diff": (i % 6) - 3,
+        "venue_goals_for_10_diff": (i % 5) - 2,
+        "venue_goals_against_10_diff": (i % 4) - 1,
+        "venue_goal_difference_10_diff": (i % 8) - 4,
+        "rest_days_diff": (i % 9) - 4,
+        "matches_last_7_diff": (i % 3) - 1,
+        "matches_last_14_diff": (i % 4) - 2,
+        "matches_last_30_diff": (i % 5) - 2,
+        "is_champions_league": i % 2,
+    }
 
 
 def make_score_data() -> pd.DataFrame:
@@ -28,11 +53,16 @@ def make_score_data() -> pd.DataFrame:
                 "elo_diff": i - 30,
                 "ppg_5_diff": (i % 5) - 2,
                 "goal_difference_5_diff": (i % 7) - 3,
+                **extra_features(i),
                 "home_goals": i % 4,
                 "away_goals": (i + 1) % 3,
             }
         )
-    return pd.DataFrame(rows)
+    data = pd.DataFrame(rows)
+    for feature in FEATURE_COLUMNS:
+        if feature not in data.columns:
+            data[feature] = 0.0
+    return data
 
 
 def test_prepare_score_model_dataset_drops_rows_missing_features() -> None:

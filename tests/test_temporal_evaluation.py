@@ -1,11 +1,36 @@
 import numpy as np
 import pandas as pd
+from src.features.model_dataset import FEATURE_COLUMNS
 from src.evaluation.temporal_evaluation import (
     brier_score,
     evaluate_models_for_split,
     evaluate_probabilities_with_brier,
     make_temporal_split,
 )
+
+def extra_features(i):
+    return {
+        "goals_for_5_diff": (i % 4) - 1,
+        "goals_against_5_diff": (i % 3) - 1,
+        "venue_ppg_5_diff": (i % 5) - 2,
+        "venue_goals_for_5_diff": (i % 4) - 1,
+        "venue_goals_against_5_diff": (i % 3) - 1,
+        "venue_goal_difference_5_diff": (i % 7) - 3,
+        "ppg_10_diff": (i % 6) - 3,
+        "goals_for_10_diff": (i % 5) - 2,
+        "goals_against_10_diff": (i % 4) - 1,
+        "goal_difference_10_diff": (i % 8) - 4,
+        "venue_ppg_10_diff": (i % 6) - 3,
+        "venue_goals_for_10_diff": (i % 5) - 2,
+        "venue_goals_against_10_diff": (i % 4) - 1,
+        "venue_goal_difference_10_diff": (i % 8) - 4,
+        "rest_days_diff": (i % 9) - 4,
+        "matches_last_7_diff": (i % 3) - 1,
+        "matches_last_14_diff": (i % 4) - 2,
+        "matches_last_30_diff": (i % 5) - 2,
+        "is_champions_league": i % 2,
+    }
+
 
 def make_dataset():
     rows = []
@@ -22,6 +47,7 @@ def make_dataset():
                 "elo_diff": i - 45,
                 "ppg_5_diff": (i % 5) - 2,
                 "goal_difference_5_diff": (i % 7) - 3,
+                **extra_features(i),
                 "home_goals": i % 4,
                 "away_goals": (i + 1) % 3,
                 "result": i % 3,
@@ -40,13 +66,18 @@ def make_dataset():
                 "elo_diff": i - 15,
                 "ppg_5_diff": (i % 5) - 2,
                 "goal_difference_5_diff": (i % 7) - 3,
+                **extra_features(i),
                 "home_goals": i % 4,
                 "away_goals": (i + 1) % 3,
                 "result": i % 3,
             }
         )
 
-    return pd.DataFrame(rows)
+    data = pd.DataFrame(rows)
+    for feature in FEATURE_COLUMNS:
+        if feature not in data.columns:
+            data[feature] = 0.0
+    return data
 
 
 def test_make_temporal_split_keeps_test_after_train():
@@ -90,7 +121,7 @@ def test_evaluate_probabilities_with_brier_returns_three_metrics():
     assert set(result) == {"log_loss", "accuracy", "brier_score"}
 
 
-def test_evaluate_models_for_split_returns_four_models():
+def test_evaluate_models_for_split_returns_five_models():
     df = make_dataset()
     train, test = make_temporal_split(
         df,
@@ -101,11 +132,12 @@ def test_evaluate_models_for_split_returns_four_models():
 
     rows = evaluate_models_for_split(train, test, split_name="2021_22")
 
-    assert len(rows) == 4
+    assert len(rows) == 5
     assert {row["model"] for row in rows} == {
         "naive_base_rate",
         "elo_logistic",
         "feature_logistic",
+        "xgboost_classifier",
         "poisson_score_model",
     }
     assert all(row["split"] == "2021_22" for row in rows)

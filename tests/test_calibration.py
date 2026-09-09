@@ -67,6 +67,23 @@ def test_predictions_for_poisson_model_outputs_result_probabilities() -> None:
     assert np.allclose(predictions[PROBABILITY_COLUMNS].sum(axis=1), 1)
 
 
+def test_predictions_for_xgboost_model_outputs_result_probabilities() -> None:
+    data = make_dataset()
+    train = data.iloc[:30]
+    test = data.iloc[30:]
+
+    predictions = predictions_for_model(
+        train,
+        test,
+        "xgboost_classifier",
+        ["elo_diff", "ppg_5_diff", "goal_difference_5_diff"],
+    )
+
+    assert len(predictions) == len(test)
+    assert set(predictions["model"]) == {"xgboost_classifier"}
+    assert np.allclose(predictions[PROBABILITY_COLUMNS].sum(axis=1), 1)
+
+
 def test_build_calibration_curve_returns_observed_frequency_by_bin() -> None:
     predictions = pd.DataFrame(
         {
