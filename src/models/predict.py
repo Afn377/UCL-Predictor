@@ -5,9 +5,22 @@ from pathlib import Path
 
 import pandas as pd
 
-from src.features.elo import DEFAULT_INITIAL_RATING, DEFAULT_K_FACTOR, expected_score, score_from_result
-from src.features.form import STRENGTH_WINDOW, build_team_match_history, is_new_ucl_format
-from src.models.baselines import CLASSES, FULL_FEATURES, train_logistic_model
+from src.features.elo import (
+    DEFAULT_INITIAL_RATING,
+    DEFAULT_K_FACTOR,
+    expected_score,
+    score_from_result,
+)
+from src.features.form import (
+    STRENGTH_WINDOW,
+    build_team_match_history,
+    is_new_ucl_format,
+)
+from src.features.model_dataset import FEATURE_COLUMNS
+from src.models.logistic import train_feature_model
+
+CLASSES = [0, 1, 2]
+FULL_FEATURES = FEATURE_COLUMNS
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -26,6 +39,7 @@ def final_elo_ratings(
     initial_rating: float = DEFAULT_INITIAL_RATING,
     k_factor: float = DEFAULT_K_FACTOR,
 ) -> dict[str, float]:
+    # rebuild from history, no reliance on saved mutable state
     matches = matches.copy()
     matches["date"] = pd.to_datetime(matches["date"], errors="raise")
     matches = matches.sort_values(
@@ -33,6 +47,7 @@ def final_elo_ratings(
         kind="mergesort",
     ).reset_index(drop=True)
 
+    # unseen clubs start at the neutral training rating
     ratings: dict[str, float] = {}
     for row in matches.itertuples(index=False):
         home_team = str(row.home_team)
@@ -54,12 +69,14 @@ def latest_form_by_team(
     windows: tuple[int, ...] = (5, 10),
     as_of_date: str | pd.Timestamp | None = None,
 ) -> pd.DataFrame:
+    # as-of date keeps future matches out of backtests
     if as_of_date is None:
         as_of = pd.to_datetime(matches["date"]).max()
     else:
         as_of = pd.Timestamp(as_of_date)
 
     history = build_team_match_history(matches)
+    # latest completed form: no shift like the training builder
     history["date"] = pd.to_datetime(history["date"], errors="raise")
     history = history.loc[history["date"] <= as_of].copy()
 
@@ -67,6 +84,14 @@ def latest_form_by_team(
     for team, team_history in history.groupby("team", sort=False):
         team_history = team_history.sort_values(["date", "match_id"], kind="mergesort")
         row: dict[str, float | str] = {"team": team}
+        row["ucl_matches"] = int(
+            (team_history["competition"] == "Champions League").sum()
+        )
+        last_gap = team_history.date.diff().dt.days.gt(180)
+        if last_gap.any():
+            team_history = team_history.loc[last_gap[last_gap].index[-1] :]
+        if (as_of - team_history.date.max()).days > 180:
+            team_history = team_history.iloc[:0]
         for window in windows:
             recent = team_history.tail(window)
             home_recent = team_history[team_history["is_home"]].tail(window)
@@ -78,43 +103,85 @@ def latest_form_by_team(
             row[f"home_ppg_{window}"] = home_recent["points"].mean()
             row[f"home_goals_for_{window}"] = home_recent["goals_for"].mean()
             row[f"home_goals_against_{window}"] = home_recent["goals_against"].mean()
-            row[f"home_goal_difference_{window}"] = home_recent["goal_difference"].mean()
+            row[f"home_goal_difference_{window}"] = home_recent[
+                "goal_difference"
+            ].mean()
             row[f"away_ppg_{window}"] = away_recent["points"].mean()
             row[f"away_goals_for_{window}"] = away_recent["goals_for"].mean()
             row[f"away_goals_against_{window}"] = away_recent["goals_against"].mean()
-            row[f"away_goal_difference_{window}"] = away_recent["goal_difference"].mean()
+            row[f"away_goal_difference_{window}"] = away_recent[
+                "goal_difference"
+            ].mean()
+
+            for venue, observed in [
+                ("", team_history),
+                ("home_", team_history[team_history.is_home]),
+                ("away_", team_history[~team_history.is_home]),
+            ]:
+                # shot windows skip missing values rather than zero-fill
+                for output_metric, history_metric in [
+                    ("shot_proxy_xg_for", "opponent_adjusted_shot_proxy_xg_for"),
+                    (
+                        "shot_proxy_xg_against",
+                        "opponent_adjusted_shot_proxy_xg_against",
+                    ),
+                    ("shot_proxy_xg_difference", "shot_proxy_xg_difference"),
+                ]:
+                    row[f"{venue}{output_metric}_{window}"] = (
+                        observed[history_metric].dropna().tail(window).mean()
+                    )
 
         strength_recent = team_history.tail(STRENGTH_WINDOW)
         top_opponent_recent = strength_recent[strength_recent["is_top_opponent"]]
         row[f"opponent_adjusted_goal_difference_{STRENGTH_WINDOW}"] = strength_recent[
             "opponent_adjusted_goal_difference"
         ].mean()
-        row[f"goals_against_top_opponents_{STRENGTH_WINDOW}"] = top_opponent_recent["goals_against"].mean()
-        row[f"ppg_top_opponents_{STRENGTH_WINDOW}"] = top_opponent_recent["points"].mean()
-        row["ucl_matches"] = int((team_history["competition"] == "Champions League").sum())
+        row[f"goals_against_top_opponents_{STRENGTH_WINDOW}"] = top_opponent_recent[
+            "goals_against"
+        ].mean()
+        row[f"ppg_top_opponents_{STRENGTH_WINDOW}"] = top_opponent_recent[
+            "points"
+        ].mean()
 
+        # rest and congestion use calendar days, not match counts
         last_match_date = team_history["date"].max()
-        row["days_since_match"] = (as_of - last_match_date).days
+        gap = (as_of - last_match_date).days
+        row["days_since_match"] = gap if 0 <= gap <= 30 else float("nan")
         for congestion_window in (7, 14, 30):
             window_start = as_of - pd.Timedelta(days=congestion_window)
             row[f"matches_last_{congestion_window}"] = int(
-                ((team_history["date"] >= window_start) & (team_history["date"] < as_of)).sum()
+                (
+                    (team_history["date"] >= window_start)
+                    & (team_history["date"] < as_of)
+                ).sum()
             )
         rows.append(row)
 
+    # new clubs have no venue form, fall back to overall
     form = pd.DataFrame(rows).reset_index(drop=True)
     for window in windows:
         for venue in ["home", "away"]:
-            form[f"{venue}_ppg_{window}"] = form[f"{venue}_ppg_{window}"].fillna(form[f"ppg_{window}"])
-            form[f"{venue}_goals_for_{window}"] = form[f"{venue}_goals_for_{window}"].fillna(
-                form[f"goals_for_{window}"]
+            form[f"{venue}_ppg_{window}"] = form[f"{venue}_ppg_{window}"].fillna(
+                form[f"ppg_{window}"]
             )
-            form[f"{venue}_goals_against_{window}"] = form[f"{venue}_goals_against_{window}"].fillna(
-                form[f"goals_against_{window}"]
-            )
-            form[f"{venue}_goal_difference_{window}"] = form[f"{venue}_goal_difference_{window}"].fillna(
-                form[f"goal_difference_{window}"]
-            )
+            form[f"{venue}_goals_for_{window}"] = form[
+                f"{venue}_goals_for_{window}"
+            ].fillna(form[f"goals_for_{window}"])
+            form[f"{venue}_goals_against_{window}"] = form[
+                f"{venue}_goals_against_{window}"
+            ].fillna(form[f"goals_against_{window}"])
+            form[f"{venue}_goal_difference_{window}"] = form[
+                f"{venue}_goal_difference_{window}"
+            ].fillna(form[f"goal_difference_{window}"])
+            form[f"{venue}_shot_proxy_xg_for_{window}"] = form[
+                f"{venue}_shot_proxy_xg_for_{window}"
+            ].fillna(form[f"shot_proxy_xg_for_{window}"])
+            form[f"{venue}_shot_proxy_xg_against_{window}"] = form[
+                f"{venue}_shot_proxy_xg_against_{window}"
+            ].fillna(form[f"shot_proxy_xg_against_{window}"])
+            form[f"{venue}_shot_proxy_xg_difference_{window}"] = form[
+                f"{venue}_shot_proxy_xg_difference_{window}"
+            ].fillna(form[f"shot_proxy_xg_difference_{window}"])
     return form.set_index("team")
 
 
@@ -125,17 +192,26 @@ def build_prediction_features(
     match_date: str | pd.Timestamp | None = None,
     competition: str = "Champions League",
 ) -> pd.DataFrame:
+    # cut Elo history at the match date when backfilling
     rating_history = match_history.copy()
     if match_date is not None:
         rating_history["date"] = pd.to_datetime(rating_history["date"], errors="raise")
-        rating_history = rating_history.loc[rating_history["date"] <= pd.Timestamp(match_date)].copy()
+        rating_history = rating_history.loc[
+            rating_history["date"] <= pd.Timestamp(match_date)
+        ].copy()
 
     ratings = final_elo_ratings(rating_history)
     form = latest_form_by_team(match_history, as_of_date=match_date)
 
-    missing_teams = [team for team in [home_team, away_team] if team not in ratings or team not in form.index]
+    missing_teams = [
+        team
+        for team in [home_team, away_team]
+        if team not in ratings or team not in form.index
+    ]
     if missing_teams:
-        raise ValueError(f"No match history found for team(s): {', '.join(missing_teams)}")
+        raise ValueError(
+            f"No match history found for team(s): {', '.join(missing_teams)}"
+        )
 
     format_year = ""
     if match_date is not None:
@@ -143,17 +219,22 @@ def build_prediction_features(
 
     home_venue_prefix = "home"
     away_venue_prefix = "away"
+    # home minus away, matching the training columns
     return pd.DataFrame(
         [
             {
                 "elo_diff": ratings[home_team] - ratings[away_team],
-                "ppg_5_diff": form.loc[home_team, "ppg_5"] - form.loc[away_team, "ppg_5"],
-                "goals_for_5_diff": form.loc[home_team, "goals_for_5"] - form.loc[away_team, "goals_for_5"],
+                "ppg_5_diff": form.loc[home_team, "ppg_5"]
+                - form.loc[away_team, "ppg_5"],
+                "goals_for_5_diff": form.loc[home_team, "goals_for_5"]
+                - form.loc[away_team, "goals_for_5"],
                 "goals_against_5_diff": (
-                    form.loc[home_team, "goals_against_5"] - form.loc[away_team, "goals_against_5"]
+                    form.loc[home_team, "goals_against_5"]
+                    - form.loc[away_team, "goals_against_5"]
                 ),
                 "goal_difference_5_diff": (
-                    form.loc[home_team, "goal_difference_5"] - form.loc[away_team, "goal_difference_5"]
+                    form.loc[home_team, "goal_difference_5"]
+                    - form.loc[away_team, "goal_difference_5"]
                 ),
                 "venue_ppg_5_diff": (
                     form.loc[home_team, f"{home_venue_prefix}_ppg_5"]
@@ -171,13 +252,47 @@ def build_prediction_features(
                     form.loc[home_team, f"{home_venue_prefix}_goal_difference_5"]
                     - form.loc[away_team, f"{away_venue_prefix}_goal_difference_5"]
                 ),
-                "ppg_10_diff": form.loc[home_team, "ppg_10"] - form.loc[away_team, "ppg_10"],
-                "goals_for_10_diff": form.loc[home_team, "goals_for_10"] - form.loc[away_team, "goals_for_10"],
+                "shot_proxy_xg_for_5_diff": (
+                    form.loc[home_team, "shot_proxy_xg_for_5"]
+                    - form.loc[away_team, "shot_proxy_xg_for_5"]
+                ),
+                "shot_proxy_xg_against_5_diff": (
+                    form.loc[home_team, "shot_proxy_xg_against_5"]
+                    - form.loc[away_team, "shot_proxy_xg_against_5"]
+                ),
+                "shot_proxy_xg_difference_5_diff": (
+                    form.loc[home_team, "shot_proxy_xg_difference_5"]
+                    - form.loc[away_team, "shot_proxy_xg_difference_5"]
+                ),
+                "venue_shot_proxy_xg_for_5_diff": (
+                    form.loc[home_team, f"{home_venue_prefix}_shot_proxy_xg_for_5"]
+                    - form.loc[away_team, f"{away_venue_prefix}_shot_proxy_xg_for_5"]
+                ),
+                "venue_shot_proxy_xg_against_5_diff": (
+                    form.loc[home_team, f"{home_venue_prefix}_shot_proxy_xg_against_5"]
+                    - form.loc[
+                        away_team, f"{away_venue_prefix}_shot_proxy_xg_against_5"
+                    ]
+                ),
+                "venue_shot_proxy_xg_difference_5_diff": (
+                    form.loc[
+                        home_team, f"{home_venue_prefix}_shot_proxy_xg_difference_5"
+                    ]
+                    - form.loc[
+                        away_team, f"{away_venue_prefix}_shot_proxy_xg_difference_5"
+                    ]
+                ),
+                "ppg_10_diff": form.loc[home_team, "ppg_10"]
+                - form.loc[away_team, "ppg_10"],
+                "goals_for_10_diff": form.loc[home_team, "goals_for_10"]
+                - form.loc[away_team, "goals_for_10"],
                 "goals_against_10_diff": (
-                    form.loc[home_team, "goals_against_10"] - form.loc[away_team, "goals_against_10"]
+                    form.loc[home_team, "goals_against_10"]
+                    - form.loc[away_team, "goals_against_10"]
                 ),
                 "goal_difference_10_diff": (
-                    form.loc[home_team, "goal_difference_10"] - form.loc[away_team, "goal_difference_10"]
+                    form.loc[home_team, "goal_difference_10"]
+                    - form.loc[away_team, "goal_difference_10"]
                 ),
                 "venue_ppg_10_diff": (
                     form.loc[home_team, f"{home_venue_prefix}_ppg_10"]
@@ -195,37 +310,85 @@ def build_prediction_features(
                     form.loc[home_team, f"{home_venue_prefix}_goal_difference_10"]
                     - form.loc[away_team, f"{away_venue_prefix}_goal_difference_10"]
                 ),
-                "rest_days_diff": form.loc[home_team, "days_since_match"] - form.loc[away_team, "days_since_match"],
+                "shot_proxy_xg_for_10_diff": (
+                    form.loc[home_team, "shot_proxy_xg_for_10"]
+                    - form.loc[away_team, "shot_proxy_xg_for_10"]
+                ),
+                "shot_proxy_xg_against_10_diff": (
+                    form.loc[home_team, "shot_proxy_xg_against_10"]
+                    - form.loc[away_team, "shot_proxy_xg_against_10"]
+                ),
+                "shot_proxy_xg_difference_10_diff": (
+                    form.loc[home_team, "shot_proxy_xg_difference_10"]
+                    - form.loc[away_team, "shot_proxy_xg_difference_10"]
+                ),
+                "venue_shot_proxy_xg_for_10_diff": (
+                    form.loc[home_team, f"{home_venue_prefix}_shot_proxy_xg_for_10"]
+                    - form.loc[away_team, f"{away_venue_prefix}_shot_proxy_xg_for_10"]
+                ),
+                "venue_shot_proxy_xg_against_10_diff": (
+                    form.loc[home_team, f"{home_venue_prefix}_shot_proxy_xg_against_10"]
+                    - form.loc[
+                        away_team, f"{away_venue_prefix}_shot_proxy_xg_against_10"
+                    ]
+                ),
+                "venue_shot_proxy_xg_difference_10_diff": (
+                    form.loc[
+                        home_team, f"{home_venue_prefix}_shot_proxy_xg_difference_10"
+                    ]
+                    - form.loc[
+                        away_team, f"{away_venue_prefix}_shot_proxy_xg_difference_10"
+                    ]
+                ),
+                "rest_days_diff": form.loc[home_team, "days_since_match"]
+                - form.loc[away_team, "days_since_match"],
                 "matches_last_7_diff": (
-                    form.loc[home_team, "matches_last_7"] - form.loc[away_team, "matches_last_7"]
+                    form.loc[home_team, "matches_last_7"]
+                    - form.loc[away_team, "matches_last_7"]
                 ),
                 "matches_last_14_diff": (
-                    form.loc[home_team, "matches_last_14"] - form.loc[away_team, "matches_last_14"]
+                    form.loc[home_team, "matches_last_14"]
+                    - form.loc[away_team, "matches_last_14"]
                 ),
                 "matches_last_30_diff": (
-                    form.loc[home_team, "matches_last_30"] - form.loc[away_team, "matches_last_30"]
+                    form.loc[home_team, "matches_last_30"]
+                    - form.loc[away_team, "matches_last_30"]
                 ),
                 "is_champions_league": int(competition == "Champions League"),
                 "is_new_ucl_format": is_new_ucl_format(format_year),
                 f"opponent_adjusted_goal_difference_{STRENGTH_WINDOW}_diff": (
-                    form.loc[home_team, f"opponent_adjusted_goal_difference_{STRENGTH_WINDOW}"]
-                    - form.loc[away_team, f"opponent_adjusted_goal_difference_{STRENGTH_WINDOW}"]
+                    form.loc[
+                        home_team,
+                        f"opponent_adjusted_goal_difference_{STRENGTH_WINDOW}",
+                    ]
+                    - form.loc[
+                        away_team,
+                        f"opponent_adjusted_goal_difference_{STRENGTH_WINDOW}",
+                    ]
                 ),
                 f"goals_against_top_opponents_{STRENGTH_WINDOW}_diff": (
-                    form.loc[home_team, f"goals_against_top_opponents_{STRENGTH_WINDOW}"]
-                    - form.loc[away_team, f"goals_against_top_opponents_{STRENGTH_WINDOW}"]
+                    form.loc[
+                        home_team, f"goals_against_top_opponents_{STRENGTH_WINDOW}"
+                    ]
+                    - form.loc[
+                        away_team, f"goals_against_top_opponents_{STRENGTH_WINDOW}"
+                    ]
                 ),
                 f"ppg_top_opponents_{STRENGTH_WINDOW}_diff": (
                     form.loc[home_team, f"ppg_top_opponents_{STRENGTH_WINDOW}"]
                     - form.loc[away_team, f"ppg_top_opponents_{STRENGTH_WINDOW}"]
                 ),
-                "ucl_experience_matches_diff": form.loc[home_team, "ucl_matches"] - form.loc[away_team, "ucl_matches"],
+                "ucl_experience_matches_diff": form.loc[home_team, "ucl_matches"]
+                - form.loc[away_team, "ucl_matches"],
                 "home_away_goal_difference_balance_diff": (
                     (
                         form.loc[home_team, "home_goal_difference_10"]
                         - form.loc[away_team, "away_goal_difference_10"]
                     )
-                    - (form.loc[home_team, "goal_difference_10"] - form.loc[away_team, "goal_difference_10"])
+                    - (
+                        form.loc[home_team, "goal_difference_10"]
+                        - form.loc[away_team, "goal_difference_10"]
+                    )
                 ),
             }
         ]
@@ -233,7 +396,7 @@ def build_prediction_features(
 
 
 def train_current_match_model(model_dataset: pd.DataFrame):
-    return train_logistic_model(model_dataset, FULL_FEATURES)
+    return train_feature_model(model_dataset, FULL_FEATURES)
 
 
 def predict_match_probabilities(
@@ -254,7 +417,10 @@ def predict_match_probabilities(
     )
     probabilities = model.predict_proba(features[FULL_FEATURES])[0]
 
-    return {PROBABILITY_LABELS[label]: float(probabilities[index]) for index, label in enumerate(CLASSES)}
+    return {
+        PROBABILITY_LABELS[label]: float(probabilities[index])
+        for index, label in enumerate(CLASSES)
+    }
 
 
 def predict_match(
@@ -265,11 +431,15 @@ def predict_match(
 ) -> dict[str, float]:
     model_dataset = pd.read_csv(model_dataset_path, parse_dates=["date"])
     match_history = pd.read_csv(match_history_path, parse_dates=["date"])
-    return predict_match_probabilities(home_team, away_team, model_dataset, match_history)
+    return predict_match_probabilities(
+        home_team, away_team, model_dataset, match_history
+    )
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Predict a match result probability from current features.")
+    parser = argparse.ArgumentParser(
+        description="Predict a match result probability from current features."
+    )
     parser.add_argument("home_team")
     parser.add_argument("away_team")
     args = parser.parse_args()

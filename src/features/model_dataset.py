@@ -5,9 +5,10 @@ from pathlib import Path
 
 import pandas as pd
 
-
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
-DEFAULT_INPUT_PATH = PROJECT_ROOT / "src" / "data" / "processed" / "matches_with_features.csv"
+DEFAULT_INPUT_PATH = (
+    PROJECT_ROOT / "src" / "data" / "processed" / "matches_with_features.csv"
+)
 DEFAULT_OUTPUT_PATH = PROJECT_ROOT / "src" / "data" / "processed" / "model_dataset.csv"
 
 ID_COLUMNS = [
@@ -28,6 +29,12 @@ FEATURE_COLUMNS = [
     "venue_goals_for_5_diff",
     "venue_goals_against_5_diff",
     "venue_goal_difference_5_diff",
+    "shot_proxy_xg_for_5_diff",
+    "shot_proxy_xg_against_5_diff",
+    "shot_proxy_xg_difference_5_diff",
+    "venue_shot_proxy_xg_for_5_diff",
+    "venue_shot_proxy_xg_against_5_diff",
+    "venue_shot_proxy_xg_difference_5_diff",
     "ppg_10_diff",
     "goals_for_10_diff",
     "goals_against_10_diff",
@@ -36,6 +43,12 @@ FEATURE_COLUMNS = [
     "venue_goals_for_10_diff",
     "venue_goals_against_10_diff",
     "venue_goal_difference_10_diff",
+    "shot_proxy_xg_for_10_diff",
+    "shot_proxy_xg_against_10_diff",
+    "shot_proxy_xg_difference_10_diff",
+    "venue_shot_proxy_xg_for_10_diff",
+    "venue_shot_proxy_xg_against_10_diff",
+    "venue_shot_proxy_xg_difference_10_diff",
     "rest_days_diff",
     "matches_last_7_diff",
     "matches_last_14_diff",
@@ -48,8 +61,28 @@ FEATURE_COLUMNS = [
     "ucl_experience_matches_diff",
     "home_away_goal_difference_balance_diff",
 ]
+SHOT_PROXY_FEATURE_COLUMNS = [
+    column for column in FEATURE_COLUMNS if "shot_proxy_xg" in column
+]
 TARGET_COLUMN = "result"
 MODEL_COLUMNS = [*ID_COLUMNS, *FEATURE_COLUMNS, TARGET_COLUMN]
+
+
+def fill_missing_feature_values(
+    matches: pd.DataFrame,
+    feature_columns: list[str],
+) -> pd.DataFrame:
+    filled = matches.copy()
+    shot_proxy_columns = [
+        column for column in feature_columns if column in SHOT_PROXY_FEATURE_COLUMNS
+    ]
+    if shot_proxy_columns:
+        # zero is a neutral diff, not zero shots taken
+        filled[shot_proxy_columns] = filled[shot_proxy_columns].fillna(0.0)
+    # unknown rest days -> 0 means no measured advantage
+    if "rest_days_diff" in feature_columns:
+        filled["rest_days_diff"] = filled["rest_days_diff"].fillna(0.0)
+    return filled
 
 
 def build_model_dataset(
@@ -58,12 +91,15 @@ def build_model_dataset(
 ) -> pd.DataFrame:
     selected_features = feature_columns or FEATURE_COLUMNS
     required_columns = [*ID_COLUMNS, *selected_features, TARGET_COLUMN]
-    missing_columns = [column for column in required_columns if column not in matches.columns]
+    missing_columns = [
+        column for column in required_columns if column not in matches.columns
+    ]
     if missing_columns:
         missing = ", ".join(missing_columns)
         raise ValueError(f"matches is missing required columns: {missing}")
 
-    model_data = matches.copy()
+    # sort before selecting so temporal splits stay deterministic
+    model_data = fill_missing_feature_values(matches, selected_features)
     model_data["date"] = pd.to_datetime(model_data["date"], errors="raise")
     model_data = model_data.sort_values(
         ["date", "competition", "home_team", "away_team"],

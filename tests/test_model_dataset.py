@@ -1,6 +1,10 @@
 import pandas as pd
 
-from src.features.model_dataset import FEATURE_COLUMNS, MODEL_COLUMNS, build_model_dataset
+from src.features.model_dataset import (
+    FEATURE_COLUMNS,
+    MODEL_COLUMNS,
+    build_model_dataset,
+)
 
 
 def make_feature_rows(rows: list[dict[str, object]]) -> pd.DataFrame:
@@ -55,6 +59,23 @@ def test_build_model_dataset_drops_rows_with_missing_features() -> None:
     assert model_data.loc[0, "home_team"] == "Team C"
 
 
+def test_build_model_dataset_keeps_rows_missing_only_shot_proxy_features() -> None:
+    matches = make_feature_rows(
+        [
+            {
+                "shot_proxy_xg_for_5_diff": None,
+                "venue_shot_proxy_xg_difference_10_diff": None,
+            }
+        ]
+    )
+
+    model_data = build_model_dataset(matches)
+
+    assert len(model_data) == 1
+    assert model_data.loc[0, "shot_proxy_xg_for_5_diff"] == 0.0
+    assert model_data.loc[0, "venue_shot_proxy_xg_difference_10_diff"] == 0.0
+
+
 def test_build_model_dataset_sorts_chronologically() -> None:
     matches = make_feature_rows(
         [
@@ -87,7 +108,9 @@ def test_build_model_dataset_allows_custom_feature_columns() -> None:
         ]
     )
 
-    model_data = build_model_dataset(matches, feature_columns=["elo_diff", "custom_feature"])
+    model_data = build_model_dataset(
+        matches, feature_columns=["elo_diff", "custom_feature"]
+    )
 
     assert "custom_feature" in model_data.columns
     assert "elo_diff" in FEATURE_COLUMNS

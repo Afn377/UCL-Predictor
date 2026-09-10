@@ -107,6 +107,20 @@ def test_latest_form_by_team_uses_recent_completed_matches() -> None:
     assert form.loc["Arsenal", "goal_difference_5"] == 4 / 3
 
 
+def test_forecast_shot_history_skips_ucl_matches_without_observations() -> None:
+    history = make_history().assign(
+        home_shots=[10, np.nan, 20],
+        away_shots=[8, np.nan, 8],
+        home_shots_on_target=[4, np.nan, 8],
+        away_shots_on_target=[3, np.nan, 3],
+        home_corners=[2, np.nan, 4],
+        away_corners=[2, np.nan, 2],
+    )
+    history.loc[1, "competition"] = "Champions League"
+    form = latest_form_by_team(history, windows=(2,))
+    assert np.isclose(form.loc["Arsenal", "shot_proxy_xg_for_2"], (1.41 + 2.82) / 2)
+
+
 def test_build_prediction_features_returns_model_columns() -> None:
     features = build_prediction_features("Arsenal", "Chelsea", make_history())
 
