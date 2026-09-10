@@ -5,7 +5,6 @@ from collections import defaultdict
 import numpy as np
 import pandas as pd
 
-
 STRUCTURAL_FEATURES = [
     "dynamic_elo_diff",
     "rating_uncertainty_sum",
@@ -243,3 +242,34 @@ def add_strength_features(matches):
         [data, pd.DataFrame.from_dict(output, orient="index").reindex(data.index)],
         axis=1,
     )
+
+
+def attach_clubelo(data, history):
+    """Only use ratings published strictly before the fixture date."""
+    result = data.copy()
+    history = history.copy()
+    history["date"] = pd.to_datetime(history.date)
+    if history.duplicated(["team", "date"]).any():
+        raise ValueError("Duplicate ClubElo team/date")
+    values = []
+    groups = {
+        name: group.sort_values("date") for name, group in history.groupby("team")
+    }
+    for row in result.itertuples():
+        pair = []
+        for team in (row.home_team, row.away_team):
+            observed = groups.get(team)
+            prior = (
+                observed[observed.date < row.date]
+                if observed is not None
+                else pd.DataFrame()
+            )
+            # ratings older than 90 days are stale
+            pair.append(
+                float(prior.iloc[-1].elo)
+                if not prior.empty and (row.date - prior.iloc[-1].date).days <= 90
+                else np.nan
+            )
+        values.append(pair[0] - pair[1])
+    result["clubelo_diff"] = values
+    return result

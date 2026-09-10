@@ -6,7 +6,11 @@ import pytest
 from src.data.download_ucl import parse_score
 from src.data.team_names import club_id, load_team_name_mapping, normalize_team_name
 from src.features.form import add_rest_and_congestion_features
-from src.features.strength import STRUCTURAL_FEATURES, add_strength_features
+from src.features.strength import (
+    STRUCTURAL_FEATURES,
+    add_strength_features,
+    attach_clubelo,
+)
 
 
 @pytest.mark.parametrize(
@@ -83,3 +87,16 @@ def test_neutral_final_and_missing_xg():
     result = add_strength_features(data)
     assert result.iloc[0].neutral_venue == 1
     assert result.iloc[0].home_xg_power_attack == 0
+
+
+def test_clubelo_never_reads_same_day_or_future_rating():
+    data = fixtures()
+    history = pd.DataFrame(
+        {
+            "team": ["A", "A", "B"],
+            "date": ["2024-03-30", "2024-04-01", "2024-03-30"],
+            "elo": [1600, 2500, 1500],
+        }
+    )
+    result = attach_clubelo(data, history)
+    assert result.iloc[0].clubelo_diff == 100
