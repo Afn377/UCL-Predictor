@@ -1,6 +1,10 @@
 import pandas as pd
 
-from src.features.form import add_rolling_form_features, build_team_match_history, points_from_result
+from src.features.form import (
+    add_rolling_form_features,
+    build_team_match_history,
+    points_from_result,
+)
 
 
 def make_matches(rows: list[dict[str, object]]) -> pd.DataFrame:
@@ -13,6 +17,12 @@ def make_matches(rows: list[dict[str, object]]) -> pd.DataFrame:
         "home_elo_before": 1500.0,
         "away_elo_before": 1500.0,
         "elo_diff": 0.0,
+        "home_shots": pd.NA,
+        "away_shots": pd.NA,
+        "home_shots_on_target": pd.NA,
+        "away_shots_on_target": pd.NA,
+        "home_corners": pd.NA,
+        "away_corners": pd.NA,
     }
     return pd.DataFrame([{**defaults, **row} for row in rows])
 
@@ -162,7 +172,9 @@ def test_diff_features_compare_home_and_away_prior_form() -> None:
     )
 
     featured = add_rolling_form_features(matches, windows=(5,))
-    target = featured[(featured["home_team"] == "Arsenal") & (featured["away_team"] == "Chelsea")].iloc[0]
+    target = featured[
+        (featured["home_team"] == "Arsenal") & (featured["away_team"] == "Chelsea")
+    ].iloc[0]
 
     assert target["home_ppg_5_before"] == 3
     assert target["away_ppg_5_before"] == 0
@@ -252,7 +264,9 @@ def test_advanced_strength_features_use_prior_context() -> None:
     )
 
     featured = add_rolling_form_features(matches)
-    target = featured[(featured["home_team"] == "Arsenal") & (featured["away_team"] == "Chelsea")].iloc[0]
+    target = featured[
+        (featured["home_team"] == "Arsenal") & (featured["away_team"] == "Chelsea")
+    ].iloc[0]
 
     assert target["is_new_ucl_format"] == 1
     assert target["home_ucl_matches_before"] == 1
@@ -260,3 +274,118 @@ def test_advanced_strength_features_use_prior_context() -> None:
     assert target["ucl_experience_matches_diff"] == 1
     assert target["home_opponent_adjusted_goal_difference_38_before"] > 2
     assert target["home_goals_against_top_opponents_38_before"] == 0
+
+
+def test_shot_proxy_xg_features_use_prior_shot_volume() -> None:
+    matches = make_matches(
+        [
+            {
+                "date": "2020-01-01",
+                "home_team": "Arsenal",
+                "away_team": "Chelsea",
+                "home_goals": 2,
+                "away_goals": 0,
+                "home_shots": 10,
+                "away_shots": 4,
+                "home_shots_on_target": 5,
+                "away_shots_on_target": 1,
+                "home_corners": 4,
+                "away_corners": 1,
+                "result": 2,
+            },
+            {
+                "date": "2020-01-08",
+                "home_team": "Chelsea",
+                "away_team": "Team B",
+                "home_goals": 1,
+                "away_goals": 1,
+                "home_shots": 6,
+                "away_shots": 12,
+                "home_shots_on_target": 2,
+                "away_shots_on_target": 4,
+                "home_corners": 2,
+                "away_corners": 5,
+                "result": 1,
+            },
+            {
+                "date": "2020-01-15",
+                "home_team": "Arsenal",
+                "away_team": "Chelsea",
+                "home_goals": 1,
+                "away_goals": 1,
+                "result": 1,
+            },
+        ]
+    )
+
+    featured = add_rolling_form_features(matches, windows=(5,))
+    target = featured[
+        (featured["date"] == pd.Timestamp("2020-01-15"))
+        & (featured["home_team"] == "Arsenal")
+        & (featured["away_team"] == "Chelsea")
+    ].iloc[0]
+
+    assert pd.isna(featured.loc[0, "home_opponent_adjusted_shot_proxy_xg_for_5_before"])
+    assert round(target["home_opponent_adjusted_shot_proxy_xg_for_5_before"], 4) == 1.7
+    assert target["away_opponent_adjusted_shot_proxy_xg_for_5_before"] == 0.5975
+    assert target["shot_proxy_xg_for_5_diff"] == 1.1025
+
+
+def test_shot_proxy_xg_rolling_ignores_matches_without_shot_data() -> None:
+    matches = make_matches(
+        [
+            {
+                "date": "2020-01-01",
+                "competition": "Premier League",
+                "home_team": "Arsenal",
+                "away_team": "Team A",
+                "home_goals": 1,
+                "away_goals": 0,
+                "home_shots": 10,
+                "away_shots": 5,
+                "home_shots_on_target": 4,
+                "away_shots_on_target": 2,
+                "home_corners": 4,
+                "away_corners": 2,
+                "result": 2,
+            },
+            {
+                "date": "2020-01-04",
+                "competition": "Champions League",
+                "home_team": "Arsenal",
+                "away_team": "Team B",
+                "home_goals": 1,
+                "away_goals": 1,
+                "result": 1,
+            },
+            {
+                "date": "2020-01-08",
+                "competition": "Premier League",
+                "home_team": "Arsenal",
+                "away_team": "Team C",
+                "home_goals": 2,
+                "away_goals": 0,
+                "home_shots": 20,
+                "away_shots": 5,
+                "home_shots_on_target": 8,
+                "away_shots_on_target": 2,
+                "home_corners": 8,
+                "away_corners": 2,
+                "result": 2,
+            },
+            {
+                "date": "2020-01-12",
+                "competition": "Premier League",
+                "home_team": "Arsenal",
+                "away_team": "Team D",
+                "home_goals": 1,
+                "away_goals": 1,
+                "result": 1,
+            },
+        ]
+    )
+
+    featured = add_rolling_form_features(matches, windows=(2,))
+    target = featured[featured["away_team"] == "Team D"].iloc[0]
+
+    assert round(target["home_opponent_adjusted_shot_proxy_xg_for_2_before"], 4) == 2.19

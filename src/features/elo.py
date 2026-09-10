@@ -5,10 +5,11 @@ from pathlib import Path
 
 import pandas as pd
 
-
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_INPUT_PATH = PROJECT_ROOT / "src" / "data" / "processed" / "matches.csv"
-DEFAULT_OUTPUT_PATH = PROJECT_ROOT / "src" / "data" / "processed" / "matches_with_elo.csv"
+DEFAULT_OUTPUT_PATH = (
+    PROJECT_ROOT / "src" / "data" / "processed" / "matches_with_elo.csv"
+)
 
 DEFAULT_INITIAL_RATING = 1500.0
 DEFAULT_K_FACTOR = 20.0
@@ -17,6 +18,7 @@ REQUIRED_COLUMNS = ["date", "home_team", "away_team", "result"]
 
 
 def expected_score(rating_a: float, rating_b: float) -> float:
+    # 400-point gap ~ 10:1 expected odds in elo
     return 1 / (1 + 10 ** ((rating_b - rating_a) / 400))
 
 
@@ -36,11 +38,14 @@ def add_elo_features(
     initial_rating: float = DEFAULT_INITIAL_RATING,
     k_factor: float = DEFAULT_K_FACTOR,
 ) -> pd.DataFrame:
-    missing_columns = [column for column in REQUIRED_COLUMNS if column not in matches.columns]
+    missing_columns = [
+        column for column in REQUIRED_COLUMNS if column not in matches.columns
+    ]
     if missing_columns:
         missing = ", ".join(missing_columns)
         raise ValueError(f"matches is missing required columns: {missing}")
 
+    # stable order keeps rating updates deterministic
     featured = matches.copy()
     featured["date"] = pd.to_datetime(featured["date"], errors="raise")
     featured = featured.sort_values(
@@ -53,11 +58,13 @@ def add_elo_features(
     away_elo_before: list[float] = []
 
     for row in featured.itertuples(index=False):
+        # read both ratings before applying this result
         home_team = str(row.home_team)
         away_team = str(row.away_team)
         home_rating = ratings.get(home_team, initial_rating)
         away_rating = ratings.get(away_team, initial_rating)
 
+        # ratings the model would have seen pre-result
         home_elo_before.append(home_rating)
         away_elo_before.append(away_rating)
 
@@ -93,7 +100,9 @@ def write_matches_with_elo(
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Add leakage-safe pre-match Elo features.")
+    parser = argparse.ArgumentParser(
+        description="Add leakage-safe pre-match Elo features."
+    )
     parser.add_argument("--input", type=Path, default=DEFAULT_INPUT_PATH)
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT_PATH)
     parser.add_argument("--initial-rating", type=float, default=DEFAULT_INITIAL_RATING)
