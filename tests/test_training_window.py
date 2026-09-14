@@ -7,7 +7,7 @@ def test_training_window_includes_start_excludes_cutoff_and_future():
     data = pd.DataFrame(
         {
             "date": pd.to_datetime(
-                ["2022-06-30", "2022-07-01", "2025-06-30", "2025-07-01", "2026-01-01"]
+                ["2023-06-30", "2023-07-01", "2025-06-30", "2025-07-01", "2026-01-01"]
             )
         }
     )

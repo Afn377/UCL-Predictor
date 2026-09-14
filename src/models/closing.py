@@ -21,7 +21,7 @@ FAMILIES = (
     "closing_logistic",
     "naive_base_rate",
 )
-TRAINING_YEARS = 3
+TRAINING_YEARS = 2
 
 
 def training_window(data, cutoff):
