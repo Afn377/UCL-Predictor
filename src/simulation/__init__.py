@@ -1,1 +1,0 @@
-"""Tournament simulation helpers."""
