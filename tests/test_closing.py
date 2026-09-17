@@ -8,6 +8,7 @@ from src.evaluation.confidence import PROBABILITY_COLUMNS
 from src.features.context import RICH_FEATURES
 from src.features.strength import COMPACT_FEATURES
 from src.models.closing import ClosingModel, fit_candidate, select_candidates
+from src.models.live import live_inputs
 
 
 def training_rows():
@@ -131,3 +132,48 @@ def test_disagreements_reject_changed_labels_and_count_unique_corrections():
     football.loc[0, "result"] = 2
     with pytest.raises(ValueError, match="labels"):
         disagreement_report(pd.concat([odds, football]))
+
+
+def live_frames():
+    now = pd.Timestamp.now(tz="UTC")
+    kickoff = now + pd.Timedelta(minutes=30)
+    fixtures = pd.DataFrame(
+        {
+            "date": [kickoff.tz_localize(None).normalize()],
+            "competition": ["Champions League"],
+            "home_team": ["Arsenal"],
+            "away_team": ["Liverpool"],
+            "kickoff_at": [kickoff.isoformat()],
+        }
+    )
+    quotes = fixtures[MATCH_KEYS].assign(
+        snapshot_at=now.isoformat(),
+        source="test",
+        odds_away=4.0,
+        odds_draw=4.0,
+        odds_home=2.0,
+    )
+    manifest = {
+        "model_id": "test",
+        "train_end": "2020-01-01",
+        "created_at": "2020-01-02T00:00:00Z",
+        "forecast_window_minutes": 60,
+        "maximum_quote_age_minutes": 15,
+    }
+    return now, fixtures, quotes, manifest
+
+
+def test_live_requires_fresh_quotes_and_pre_kickoff_forecast():
+    now, fixtures, quotes, manifest = live_frames()
+    _, matched = live_inputs(fixtures, quotes, now, manifest)
+    assert len(matched) == 1
+    for age in (-1, 16):
+        changed = quotes.assign(
+            snapshot_at=(now - pd.Timedelta(minutes=age)).isoformat()
+        )
+        with pytest.raises(ValueError, match="recent quote"):
+            live_inputs(fixtures, changed, now, manifest)
+    with pytest.raises(ValueError, match="before kickoff"):
+        live_inputs(fixtures.assign(kickoff_at=now.isoformat()), quotes, now, manifest)
+    with pytest.raises(ValueError, match="ambiguous"):
+        live_inputs(fixtures, pd.concat([quotes, quotes]), now, manifest)
