@@ -259,6 +259,12 @@ def test_live_forecast_writes_all_and_selected_views_and_records_inputs(
     quotes.to_csv(tmp_path / "quotes.csv", index=False)
     model_dir = tmp_path / "model"
     model_dir.mkdir()
+    history = tmp_path / "history.csv"
+    history.write_text("date\n")
+    monkeypatch.setattr(live, "HISTORY", history)
+    xg = tmp_path / "xg.csv"
+    xg.write_text("date\n")
+    monkeypatch.setattr(live, "DEFAULT_XG", xg)
     policy = ConfidencePolicy(
         "closing_odds",
         "Champions League",
