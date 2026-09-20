@@ -11,23 +11,38 @@ python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install -r requirements-dev.txt
 python -m pytest -q
-python -m src.pipeline.run_pipeline
 ```
 
-The pipeline uses local raw datasets. Optional download flags are
-`--download-ucl`, `--download-xg`, `--download-domestic`, and `--download-europe`.
-Run `python -m src.data.download_footiqo --help` for the separate odds downloader.
-Network access and upstream availability are required for downloads.
+Raw datasets and processed outputs are not tracked in git (`src/data/raw/` and
+`src/data/processed/` are ignored), so a fresh clone must ingest its own data. Frozen
+models under `artifacts/` are ignored too; create one with
+`python -m src.models.live freeze` before live forecasting. On
+first run, fetch the Footiqo odds and the optional ClubElo ratings, then let the
+pipeline download the rest and build everything:
+
+```sh
+python -m src.data.download_footiqo
+python -m src.data.download_clubelo
+python -m src.pipeline.run_pipeline --download-domestic --download-europe \
+  --download-ucl --download-xg
+```
+
+Later runs can use the local data and simply run
+`python -m src.pipeline.run_pipeline`. Add `--skip-closing-experiment` to stop before
+model evaluation. Each downloader also has `--help`. Network access and upstream
+availability are required for downloads, and upstream changes can shift results
+slightly from the numbers reported below.
 
 ## Data and Features
 
-Raw data under `src/data/raw` contains domestic match results/statistics, European
-competition results, Understat xG, ClubElo snapshots, and Footiqo historical odds.
-Download modules document source URLs; team mapping files reconcile names.
+Ingestion writes raw data under `src/data/raw`: domestic match results/statistics,
+European competition results, Understat xG, ClubElo snapshots, and Footiqo historical
+odds. Download modules document source URLs; team mapping files reconcile names.
 Availability and coverage vary by season and competition.
 
-Processed stages are `matches.csv`, `matches_with_elo.csv`,
-`matches_with_features.csv`, `model_dataset.csv`, and `matches_with_context.csv`.
+The pipeline then writes processed stages under `src/data/processed`:
+`matches.csv`, `matches_with_elo.csv`, `matches_with_features.csv`,
+`model_dataset.csv`, and `matches_with_context.csv`.
 Features include Elo, prior form and goals, shot proxies, rest/congestion,
 venue performance, xG/non-penalty xG and opposition-adjusted strength.
 Coverage and match-audit files describe missing external data.
